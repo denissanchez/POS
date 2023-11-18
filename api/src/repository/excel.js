@@ -35,6 +35,7 @@ class StockFileAdapter {
         this._products = [];
         this._codeIndexer = {}
         this._categories = [];
+        this._subscribers = [];
 
         this._minisearch = new MiniSearch({
             idField: '_id',
@@ -63,6 +64,15 @@ class StockFileAdapter {
 
     get categories() {
         return [...this._categories];
+    }
+
+    addSubscriber(socket) {
+        this._subscribers.push(socket);
+        return this._subscribers.length - 1;
+    }
+
+    removeSubscriber(id) {
+        this._subscribers.splice(id, 1);
     }
 
     async getStockWorksheet() {
@@ -184,6 +194,8 @@ class StockFileAdapter {
                 this._minisearch.add(p);
             }
         });
+
+        this._subscribers.forEach(s => s.emit('stock', 'update'))
     }
 
     getById(_id) {

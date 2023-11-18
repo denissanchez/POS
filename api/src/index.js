@@ -3,11 +3,16 @@ import dotenv from 'dotenv';
 dotenv.config()
 
 import express from "express";
+import { createServer } from 'node:http';
+import { Server } from 'socket.io';
 import ProductsRouter from './controllers/products.js';
 import CategoriesRouter from './controllers/categories.js';
+import { getAdapter } from './repository/excel.js';
 
 const app = express();
-const port = process.env.PORT || 8080;
+const server = createServer(app);
+const io = new Server(server);
+
 
 app.get('/api/v1', function(req, res) {
     res.json({
@@ -18,6 +23,17 @@ app.get('/api/v1', function(req, res) {
 app.use('/api/v1/products', ProductsRouter);
 app.use('/api/v1/categories', CategoriesRouter);
 
-app.listen(port);
+io.on('connection', (socket) => {
+    const adapter = getAdapter();
+    const id = adapter.addSubscriber(socket);
 
-console.log(`Node Express server listening on http://localhost:${port}`);
+    socket.on('disconnect', () => {
+        adapter.removeSubscriber(id)
+    })
+})
+
+const port = process.env.PORT || 8080;
+
+server.listen(port, () => {
+    console.log(`server listening on http://localhost:${port}`);
+});
