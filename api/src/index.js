@@ -1,3 +1,7 @@
+import dotenv from 'dotenv';
+
+dotenv.config()
+
 import express from "express";
 import ProductsRouter from './controllers/products.js';
 import CategoriesRouter from './controllers/categories.js';
