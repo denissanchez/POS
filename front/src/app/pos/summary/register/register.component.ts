@@ -1,4 +1,4 @@
-import { Component, ViewChild } from "@angular/core";
+import { Component, Input, ViewChild } from "@angular/core";
 import { DraftTransaction } from "@app/shared/models/transaction";
 import { SwalComponent } from "@sweetalert2/ngx-sweetalert2";
 import { PosService } from "app/pos/pos.service";
@@ -15,15 +15,16 @@ export class RegisterComponent {
     @ViewChild('successRegistrationAlert', { static: false }) private successRegistrationAlert: SwalComponent;
     // @ts-ignore
     @ViewChild('errorRegistrationAlert', { static: false }) private errorRegistrationAlert: SwalComponent;
+    @Input({ required: true }) disabled: boolean = false;
 
-    private _currentTransaction: DraftTransaction = new DraftTransaction();
+    currentTransaction: DraftTransaction = new DraftTransaction();
     warnings: string[] = [];
 
     constructor(private posService: PosService) {}
 
     onShowRegisterForm() {
-        this._currentTransaction = this.posService.currentTransaction;
-        this.warnings = this._currentTransaction.getUnsatisfiedProducts();
+        this.currentTransaction = this.posService.currentTransaction;
+        this.warnings = this.currentTransaction.getUnsatisfiedProducts();
     }
 
     onRegister() {

@@ -3,7 +3,7 @@ import { Injectable } from "@angular/core";
 import { Category, Product } from "@app/shared/models";
 import { DraftTransaction, Item } from "@app/shared/models/transaction";
 import { SwalComponent } from "@sweetalert2/ngx-sweetalert2";
-import { BehaviorSubject, Observable, map } from "rxjs";
+import { BehaviorSubject, Observable, map, of } from "rxjs";
 import { SweetAlertResult } from "sweetalert2";
 
 @Injectable({
@@ -108,5 +108,11 @@ export class PosService {
 
     restartCurrentTransaction() {
         this._currentTransaction.next(new DraftTransaction());
+    }
+
+    register(transaction: DraftTransaction) {
+        return of({
+            ok: true
+        })
     }
 }

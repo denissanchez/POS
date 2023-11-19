@@ -30,11 +30,11 @@
             <div class="col-3 d-grid gap-2">
                 <button type="button" class="btn btn-danger fs-5" (click)="onCancelTransaction()"><i class="bi bi-x"></i> Cancelar</button>
             </div>
-            <div class="col-6 text-center display-5">
+            <div class="col-6 text-center fs-2">
                 <span>Total: S/ <strong>{{ transaction.total | number:'0.2-2' }}</strong></span>
             </div>
             <div class="col-3 d-grid gap-2">
-                <app-register></app-register>
+                <app-register [disabled]="transaction.total === 0"></app-register>
             </div>
         </div>
     </div>

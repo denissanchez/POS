@@ -14,7 +14,7 @@
     confirmButtonText="Aceptar">
 </swal>
 
-<button type="button" class="h-100 w-100 btn btn-success fs-5" data-bs-toggle="modal" data-bs-target="#registerBackdrop" (click)="onShowRegisterForm()">
+<button type="button" class="h-100 w-100 btn btn-success fs-5" data-bs-toggle="modal" data-bs-target="#registerBackdrop" (click)="onShowRegisterForm()" [disabled]="disabled">
     <i class="bi bi-check"></i> Continuar
 </button>
 
