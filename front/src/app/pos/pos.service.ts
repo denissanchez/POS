@@ -23,6 +23,10 @@ export class PosService {
         this._exceededStockSwal = swal;
     }
 
+    public get currentTransaction(): DraftTransaction {
+        return this._currentTransaction.value;
+    }
+
     public get currentTransaction$(): Observable<DraftTransaction> {
         return this._currentTransaction.asObservable();
     }

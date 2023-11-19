@@ -46,4 +46,22 @@ export class DraftTransaction {
     constructor(
         public items: Item[] = [],
     ) {}
+
+    public getUnsatisfiedProducts(): string[] {
+        const warnings: string[] = [];
+
+        const transformProductName = (name: string) => {
+            return name.replace(' (Por mayor)', '').replace(' (Con tarjeta)', '');
+        }
+
+        this.items.forEach((item) => {
+            if (item.product.quantity == 0) {
+                warnings.push(`${transformProductName(item.product.name)} (Sin stock)`)
+            } else if (item.quantity > item.product.quantity) {
+                warnings.push(`${transformProductName(item.product.name)} (Falta ${item.quantity - item.product.quantity} UND.)`)
+            }
+        })
+
+        return warnings;
+    }
 }
