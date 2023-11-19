@@ -1,10 +1,21 @@
+<swal
+    #withoutStockSwal
+    title="Producto sin stock"
+    text="Desea agregar de todas maneras?"
+    icon="warning"
+    cancelButtonText="Ignorar"
+    [showCancelButton]="true"
+    confirmButtonText="Agregar"
+    [focusCancel]="true">
+</swal>
+
 <div class="card" *ngIf="currentTransaction$ | async as transaction"  style="height: 100%;">
     <div class="card-body" style="overflow: hidden;">
         <div class="mb-3">
             <label for="searchCode" class="form-label">Buscar por código de barras</label>
             <div class="input-group">
-                <input type="email" class="form-control" id="searchCode" placeholder="Ingrese código">
-                <button class="btn btn-info" type="button"><i class="bi bi-search"></i> Buscar</button>
+                <input #searchCode type="email" class="form-control" placeholder="Ingrese código" autofocus>
+                <button class="btn btn-info" type="button" (click)="onCodeSubmitted()"><i class="bi bi-search"></i> Buscar</button>
               </div>
         </div>
 
@@ -20,7 +31,7 @@
 
         <div style="height: calc(100% - 240px); overflow-x: hidden; overflow-y: scroll;">
             <div *ngFor="let item of transaction.items; let i = index; trackBy: trackByProductId" class="my-2 mx-2">
-                <app-item [index]="i" [item]="item"></app-item>
+                <app-item [index]="i" [item]="item" (onDelete)="onDelete(item.product._id)"></app-item>
             </div>
         </div>
 
@@ -28,13 +39,13 @@
 
         <div class="row mt-2">
             <div class="col-3 d-grid gap-2">
-                <button type="button" class="btn btn-danger" (click)="onCancelTransaction()"><i class="bi bi-x"></i> Cancelar</button>
+                <button type="button" class="btn btn-danger fs-5" (click)="onCancelTransaction()"><i class="bi bi-x"></i> Cancelar</button>
             </div>
             <div class="col-6 text-center display-5">
-                <span>Total: S/ <strong>{{ transaction.total }}</strong></span>
+                <span>Total: S/ <strong>{{ transaction.total | number:'0.2-2' }}</strong></span>
             </div>
             <div class="col-3 d-grid gap-2">
-                <button type="button" class="btn btn-success"><i class="bi bi-check"></i> Completar</button>
+                <button type="button" class="btn btn-success fs-5"><i class="bi bi-check"></i> Completar</button>
             </div>
         </div>
     </div>

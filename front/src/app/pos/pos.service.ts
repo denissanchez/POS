@@ -2,13 +2,26 @@ import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Category, Product } from "@app/shared/models";
 import { DraftTransaction, Item } from "@app/shared/models/transaction";
+import { SwalComponent } from "@sweetalert2/ngx-sweetalert2";
 import { BehaviorSubject, Observable, map } from "rxjs";
+import { SweetAlertResult } from "sweetalert2";
 
 @Injectable({
     providedIn: 'platform'
 })
 export class PosService {
     private _currentTransaction: BehaviorSubject<DraftTransaction>= new BehaviorSubject<DraftTransaction>(new DraftTransaction());
+
+    private _lowStockSwal: SwalComponent | undefined;
+    private _exceededStockSwal: SwalComponent | undefined;
+
+    public set lowStockSwal(swal: SwalComponent) {
+        this._lowStockSwal = swal;
+    }
+
+    public set exceededStockSwal(swal: SwalComponent) {
+        this._exceededStockSwal = swal;
+    }
 
     public get currentTransaction$(): Observable<DraftTransaction> {
         return this._currentTransaction.asObservable();
@@ -23,23 +36,68 @@ export class PosService {
         )
     }
 
+    getProductById(_id: string): Observable<Product> {
+        return this.http.get<Record<string, string | number>>(`/api/v1/products/${_id}`).pipe(
+            map((res) => Product.fromJson(res))
+        )
+    }
+
     getAvailableProducts(search: string = "", category: string = ""): Observable<Product[]> {
         return this.http.get<Array<Record<string, string | number>>>(`/api/v1/products?q=${search}&category=${category}`).pipe(
             map((res) => Product.fromList(res))
         );
     }
 
-    addProduct(product: Product) {
+    async addProduct(product: Product) {
+        if (product.quantity == 0) {
+            if (this._lowStockSwal) {
+                const result: SweetAlertResult = await this._lowStockSwal.fire();
+
+                if (!result.isConfirmed) {
+                    return;
+                }
+            } else {
+                const confirmed = confirm("Producto sin stock. Desea agregarlo?")
+
+                if (!confirmed) {
+                    return;
+                }
+            }
+        }
+
         const currentIndex = this._currentTransaction.value.items.findIndex(x => x.product._id === product._id);
 
         let items = this._currentTransaction.value.items;
 
         if (currentIndex >= 0) {
+            if (product.quantity < items[currentIndex].quantity + 1) {
+
+                if (this._exceededStockSwal) {
+                    const result: SweetAlertResult = await this._exceededStockSwal.fire();
+
+                    if (!result.isConfirmed) {
+                        return;
+                    }
+                } else { 
+                    const confirmed = confirm("No hay más unidades en stock. Desea agregar de todas maneras?")
+
+                    if (!confirmed) {
+                        return;
+                    }
+                }
+            }
+
             items[currentIndex].quantity = items[currentIndex].quantity + 1;
         } else {
-            items = [...items, new Item(product)]
+            items = [...items, new Item(product.clone())]
         }
 
+        const transaction = new DraftTransaction(items);
+        this._currentTransaction.next(transaction);
+    }
+
+    removeProduct(productId: string) {
+        const items = this._currentTransaction.value.items.filter(x => x.product._id !== productId);
         const transaction = new DraftTransaction(items);
         this._currentTransaction.next(transaction);
     }
