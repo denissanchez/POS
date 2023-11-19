@@ -71,8 +71,13 @@ app.post(
 );
 
 app.use("/api/v1", AuthRoutes);
-app.get("/", isAuthenticated, function (req, res) {
-  res.sendFile(__dirname + "/views/index.html");
+
+app.get('*.*', express.static(path.resolve(__dirname + "/front/browser"), {
+  maxAge: '1y'
+}));
+
+app.get("*", isAuthenticated, function (req, res) {
+  res.sendFile(__dirname + "/front/browser/index.html");
 });
 
 const server = createServer(app);

@@ -5,6 +5,6 @@ export function isAuthenticated(req, res, next) {
     if (req.isAuthenticated()) {
         next();
     } else {
-        next(createError.BadRequest())
+        next(createError.Unauthorized())
     }
 }
