@@ -1,7 +1,13 @@
 <div class="card">
-    <div class="card-body">
-      <h5 class="card-title">{{ product.name }}</h5>
-      <p class="card-text">{{ product.price }}</p>
-      <a href="#" class="btn btn-primary">Stock: {{ product.quantity }}</a>
-    </div>
+  <div style="height: 150px" class="card-header" [ngClass]="{'bg-light bg-gradient text-dark': product.quantity >= 5, 'bg-warning bg-gradient text-dark': product.quantity < 5 && product.quantity > 0, 'bg-danger bg-gradient text-white': product.quantity == 0}">
+    <span class="card-title fw-bold" >{{ product.name }}</span>
   </div>
+  <div class="card-body">
+    <span class="">Precio: <strong>S/ {{ product.price }}</strong></span>
+    <br>
+    <span>Stock: <strong>{{ product.quantity }}</strong></span>
+  </div>
+  <div class="card-footer text-center d-grid gap-2">
+    <button class="btn btn-sm btn-success"><i class="bi bi-cart-plus"></i> Agregar</button>
+  </div>
+</div>

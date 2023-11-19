@@ -2,7 +2,7 @@
     <div class="card-header bg-white">
         <div class="row mt-2">
             <div class="col-12">
-                <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="Buscar...">
+                <input #searchInput type="text" class="form-control" [(ngModel)]="search" placeholder="Buscar producto...">
             </div>
             <div class="col-12 " style="overflow-x: auto;">
                 <div class="btn-group btn-group-sm mt-2" role="group" aria-label="Basic outlined example">
@@ -14,11 +14,18 @@
         </div>
     </div>
     <div class="card-body" style="max-height: 999%; overflow-x: hidden; overflow-y: scroll;">
-        <div class="row mt-3" >
-            <ng-container *ngFor="let p of products$ | async">
-                <div class="col-6 col-md-4 col-lg-3">
-                    <app-product [product]="p"></app-product>
-                </div>
+        <div class="row" >
+            <ng-container *ngIf="products$ | async as products">
+                <ng-container *ngIf="products.length > 0; else noProducts">
+                    <div *ngFor="let p of products" class="col-6 col-md-4 col-lg-3 mb-2 px-1">
+                        <app-product [product]="p"></app-product>
+                    </div>
+                </ng-container>
+                <ng-template #noProducts>
+                    <div class="col-12 text-center">
+                        <h5 class="h2 mt-5 text-secondary">No se han encontrado productos</h5>
+                    </div>
+                </ng-template>
             </ng-container>
         </div>
     </div>

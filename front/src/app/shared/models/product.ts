@@ -13,6 +13,6 @@ export class Product {
             return [];
         }
 
-        return products.map(p => new Product(<string>p['_id'], <string>p['category'], <number>p['cost'], <string>p['name'], <number>p['price'], <number>p['cuantity']))
+        return products.map(p => new Product(<string>p['_id'], <string>p['category'], <number>p['cost'], <string>p['name'], <number>p['price'], <number>p['quantity']))
     }
 }

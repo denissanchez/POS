@@ -1,6 +1,6 @@
-import { Component, OnInit } from "@angular/core";
+import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from "@angular/core";
 import { PosService } from "../pos.service";
-import { Observable, of } from "rxjs";
+import { Observable, Subscription, debounceTime, filter, fromEvent, map, mergeMap, of, tap } from "rxjs";
 import { Category, Product } from "@app/shared/models";
 
 @Component({
@@ -8,12 +8,17 @@ import { Category, Product } from "@app/shared/models";
     templateUrl: './products.component.html',
     styleUrls: ['./products.component.scss'],
 })
-export class ProductsComponent implements OnInit {
+export class ProductsComponent implements OnInit, AfterViewInit {
+    // @ts-ignore
+    @ViewChild('searchInput', { static: false }) searchInput: ElementRef;
+
     activeCategory: string = "";
     search: string = "";
 
     products$: Observable<Product[]> = of([]);
     categories$: Observable<Category[]> = of([]);
+
+    searchSubscription: Subscription | undefined;
 
     constructor(private posService: PosService) {
     }
@@ -21,6 +26,17 @@ export class ProductsComponent implements OnInit {
     ngOnInit(): void {
         this.categories$ = this.posService.getCategories();
         this.products$ = this.posService.getAvailableProducts(this.search, this.activeCategory);
+    }
+
+    ngAfterViewInit(): void {
+        this.searchSubscription = fromEvent(this.searchInput.nativeElement, 'input')
+            .pipe(
+                map((t: any) => t.target.value.trim()),
+                debounceTime(500),
+            ).subscribe({
+                next: () => this.products$ = this.posService.getAvailableProducts(this.search, this.activeCategory),
+                error: console.error    
+            })
     }
 
     onChooseCategory(category: string) {

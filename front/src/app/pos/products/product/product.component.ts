@@ -9,6 +9,6 @@ import { Product } from "@app/shared/models";
 export class ProductComponent implements OnInit {
     @Input({ required: true }) product: Product = new Product();
 
-    ngOnInit(): void {
+    ngOnInit(): void { 
     }
 }
