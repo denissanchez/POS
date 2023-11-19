@@ -6,19 +6,18 @@
             </div>
             <div class="col-12 " style="overflow-x: auto;">
                 <div class="btn-group btn-group-sm mt-2" role="group" aria-label="Basic outlined example">
-                    <button type="button" class="btn btn-outline-dark">ACESSORIOS</button>
-                    <button type="button" class="btn btn-outline-dark">ACESSORIOS</button>
-                    <button type="button" class="btn btn-outline-dark">ACESSORIOS</button>
-                    <button type="button" class="btn btn-outline-dark">ACESSORIOS</button>
+                    <ng-container *ngFor="let c of categories$ | async">
+                        <app-category-btn [category]="c"></app-category-btn>    
+                    </ng-container>
                 </div>
             </div>
         </div>
     </div>
     <div class="card-body" style="max-height: 999%; overflow-x: hidden; overflow-y: scroll;">
         <div class="row mt-3" >
-            <ng-container *ngFor="let i of items">
+            <ng-container *ngFor="let p of products$ | async">
                 <div class="col-6 col-md-4 col-lg-3">
-                    <app-product></app-product>
+                    <app-product [product]="p"></app-product>
                 </div>
             </ng-container>
         </div>

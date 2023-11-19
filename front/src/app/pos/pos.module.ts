@@ -4,8 +4,10 @@ import { PosRoutingModule } from "./pos-routing.module";
 import { ProductsComponent } from "./products/products.component";
 import { SummaryComponent } from "./summary/summary.component";
 import { ItemComponent } from "./summary/item/item.component";
-import { CommonModule } from "@angular/common";
 import { ProductComponent } from "./products/product/product.component";
+import { PosService } from "./pos.service";
+import { SharedModule } from "@app/shared/shared.module";
+import { CategoryBtnComponent } from "./products/category-btn/category-btn.component";
 
 @NgModule({
     declarations: [
@@ -14,10 +16,13 @@ import { ProductComponent } from "./products/product/product.component";
         SummaryComponent,
         ItemComponent,
         ProductComponent,
+        CategoryBtnComponent,
     ],
-    providers: [],
+    providers: [
+        PosService
+    ],
     imports: [
-        CommonModule,
+        SharedModule,
         PosRoutingModule
     ],
 })
