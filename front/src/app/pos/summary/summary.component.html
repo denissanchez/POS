@@ -1,4 +1,4 @@
-<div class="card" style="height: 100%;">
+<div class="card" *ngIf="currentTransaction$ | async as transaction"  style="height: 100%;">
     <div class="card-body" style="overflow: hidden;">
         <div class="mb-3">
             <label for="searchCode" class="form-label">Buscar por código de barras</label>
@@ -11,24 +11,30 @@
         <hr>
 
         <div class="row mb-2 fw-bold border py-2 bg-light my-2 mx-2">
-            <div class="col-1">#</div>
             <div class="col-5">Descripción</div>
+            <div class="col-1">P.U.</div>
             <div class="col-2">Cant.</div>
             <div class="col-2">Dscto.</div>
             <div class="col-2">Total</div>
         </div>
-        
+
         <div style="height: calc(100% - 240px); overflow-x: hidden; overflow-y: scroll;">
-            <div *ngFor="let item of items; let i = index" class="my-2 mx-2">
-                <app-item [index]="i"></app-item>
+            <div *ngFor="let item of transaction.items; let i = index; trackBy: trackByProductId" class="my-2 mx-2">
+                <app-item [index]="i" [item]="item"></app-item>
             </div>
         </div>
 
         <hr>
 
         <div class="row mt-2">
-            <div class="col-12 text-center display-5">
-                <span>Total: S/ <strong>10000.00</strong></span>
+            <div class="col-3 d-grid gap-2">
+                <button type="button" class="btn btn-danger" (click)="onCancelTransaction()"><i class="bi bi-x"></i> Cancelar</button>
+            </div>
+            <div class="col-6 text-center display-5">
+                <span>Total: S/ <strong>{{ transaction.total }}</strong></span>
+            </div>
+            <div class="col-3 d-grid gap-2">
+                <button type="button" class="btn btn-success"><i class="bi bi-check"></i> Completar</button>
             </div>
         </div>
     </div>

@@ -1,4 +1,7 @@
 import { Component, OnInit } from "@angular/core";
+import { PosService } from "../pos.service";
+import { Observable } from "rxjs";
+import { DraftTransaction, Item } from "@app/shared/models/transaction";
 
 @Component({
     selector: 'app-summary',
@@ -6,8 +9,20 @@ import { Component, OnInit } from "@angular/core";
     styleUrls: ['./summary.component.scss'],
 })
 export class SummaryComponent implements OnInit {
-    items: number[] = [1, 2, 3, 4, 5, 6, 7, 8];
+    currentTransaction$: Observable<DraftTransaction>;
+
+    constructor(private posService: PosService) {
+        this.currentTransaction$ = this.posService.currentTransaction$;
+    }
 
     ngOnInit(): void {
+    }
+
+    onCancelTransaction() {
+        this.posService.restartCurrentTransaction();
+    }
+
+    trackByProductId(index: number, item: Item) {
+        return item.product._id;
     }
 }

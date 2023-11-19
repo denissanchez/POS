@@ -29,7 +29,7 @@ export class Item {
     constructor(
         public product: Product = new Product(),
         public quantity: number = 1,
-        public discount: number = 1,
+        public discount: number = 0,
     ) {}
 }
 
@@ -44,6 +44,6 @@ export class DraftTransaction {
     }
 
     constructor(
-        public items: Item[],
+        public items: Item[] = [],
     ) {}
 }
