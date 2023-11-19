@@ -7,7 +7,7 @@
             <div class="col-12 " style="overflow-x: auto;">
                 <div class="btn-group btn-group-sm mt-2" role="group" aria-label="Basic outlined example">
                     <ng-container *ngFor="let c of categories$ | async">
-                        <app-category-btn [category]="c"></app-category-btn>    
+                        <app-category-btn [category]="c" [active]="activeCategory" (onClick)="onChooseCategory($event)"></app-category-btn>    
                     </ng-container>
                 </div>
             </div>

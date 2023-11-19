@@ -13,15 +13,22 @@ router.use(function(req, res, next) {
 
 
 router.get('/', runAsyncWrapper(async(req, res)  => {
-    const { q } = req.query;
+    const { q, category } = req.query;
+
+    let products = [];
 
     if (!!q && q.trim() !== '') {
         const filtered = await search(q.trim());
-        res.json(filtered);
+        products = filtered;
     } else { 
-        const products = await getAll();
-        res.json(products)
+        products = await getAll();
     }
+
+    if (!!category && category.trim() !== '') {
+        products = products.filter(p => p.category === category);
+    }
+
+    res.json(products);
 }));
 
 

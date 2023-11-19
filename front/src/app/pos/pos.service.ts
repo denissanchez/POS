@@ -12,12 +12,12 @@ export class PosService {
 
     getCategories(): Observable<Category[]> {
         return this.http.get<Array<Record<string, string>>>(`/api/v1/categories`).pipe(
-            map((res) => Category.fromList(res))
+            map((res) => [new Category('', 'TODAS'), ...Category.fromList(res)])
         )
     }
 
-    getAvailableProducts(search: string = ""): Observable<Product[]> {
-        return this.http.get<Array<Record<string, string | number>>>(`/api/v1/products?q=${search}`).pipe(
+    getAvailableProducts(search: string = "", category: string = ""): Observable<Product[]> {
+        return this.http.get<Array<Record<string, string | number>>>(`/api/v1/products?q=${search}&category=${category}`).pipe(
             map((res) => Product.fromList(res))
         );
     }

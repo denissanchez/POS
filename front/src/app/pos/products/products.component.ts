@@ -9,6 +9,9 @@ import { Category, Product } from "@app/shared/models";
     styleUrls: ['./products.component.scss'],
 })
 export class ProductsComponent implements OnInit {
+    activeCategory: string = "";
+    search: string = "";
+
     products$: Observable<Product[]> = of([]);
     categories$: Observable<Category[]> = of([]);
 
@@ -17,6 +20,11 @@ export class ProductsComponent implements OnInit {
 
     ngOnInit(): void {
         this.categories$ = this.posService.getCategories();
-        this.products$ = this.posService.getAvailableProducts();
+        this.products$ = this.posService.getAvailableProducts(this.search, this.activeCategory);
+    }
+
+    onChooseCategory(category: string) {
+        this.activeCategory = category;
+        this.products$ = this.posService.getAvailableProducts(this.search, this.activeCategory);
     }
 }
