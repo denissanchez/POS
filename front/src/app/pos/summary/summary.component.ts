@@ -6,7 +6,7 @@ import { Component, OnInit } from "@angular/core";
     styleUrls: ['./summary.component.scss'],
 })
 export class SummaryComponent implements OnInit {
-    items: number[] = [1, 2, 3, 4];
+    items: number[] = [1, 2, 3, 4, 5, 6, 7, 8];
 
     ngOnInit(): void {
     }
