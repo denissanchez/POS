@@ -36,35 +36,71 @@
                     </div>
                 </div>
                 <div class="col-12">
-                    <label for="" class="mb-2">Tipo de transacción</label>
+                    <h5>Tipo de transacción</h5>
                     <div class="form-check">
-                        <input class="form-check-input" type="radio" name="transactionType" id="paidTransaction">
+                        <input class="form-check-input" type="radio" [(ngModel)]="currentTransaction.type" name="transactionType" id="paidTransaction" value="COBRADO">
                         <label class="form-check-label" for="paidTransaction">
-                            Venta pagada
+                            Venta cobrada
                         </label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="radio" name="transactionType" id="creditTransaction" checked>
+                        <input class="form-check-input" type="radio" [(ngModel)]="currentTransaction.type" name="transactionType" id="creditTransaction" value="CREDITO">
                         <label class="form-check-label" for="creditTransaction">
                             Venta al crédito
                         </label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="radio" name="transactionType" id="quotation" checked>
+                        <input class="form-check-input" type="radio" [(ngModel)]="currentTransaction.type" name="transactionType" id="quotation" value="COTIZACION">
                         <label class="form-check-label" for="quotation">
                             Cotización
                         </label>
                     </div>
                 </div>
-                <div class="col-12 mt-2">
-                    <label for="" class="">Cliente</label>
-                    <select class="form-select mb-3" aria-label=".form-select-lg example">
-                        <option selected>No identificado</option>
-                        <option value="1">One</option>
-                        <option value="2">Two</option>
-                        <option value="3">Three</option>
-                      </select>
+                <ng-container [ngSwitch]="currentTransaction.type">
+                    <ng-container *ngSwitchCase="'COTIZACION'">
+                        <div class="col-12">
+                            <hr>
+                            <h5>Datos de vehículo</h5>
+                        </div>
+                        <div class="col-8 mb-3">
+                            <label for="carBrand" class="form-label">Marca:</label>
+                            <input type="text" class="form-control" id="carBrand" placeholder="">
+                        </div>
+
+                        <div class="col-4 mb-3">
+                            <label for="carPlate" class="form-label">Placa:</label>
+                            <input type="text" class="form-control" id="carPlate" placeholder="">
+                        </div>
+
+                        <div class="col-12 mb-3">
+                            <label for="carModel" class="form-label">Modelo:</label>
+                            <input type="text" class="form-control" id="carModel" placeholder="">
+                        </div>
+                        <div class="col-12">
+                            <hr>
+                            <h5>Valida hasta</h5>
+
+                            <input type="date" class="form-control mt-2" id="validUntil" [(ngModel)]="currentTransaction.validUntil" placeholder="">
+                        </div>
+                    </ng-container>
+                </ng-container>
+                <div class="col-12 mt-2 mb-3">
+                    <hr>
+                    <h5>Cliente</h5>
+                    <label for="clientName" class="form-label mt-2">No. documento:</label>
+                    <input #clientDocument type="text" class="form-control" id="clientDocument" [(ngModel)]="currentTransaction.client._id" placeholder="No identificado">
                 </div>
+
+                <div class="col-12 mb-3" [ngClass]="{'d-none': currentTransaction.client._id === ''}">
+                    <label for="clientName" class="form-label">Razón social:</label>
+                    <input type="text" class="form-control disabled" id="clientName" placeholder="" [(ngModel)]="currentTransaction.client.name" readonly>
+                </div>
+
+                <div class="col-12 mb-3" [ngClass]="{'d-none': currentTransaction.client._id === ''}">
+                    <label for="clientPhone" class="form-label">Telefono:</label>
+                    <input type="text" class="form-control disabled" id="clientPhone" placeholder="" [(ngModel)]="currentTransaction.client.phone" readonly>
+                </div>
+
             </div>
         </div>
         <div class="modal-footer d-flex justify-content-between">

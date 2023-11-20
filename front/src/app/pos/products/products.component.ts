@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from "@angular/core";
+import { AfterViewInit, Component, ElementRef, OnDestroy, OnInit, ViewChild } from "@angular/core";
 import { PosService } from "../pos.service";
 import { Observable, Subscription, debounceTime, filter, fromEvent, map, mergeMap, of, tap } from "rxjs";
 import { Category, Product } from "@app/shared/models";
@@ -8,7 +8,7 @@ import { Category, Product } from "@app/shared/models";
     templateUrl: './products.component.html',
     styleUrls: ['./products.component.scss'],
 })
-export class ProductsComponent implements OnInit, AfterViewInit {
+export class ProductsComponent implements OnInit, AfterViewInit, OnDestroy {
     // @ts-ignore
     @ViewChild('searchInput', { static: false }) searchInput: ElementRef;
 
@@ -37,6 +37,10 @@ export class ProductsComponent implements OnInit, AfterViewInit {
                 next: () => this.products$ = this.posService.getAvailableProducts(this.search, this.activeCategory),
                 error: console.error    
             })
+    }
+
+    ngOnDestroy(): void {
+        this.searchSubscription?.unsubscribe();
     }
 
     onChooseCategory(category: string) {

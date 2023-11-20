@@ -1,4 +1,6 @@
+import { Client } from "./client";
 import { Product } from "./product";
+import { Car } from "./car";
 
 
 function round(result: number) {
@@ -33,6 +35,7 @@ export class Item {
     ) {}
 }
 
+export type TransactionType = "CREDITO" | "COBRADO" | "COTIZACION";
 
 export class DraftTransaction {
     public get total() {
@@ -45,6 +48,11 @@ export class DraftTransaction {
 
     constructor(
         public items: Item[] = [],
+        public client: Client = new Client(),
+        public car: Car = new Car(),
+        public note: string = "",
+        public type: TransactionType = "COBRADO",
+        public validUntil: Date = new Date(),
     ) {}
 
     public getUnsatisfiedProducts(): string[] {
