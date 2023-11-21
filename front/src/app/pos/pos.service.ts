@@ -111,8 +111,6 @@ export class PosService {
     }
 
     register(transaction: DraftTransaction) {
-        return of({
-            ok: true
-        })
+        return this.http.post<void>(`/api/v1/transactions`, transaction.json());
     }
 }

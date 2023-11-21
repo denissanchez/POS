@@ -1,8 +1,9 @@
-import { AfterViewInit, Component, Input, ViewChild } from "@angular/core";
+import { AfterViewInit, Component, EventEmitter, Input, Output, ViewChild } from "@angular/core";
 import { DraftTransaction } from "@app/shared/models/transaction";
 import { SwalComponent } from "@sweetalert2/ngx-sweetalert2";
 import { PosService } from "app/pos/pos.service";
 import { Subscription, debounceTime, fromEvent, map } from "rxjs";
+import { SweetAlertResult } from "sweetalert2";
 
 declare const bootstrap: any;
 
@@ -17,9 +18,14 @@ export class RegisterComponent implements AfterViewInit {
     // @ts-ignore
     @ViewChild('errorRegistrationAlert', { static: false }) private errorRegistrationAlert: SwalComponent;
     // @ts-ignore
+    @ViewChild('cleanDetailConfirmation', { static: false }) private cleanDetailConfirmation: SwalComponent;
+    // @ts-ignore
     @ViewChild('clientDocument', { static: false }) private clientDocumentRef: ElementRef;
 
     @Input({ required: true }) disabled: boolean = false;
+
+    @Output() onRegisterSucess: EventEmitter<void> = new EventEmitter<void>();
+    @Output() onRegisterFail: EventEmitter<void> = new EventEmitter<void>();
 
     currentTransaction: DraftTransaction = new DraftTransaction();
     warnings: string[] = [];
@@ -48,6 +54,19 @@ export class RegisterComponent implements AfterViewInit {
     }
 
     onRegister() {
-        this.errorRegistrationAlert.fire();
+        this.posService.register(this.currentTransaction).subscribe({
+            next: () => {
+                this.successRegistrationAlert.fire()
+                    .then(() => this.cleanDetailConfirmation.fire())
+                    .then((result: SweetAlertResult) => {
+                        if (result.isConfirmed) {
+                            this.posService.restartCurrentTransaction();
+                        }
+                    });
+            },
+            error: () => {
+                this.errorRegistrationAlert.fire();
+            }
+        })
     }
 }

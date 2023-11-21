@@ -3,4 +3,12 @@ export class Car {
                 public model: string = "-",
                 public plate: string = "") {
     }
+
+    json() {
+        return {
+            brand: this.brand,
+            model: this.model,
+            plate: this.plate
+        }
+    }
 }

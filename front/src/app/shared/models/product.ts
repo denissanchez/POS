@@ -75,6 +75,17 @@ export class Product {
         return new Product(this._id, this.category, this.cost, this.name, this.price, this.quantity);
     }
 
+    json() {
+        return {
+            _id: this._id,
+            category: this.category,
+            cost: this.cost,
+            name: this.name,
+            price: this.price,
+            quantity: this.quantity,
+        }
+    }
+
     static fromJson(p: Record<string, string | number>) {
         return new Product(<string>p['_id'], <string>p['category'], <number>p['cost'], <string>p['name'], <number>p['price'], <number>p['quantity'])
     }

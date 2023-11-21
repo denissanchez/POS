@@ -33,6 +33,28 @@ export class Item {
         public quantity: number = 1,
         public discount: number = 0,
     ) {}
+
+    json() {
+        return {
+            product: this.product.json(),
+            quantity: this.quantity,
+            discount: this.discount,
+            subtotal: this.subtotal,
+            subtotalDiscounted: this.subtotalDiscounted
+        }
+    }
+}
+
+export class Payment {
+    constructor(public amount: number, public date: Date = new Date()) {
+    }
+
+    json() {
+        return {
+            amount: this.amount,
+            date: this.date.toISOString(),
+        }
+    }
 }
 
 export type TransactionType = "CREDITO" | "COBRADO" | "COTIZACION";
@@ -71,5 +93,16 @@ export class DraftTransaction {
         })
 
         return warnings;
+    }
+
+    json() {
+        return {
+            items: this.items.map(x => x.json()),
+            client: this.client.json(),
+            car: this.car.json(),
+            note: this.note,
+            type: this.type,
+            validUntil: this.validUntil.toISOString()
+        }
     }
 }

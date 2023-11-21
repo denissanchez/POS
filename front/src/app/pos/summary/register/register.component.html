@@ -14,6 +14,13 @@
     confirmButtonText="Aceptar">
 </swal>
 
+<swal
+    #cleanDetailConfirmation
+    title="Remover todos los items?"
+    icon="question"
+    confirmButtonText="Remover">
+</swal>
+
 <button type="button" class="h-100 w-100 btn btn-success fs-5" data-bs-toggle="modal" data-bs-target="#registerBackdrop" (click)="onShowRegisterForm()" [disabled]="disabled">
     <i class="bi bi-check"></i> Continuar
 </button>
@@ -93,12 +100,12 @@
 
                 <div class="col-12 mb-3" [ngClass]="{'d-none': currentTransaction.client._id === ''}">
                     <label for="clientName" class="form-label">Razón social:</label>
-                    <input type="text" class="form-control disabled" id="clientName" placeholder="" [(ngModel)]="currentTransaction.client.name" readonly>
+                    <input type="text" class="form-control disabled" id="clientName" placeholder="" [(ngModel)]="currentTransaction.client.name">
                 </div>
 
                 <div class="col-12 mb-3" [ngClass]="{'d-none': currentTransaction.client._id === ''}">
                     <label for="clientPhone" class="form-label">Telefono:</label>
-                    <input type="text" class="form-control disabled" id="clientPhone" placeholder="" [(ngModel)]="currentTransaction.client.phone" readonly>
+                    <input type="text" class="form-control disabled" id="clientPhone" placeholder="" [(ngModel)]="currentTransaction.client.phone">
                 </div>
 
             </div>

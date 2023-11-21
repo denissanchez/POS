@@ -1,0 +1,158 @@
+{
+  "transactions": [
+    {
+      "_id": "6808c222-ec4e-43f9-aea7-0471a5c6a3b5",
+      "items": [
+        {
+          "product": {
+            "_id": "1000094727",
+            "category": "ACCESORIOS",
+            "cost": 4,
+            "name": "AMBIENTADOR JUST EN SPRAY",
+            "price": 10,
+            "quantity": 11
+          },
+          "quantity": 2,
+          "discount": 0,
+          "subtotal": 20,
+          "subtotalDiscounted": 0
+        },
+        {
+          "product": {
+            "_id": "M1000025038",
+            "category": "ACCESORIOS",
+            "cost": 13,
+            "name": "ANTENA DE RADIO AM FM DE PARABRISA (Por mayor)",
+            "price": 20,
+            "quantity": 13
+          },
+          "quantity": 3,
+          "discount": 0,
+          "subtotal": 60,
+          "subtotalDiscounted": 0
+        }
+      ],
+      "client": {
+        "_id": "73904197",
+        "name": "DERCO S.A.",
+        "phone": "950462729"
+      },
+      "car": {
+        "brand": "-",
+        "model": "-",
+        "plate": ""
+      },
+      "note": "",
+      "type": "COBRADO",
+      "validUntil": "2023-11-21T02:59:26.293Z"
+    },
+    {
+      "_id": "d1ad202b-d214-4a60-9d5d-dfe92f0e3677",
+      "items": [
+        {
+          "product": {
+            "_id": "1000094727",
+            "category": "ACCESORIOS",
+            "cost": 4,
+            "name": "AMBIENTADOR JUST EN SPRAY",
+            "price": 10,
+            "quantity": 11
+          },
+          "quantity": 4,
+          "discount": 0,
+          "subtotal": 40,
+          "subtotalDiscounted": 0
+        },
+        {
+          "product": {
+            "_id": "M1000025038",
+            "category": "ACCESORIOS",
+            "cost": 13,
+            "name": "ANTENA DE RADIO AM FM DE PARABRISA (Por mayor)",
+            "price": 20,
+            "quantity": 13
+          },
+          "quantity": 4,
+          "discount": 0,
+          "subtotal": 80,
+          "subtotalDiscounted": 0
+        }
+      ],
+      "client": {
+        "_id": "",
+        "name": "Desconocido",
+        "phone": ""
+      },
+      "car": {
+        "brand": "-",
+        "model": "-",
+        "plate": ""
+      },
+      "note": "",
+      "type": "COBRADO",
+      "validUntil": "2023-11-21T03:04:37.293Z"
+    },
+    {
+      "_id": "d5974a6f-3e45-4020-9090-1e2dbfc499af",
+      "items": [
+        {
+          "product": {
+            "_id": "1000094727",
+            "category": "ACCESORIOS",
+            "cost": 4,
+            "name": "AMBIENTADOR JUST EN SPRAY",
+            "price": 10,
+            "quantity": 11
+          },
+          "quantity": 3,
+          "discount": 0,
+          "subtotal": 30,
+          "subtotalDiscounted": 0
+        },
+        {
+          "product": {
+            "_id": "M1000025038",
+            "category": "ACCESORIOS",
+            "cost": 13,
+            "name": "ANTENA DE RADIO AM FM DE PARABRISA (Por mayor)",
+            "price": 20,
+            "quantity": 13
+          },
+          "quantity": 3,
+          "discount": 0,
+          "subtotal": 60,
+          "subtotalDiscounted": 0
+        },
+        {
+          "product": {
+            "_id": "1000025038",
+            "category": "ACCESORIOS",
+            "cost": 13,
+            "name": "ANTENA DE RADIO AM FM DE PARABRISA",
+            "price": 45,
+            "quantity": 13
+          },
+          "quantity": 5,
+          "discount": 0,
+          "subtotal": 225,
+          "subtotalDiscounted": 0
+        }
+      ],
+      "client": {
+        "_id": "",
+        "name": "Desconocido",
+        "phone": ""
+      },
+      "car": {
+        "brand": "-",
+        "model": "-",
+        "plate": ""
+      },
+      "note": "",
+      "type": "COBRADO",
+      "validUntil": "2023-11-21T03:04:56.058Z"
+    }
+  ],
+  "products": [],
+  "clients": []
+}
