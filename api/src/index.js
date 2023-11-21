@@ -18,6 +18,10 @@ import passport from "passport";
 import { Strategy as LocalStrategy } from "passport-local";
 import AuthRoutes from "./auth.routes.js";
 import { isAuthenticated } from "./middlewares/secure.js";
+import { createConnection } from "./repository/db.js";
+
+
+createConnection();
 
 const app = express();
 

@@ -1,12 +1,16 @@
-import { Low } from 'lowdb';
-import { JSONPreset } from 'lowdb/node';
+import { Low } from "lowdb";
+import { JSONFile } from 'lowdb/node'
 
+let db;
 
-const db = new Low(new JSONPreset('db.json', {
-    transaction: [],
-    products: [],
+export async function createConnection() {
+  db = new Low(new JSONFile('db.json'), {
+    transactions: [],
     clients: [],
-}));
+  });
 
+  await db.read();
+  await db.write();
+}
 
-export default db;
+export const getConnection = () => db;
