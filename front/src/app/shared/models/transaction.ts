@@ -106,3 +106,46 @@ export class DraftTransaction {
         }
     }
 }
+
+
+export class Transaction {
+    public get total() {
+        return this.items.reduce((acc, curr) => curr.subtotal + acc, 0)
+    }
+
+    constructor(
+        public _id: string,
+        public items: Item[],
+        public client: Client,
+        public car: Car,
+        public note: string,
+        public type: TransactionType,
+        public validUntil: Date,
+        public createdAt: Date
+    ) {
+    }
+    
+
+    public static fromJson(data: Record<string, string | number | Record<string, string | number>>) {
+        const { items: _items, client: _client, car: _car } = data;
+
+        const items = (<any>_items).map((x: any) => {
+            const { product, quantity, discount } = x;
+            return new Item(Product.fromJson(product), quantity, discount);
+        });
+
+        const client = Client.fromJson(<any>_client);
+        const car = Car.fromJson(<any>_car);
+
+        return new Transaction(<string>data['_id'], items, client, car, <string>data['note'], <TransactionType>data['type'], new Date(<string>data['validUntil']), new Date(<string>data['createdAt']))
+    }
+
+    static fromList(transactions: Array<any>): Transaction[] {
+        if (!Array.isArray(transactions)) {
+            return [];
+        }
+
+        return transactions.map(p => this.fromJson(p))
+    }
+}
+

@@ -7,19 +7,19 @@ const router = Router();
 
 
 router.get('/', runAsyncWrapper(async (req, res)  => {
-    const { type } = req.query;
+    const { type, start, end } = req.query;
 
     if (!type || type === '') {
-        res.json(getAll())
+        res.json(getAll(start, end))
     } else {
-        res.json(getAll([type]))
+        res.json(getAll(start, end, [type]))
     }
 }));
 
 
 router.post('/', runAsyncWrapper(async (req, res) => {
     try {
-        await createTransaction(req.body);
+        await createTransaction({...req.body, createdAt: new Date().toISOString()});
     } catch (e) {
         res.status(500).send(e)
     }

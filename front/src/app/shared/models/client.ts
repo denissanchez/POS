@@ -11,4 +11,8 @@ export class Client {
             phone: this.phone,
         }
     }
+
+    public static fromJson(p: Record<string, string>) {
+        return new Client(p['_id'], p['name'], p['phone']);
+    }
 }

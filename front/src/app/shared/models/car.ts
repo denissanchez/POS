@@ -11,4 +11,8 @@ export class Car {
             plate: this.plate
         }
     }
+
+    public static fromJson(data: Record<string, string>) {
+        return new Car(data['brand'], data['model'], data['plate']);
+    }
 }

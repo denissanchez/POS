@@ -8,3 +8,14 @@
 </div>
 
 <app-general-stats></app-general-stats>
+
+<div class="row mx-3">
+    <div class="col-12">
+        <ag-grid-angular
+            style="height: 50vh;"
+            class="w-100 ag-theme-alpine"
+            [rowData]="transactions$ | async"
+            [columnDefs]="columnDefs">
+        </ag-grid-angular>
+    </div>
+</div>

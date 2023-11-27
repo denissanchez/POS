@@ -19,6 +19,7 @@ import { Strategy as LocalStrategy } from "passport-local";
 import AuthRoutes from "./auth.routes.js";
 import { isAuthenticated } from "./middlewares/secure.js";
 import { createConnection } from "./repository/db.js";
+import { verifyCredentials, create, getById } from "./repository/users.js";
 
 
 createConnection();
@@ -41,22 +42,23 @@ app.use(
 
 passport.use(
   new LocalStrategy(function verify(username, password, done) {
-    return done(null, {
-      id: 1234,
-      username,
-    });
+    const user = verifyCredentials(username, password);
+
+    if (!user) {
+      return done(null, false, { message: "Incorrect username or password" });
+    }
+
+
+    return done(null, user);
   })
 );
 
 passport.serializeUser(function (user, done) {
-  done(null, user.id);
+  done(null, user._id);
 });
 
-passport.deserializeUser(function (id, done) {
-  done(null, {
-    id: 1234,
-    username: "admin",
-  });
+passport.deserializeUser(function (_id, done) {
+  done(null, getById(_id));
 });
 
 app.use(passport.initialize());
@@ -74,10 +76,26 @@ app.post(
   })
 );
 
+app.get("/logout", function (req, res, next) {
+  req.logout((err) => {
+    if (err) return next(err);
+    res.redirect("/login");
+  });
+});
+
+app.get("/setup", function (req, res) {
+  create({
+    name: "Denis Sanchez",
+    username: "admin",
+    password: "admin",
+  });
+  res.end();
+});
+
 app.use("/api/v1", AuthRoutes);
 
 app.get('*.*', express.static(path.resolve(__dirname + "/front/browser"), {
-  maxAge: '1y'
+  maxAge: process.env.ENVIRONMENT === 'production' ? '1y' : 0
 }));
 
 app.get("*", isAuthenticated, function (req, res) {

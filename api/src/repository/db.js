@@ -7,6 +7,7 @@ export async function createConnection() {
   db = new Low(new JSONFile('db.json'), {
     transactions: [],
     clients: [],
+    users: []
   });
 
   await db.read();
