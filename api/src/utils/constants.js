@@ -1,4 +1,5 @@
 // Users
+export const CAN_VIEW_USERS = "CAN_VIEW_USERS";
 export const CAN_CREATE_USERS = "CAN_CREATE_USERS";
 export const CAN_REMOVE_USERS = "CAN_REMOVE_USERS";
 export const CAN_UPDATE_USERS = "CAN_UPDATE_USERS";

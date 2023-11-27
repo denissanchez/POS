@@ -25,6 +25,15 @@
         "CAN_VIEW_TRANSACTIONS",
         "CAN_VIEW_METRICS"
       ]
+    },
+    {
+      "_id": "5400742c-8a26-45bd-8482-fb706e6c4a7c",
+      "name": "Wagner",
+      "username": "wagner",
+      "password": "$2b$10$G3qcZ3XZKe6zyvqY5N.8jOy.UFoClUzmA1JKZcZAG1SB45xtjQ6xG",
+      "permissions": [
+        "CAN_VIEW_TRANSACTIONS"
+      ]
     }
   ],
   "transactions": [

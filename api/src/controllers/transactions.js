@@ -1,12 +1,14 @@
 import { Router } from "express";
 import { runAsyncWrapper } from '../utils/wrapper.js';
 import { getAll, getById, createTransaction } from '../repository/transactions.js';
+import { isAuthorized } from "../middlewares/authorization.js";
+import { CAN_VIEW_TRANSACTIONS } from "../utils/constants.js";
 
 
 const router = Router();
 
 
-router.get('/', runAsyncWrapper(async (req, res)  => {
+router.get('/', isAuthorized(CAN_VIEW_TRANSACTIONS), runAsyncWrapper(async (req, res)  => {
     const { type, start, end } = req.query;
 
     if (!type || type === '') {
@@ -28,7 +30,7 @@ router.post('/', runAsyncWrapper(async (req, res) => {
 }));
 
 
-router.get('/:id', runAsyncWrapper(async (req, res)  => {
+router.get('/:id', isAuthorized(CAN_VIEW_TRANSACTIONS), runAsyncWrapper(async (req, res)  => {
     const transaction = await getById(req.params.id);
 
     if (transaction) {
