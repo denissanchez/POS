@@ -2,7 +2,7 @@ import { getConnection } from './db.js';
 import { v4 } from 'uuid';
 
 
-export function getAll(types=["CREDITO", "COBRADO", "COTIZACION"]) {
+export function getAll(start, end, types=["CREDITO", "COBRADO", "COTIZACION"]) {
     const db = getConnection();
     return db.data.transactions.filter(x => types.includes(x.type))
 }

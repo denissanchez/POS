@@ -1,4 +1,12 @@
 {
+  "users": [
+    {
+      "_id": "3f6a6aa4-a538-482f-8308-85e6e97b76bd",
+      "name": "Denis Sanchez",
+      "username": "admin",
+      "password": "$2b$10$BfzFC1eRoZHHn1yja0Jr4uYyrNcSpdmp/lfYq.I.0Oh9fTGKFUW6."
+    }
+  ],
   "transactions": [
     {
       "_id": "6808c222-ec4e-43f9-aea7-0471a5c6a3b5",
@@ -44,7 +52,8 @@
       },
       "note": "",
       "type": "COBRADO",
-      "validUntil": "2023-11-21T02:59:26.293Z"
+      "validUntil": "2023-11-21T02:59:26.293Z",
+      "createdAt": "2023-11-21T00:00:00Z"
     },
     {
       "_id": "d1ad202b-d214-4a60-9d5d-dfe92f0e3677",
@@ -90,7 +99,8 @@
       },
       "note": "",
       "type": "COBRADO",
-      "validUntil": "2023-11-21T03:04:37.293Z"
+      "validUntil": "2023-11-21T03:04:37.293Z",
+      "createdAt": "2023-11-21T00:00:00Z"
     },
     {
       "_id": "d5974a6f-3e45-4020-9090-1e2dbfc499af",
@@ -150,7 +160,8 @@
       },
       "note": "",
       "type": "COBRADO",
-      "validUntil": "2023-11-21T03:04:56.058Z"
+      "validUntil": "2023-11-21T03:04:56.058Z",
+      "createdAt": "2023-11-21T00:00:00Z"
     }
   ],
   "products": [],
