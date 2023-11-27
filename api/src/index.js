@@ -76,6 +76,11 @@ app.post(
   })
 );
 
+app.get("/user", isAuthenticated, function (req, res) {
+  const { password, ...userInfo } = req.user;
+  res.json(userInfo);
+});
+
 app.get("/logout", function (req, res, next) {
   req.logout((err) => {
     if (err) return next(err);

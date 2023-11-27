@@ -4,13 +4,27 @@
       "_id": "3f6a6aa4-a538-482f-8308-85e6e97b76bd",
       "name": "Denis Sanchez",
       "username": "admin",
-      "password": "$2b$10$BfzFC1eRoZHHn1yja0Jr4uYyrNcSpdmp/lfYq.I.0Oh9fTGKFUW6."
+      "password": "$2b$10$BfzFC1eRoZHHn1yja0Jr4uYyrNcSpdmp/lfYq.I.0Oh9fTGKFUW6.",
+      "permissions": [
+        "CAN_CREATE_USERS",
+        "CAN_REMOVE_USERS",
+        "CAN_UPDATE_USERS",
+        "CAN_VIEW_TRANSACTIONS",
+        "CAN_VIEW_METRICS"
+      ]
     },
     {
       "_id": "d6f2ce58-5e36-402a-9b2d-d33b7d1960f9",
       "name": "Denis Sanchez",
       "username": "admin",
-      "password": "$2b$10$RIZoUBy216wjpD8tNuh9jONhfvBraZv0LF3RECDoMN5LNbvg9j/dW"
+      "password": "$2b$10$RIZoUBy216wjpD8tNuh9jONhfvBraZv0LF3RECDoMN5LNbvg9j/dW",
+      "permissions": [
+        "CAN_CREATE_USERS",
+        "CAN_REMOVE_USERS",
+        "CAN_UPDATE_USERS",
+        "CAN_VIEW_TRANSACTIONS",
+        "CAN_VIEW_METRICS"
+      ]
     }
   ],
   "transactions": [
