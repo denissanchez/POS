@@ -3,7 +3,7 @@ import ExcelJS from 'exceljs';
 import MiniSearch from 'minisearch';
 import XlsxPopulate from 'xlsx-populate';
 
-const EXCEL_FILE_PATH = "/Users/desanchezca/Documents/Projects/CONTROL DE VENTAS 2023.xlsx";
+const EXCEL_FILE_PATH = process.env.XLSX_PATH || "C:\\POS\\CONTROL DE VENTAS.xlsx";
 const STOCK_SHEET_NAME = "STOCK DE TIENDA";
 
 

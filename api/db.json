@@ -5,6 +5,12 @@
       "name": "Denis Sanchez",
       "username": "admin",
       "password": "$2b$10$BfzFC1eRoZHHn1yja0Jr4uYyrNcSpdmp/lfYq.I.0Oh9fTGKFUW6."
+    },
+    {
+      "_id": "d6f2ce58-5e36-402a-9b2d-d33b7d1960f9",
+      "name": "Denis Sanchez",
+      "username": "admin",
+      "password": "$2b$10$RIZoUBy216wjpD8tNuh9jONhfvBraZv0LF3RECDoMN5LNbvg9j/dW"
     }
   ],
   "transactions": [
