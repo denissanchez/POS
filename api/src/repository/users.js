@@ -5,13 +5,12 @@ import bcrypt from "bcrypt";
 
 export function getAll() {
     const db = getConnection();
-    return db.data.users;
+    return db.data.users.map(x => ({ ...x, password: "********" }));
 }
 
 
 export function getById(_id) {
-    const db = getConnection();
-    return db.data.users.find(x => x._id === _id);
+    return getAll().find(x => x._id === _id);
 }
 
 
@@ -22,6 +21,17 @@ export function create(user) {
     user.password = hashedPassword;
 
     db.data.users.push({ _id: v4(), ...user});
+    db.write();
+}
+
+
+export function remove(id) {
+    const db = getConnection();
+
+    const index = db.data.users.findIndex(x => x._id === id);
+    if (index === -1) return;
+
+    db.data.users.splice(index, 1);
     db.write();
 }
 
