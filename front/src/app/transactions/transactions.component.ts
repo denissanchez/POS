@@ -1,9 +1,10 @@
 import { Component, OnInit } from "@angular/core";
 import { Transaction } from "@app/shared/models/transaction";
+import { ColDef } from 'ag-grid-community';
 import { Observable, of } from "rxjs";
 import { TransactionsService } from "./transactions.service";
-import { AgGridAngular } from 'ag-grid-angular';
-import { CellClickedEvent, ColDef, GridReadyEvent } from 'ag-grid-community';
+import { UserService } from "@app/shared/services/user.service";
+import { CAN_VIEW_METRICS } from "@app/shared/models/user";
 
 @Component({
     selector: 'app-transactions',
@@ -24,14 +25,15 @@ export class TransactionsComponent implements OnInit {
         filter: true,
     };
 
+    public canShowMetrics: boolean = false;
+
     public transactions$: Observable<Transaction[]> = of([]);
 
-    constructor(private transactionsService: TransactionsService) {
+    constructor(private userService: UserService, private transactionsService: TransactionsService) {
     }
 
     ngOnInit(): void {
+        this.canShowMetrics = this.userService.can(CAN_VIEW_METRICS);
         this.transactions$ = this.transactionsService.getAll(new Date(), new Date());
     }
-
-
 }

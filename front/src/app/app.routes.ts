@@ -1,4 +1,5 @@
 import { Routes } from '@angular/router';
+import { canViewTransactions } from './shared/guards/can-view-transactions.guard';
 
 export const routes: Routes = [
     {
@@ -12,6 +13,7 @@ export const routes: Routes = [
     },
     {
         path: 'transacciones',
-        loadChildren: () => import('./transactions/transactions.module').then((m) => m.TransactionsModule)
+        loadChildren: () => import('./transactions/transactions.module').then((m) => m.TransactionsModule),
+        canActivate: [canViewTransactions]
     }
 ];
