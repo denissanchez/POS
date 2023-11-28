@@ -2,8 +2,11 @@ import { Component, OnInit } from "@angular/core";
 import { Transaction } from "@app/shared/models/transaction";
 import { Observable, of } from "rxjs";
 import { TransactionsService } from "./transactions.service";
-import { AgGridAngular } from 'ag-grid-angular';
-import { CellClickedEvent, ColDef, GridReadyEvent } from 'ag-grid-community';
+import { ColDef } from 'ag-grid-community';
+import { BtnTransactionDetailRenderer } from "./renderers/transaction-detail/transaction-detail.renderer";
+
+
+declare const bootstrap: any;
 
 @Component({
     selector: 'app-transactions',
@@ -12,12 +15,26 @@ import { CellClickedEvent, ColDef, GridReadyEvent } from 'ag-grid-community';
 })
 export class TransactionsComponent implements OnInit {
     public columnDefs: ColDef[] = [
+        { field: 'createdAt', headerName: 'Fecha de registro', valueFormatter: (params) => new Date(params.value).toLocaleDateString()},
         { field: 'client.name', headerName: 'Cliente' },
         { field: 'type', headerName: 'Tipo' },
         { field: 'note', headerName: 'Nota' },
         { field: 'total', headerName: 'Total', valueFormatter: (params) => `S/ ${params.value.toFixed(2)}` },
         { field: 'validUntil', headerName: 'Válido hasta', valueFormatter: (params) => new Date(params.value).toLocaleDateString()},
-        { field: 'createdAt', headerName: 'Fecha de registro', valueFormatter: (params) => new Date(params.value).toLocaleDateString()},
+        {
+            field: 'detail',
+            headerName: '',
+            cellRenderer: BtnTransactionDetailRenderer,
+            valueGetter: (params) => params.data,
+            cellRendererParams: {
+                clicked: (e: any) => {
+                    const modal = new bootstrap.Modal(document.getElementById('transactionDetail'), {
+                        keyboard: false
+                    })
+                    modal.show()
+                }
+            }
+        }
     ];
     public defaultColDef: ColDef = {
         sortable: true,
