@@ -3,7 +3,7 @@ import ExcelJS from 'exceljs';
 import MiniSearch from 'minisearch';
 import XlsxPopulate from 'xlsx-populate';
 
-const EXCEL_FILE_PATH = process.env.XLSX_PATH || "C:\\POS\\CONTROL DE VENTAS.xlsx";
+
 const STOCK_SHEET_NAME = "STOCK DE TIENDA";
 
 
@@ -32,6 +32,7 @@ const STORE_FIELDS_FOR_EACH_PRODUCT = ['price', 'quantity', 'name', 'category', 
 
 class StockFileAdapter {
     constructor() {
+        this._excelPath = process.env.XLSX_PATH;
         this._products = [];
         this._codeIndexer = {}
         this._categories = [];
@@ -49,7 +50,7 @@ class StockFileAdapter {
         
         this.syncData();
 
-        this.observer = fs.watchFile(EXCEL_FILE_PATH, { interval: 1000 }, (curr, prev) => {
+        this.observer = fs.watchFile(this._excelPath, { interval: 1000 }, (curr, prev) => {
             if (curr.mtime.getTime() == prev.mtime.getTime()) {
                 return;
             }
@@ -78,7 +79,7 @@ class StockFileAdapter {
     async getStockWorksheet() {
         const workbook = new ExcelJS.Workbook();
     
-        await workbook.xlsx.readFile(EXCEL_FILE_PATH);
+        await workbook.xlsx.readFile(this._excelPath);
         workbook.calcProperties.fullCalcOnLoad = true;
     
         return [workbook.getWorksheet(STOCK_SHEET_NAME), workbook]
@@ -216,7 +217,7 @@ class StockFileAdapter {
     }
 
     async updateStock(products) {
-        const workbook = await XlsxPopulate.fromFileAsync(EXCEL_FILE_PATH);
+        const workbook = await XlsxPopulate.fromFileAsync(this._excelPath);
 
         const worksheet = workbook.sheet(STOCK_SHEET_NAME)
 
@@ -225,7 +226,7 @@ class StockFileAdapter {
             worksheet.cell(`C${productDB.row}`).value(+worksheet.cell(`C${productDB.row}`).value() - +product.quantity);
         }
 
-        await workbook.toFileAsync(EXCEL_FILE_PATH)
+        await workbook.toFileAsync(this._excelPath)
     }
 
     async registerTransaction(products, customerName = undefined) {
@@ -234,7 +235,7 @@ class StockFileAdapter {
         
         const worksheetTitle = `VENTAS ${currentMonth} ${now.getFullYear()}`;
         
-        const workbook = await XlsxPopulate.fromFileAsync(EXCEL_FILE_PATH);
+        const workbook = await XlsxPopulate.fromFileAsync(this._excelPath);
 
         const worksheet = workbook.sheet(worksheetTitle);
 
@@ -282,7 +283,7 @@ class StockFileAdapter {
             row++;
         }
 
-        await workbook.toFileAsync(EXCEL_FILE_PATH)
+        await workbook.toFileAsync(this._excelPath)
     }
 }
 
