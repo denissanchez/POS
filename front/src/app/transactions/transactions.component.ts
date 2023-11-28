@@ -5,6 +5,10 @@ import { Observable, of } from "rxjs";
 import { TransactionsService } from "./transactions.service";
 import { UserService } from "@app/shared/services/user.service";
 import { CAN_VIEW_METRICS } from "@app/shared/models/user";
+import { BtnTransactionDetailRenderer } from "./renderers/transaction-detail/transaction-detail.renderer";
+
+
+declare const bootstrap: any;
 
 @Component({
     selector: 'app-transactions',
@@ -13,12 +17,26 @@ import { CAN_VIEW_METRICS } from "@app/shared/models/user";
 })
 export class TransactionsComponent implements OnInit {
     public columnDefs: ColDef[] = [
+        { field: 'createdAt', headerName: 'Fecha de registro', valueFormatter: (params) => new Date(params.value).toLocaleDateString()},
         { field: 'client.name', headerName: 'Cliente' },
         { field: 'type', headerName: 'Tipo' },
         { field: 'note', headerName: 'Nota' },
         { field: 'total', headerName: 'Total', valueFormatter: (params) => `S/ ${params.value.toFixed(2)}` },
         { field: 'validUntil', headerName: 'Válido hasta', valueFormatter: (params) => new Date(params.value).toLocaleDateString()},
-        { field: 'createdAt', headerName: 'Fecha de registro', valueFormatter: (params) => new Date(params.value).toLocaleDateString()},
+        {
+            field: 'detail',
+            headerName: '',
+            cellRenderer: BtnTransactionDetailRenderer,
+            valueGetter: (params) => params.data,
+            cellRendererParams: {
+                clicked: (e: any) => {
+                    const modal = new bootstrap.Modal(document.getElementById('transactionDetail'), {
+                        keyboard: false
+                    })
+                    modal.show()
+                }
+            }
+        }
     ];
     public defaultColDef: ColDef = {
         sortable: true,

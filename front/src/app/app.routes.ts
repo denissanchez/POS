@@ -15,5 +15,9 @@ export const routes: Routes = [
         path: 'transacciones',
         loadChildren: () => import('./transactions/transactions.module').then((m) => m.TransactionsModule),
         canActivate: [canViewTransactions]
+    },
+    {
+        path: 'usuarios',
+        loadChildren: () => import('./users/users.module').then((m) => m.UsersModule)
     }
 ];
