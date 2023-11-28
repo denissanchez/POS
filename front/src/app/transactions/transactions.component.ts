@@ -4,11 +4,9 @@ import { ColDef } from 'ag-grid-community';
 import { Observable, of } from "rxjs";
 import { TransactionsService } from "./transactions.service";
 import { CAN_VIEW_METRICS } from "@app/shared/models/user";
-import { BtnTransactionDetailRenderer } from "./renderers/transaction-detail/transaction-detail.renderer";
+import { BtnTransactionDetailRenderer } from "./renderers/transaction-detail.renderer";
 import { AuthService } from "@app/auth.service";
 
-
-declare const bootstrap: any;
 
 @Component({
     selector: 'app-transactions',
@@ -28,14 +26,6 @@ export class TransactionsComponent implements OnInit {
             headerName: '',
             cellRenderer: BtnTransactionDetailRenderer,
             valueGetter: (params) => params.data,
-            cellRendererParams: {
-                clicked: (e: any) => {
-                    const modal = new bootstrap.Modal(document.getElementById('transactionDetail'), {
-                        keyboard: false
-                    })
-                    modal.show()
-                }
-            }
         }
     ];
     public defaultColDef: ColDef = {

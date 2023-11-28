@@ -1,25 +1,23 @@
 import { Component } from "@angular/core";
-import { DraftTransaction, Transaction } from "@app/shared/models/transaction";
+import { Transaction } from "@app/shared/models/transaction";
 import { ICellRendererAngularComp } from "ag-grid-angular";
 import { ICellRendererParams } from "ag-grid-community";
 
 @Component({
     selector: 'btn-cell-renderer',
-    templateUrl: './transaction-detail.renderer.html',
+    template: `<a type="button" class="btn btn-sm btn-success mb-2" [routerLink]="['/transacciones', params.value?._id]">
+        <i class="bi bi-check"></i> Detalle
+    </a>`
 })
 export class BtnTransactionDetailRenderer implements ICellRendererAngularComp {
     // @ts-ignore
-    public params: any;
+    public params: ICellRendererParams<Transaction, Transaction>;
 
-    agInit(params: any): void {
+    agInit(params: ICellRendererParams<Transaction, Transaction>): void {
         this.params = params;
     }
 
     refresh(params: any): boolean {
         return false;
-    }
-
-    onClick() {
-        this.params.clicked(this.params.value);
     }
 }

@@ -1,0 +1,61 @@
+
+<div class="modal fade" #transactionDetail id="transactionDetail" tabindex="-1" aria-labelledby="transactionDetailLabel" aria-hidden="true">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="transactionDetailLabel">Detalle de transacción</h5>
+                <a class="btn-close" routerLink="/transacciones" aria-label="Close" (click)="onClose()"></a>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-7">
+                        <div class="row">
+                            <div class="col-7 mb-3">
+                                <label for="fechaRegistro" class="form-label">Fecha registro</label>
+                                <input type="text" class="form-control" id="fechaRegistro" disabled>
+                            </div>
+                            <div class="col-5 mb-3">
+                                <label for="tipoTransaccion" class="form-label">Tipo</label>
+                                <input type="text" class="form-control" id="tipoTransaccion" value="COTIZACIÓN" disabled>
+                            </div>
+                            <div class="col-12 mb-3">
+                                <label for="clientName" class="form-label">Cliente</label>
+                                <textarea name="clientName" class="form-control" id="clientName" cols="30" rows="3" disabled></textarea>
+                            </div>
+
+                            <div class="col-12 mb-3">
+                                <label for="carro" class="form-label">Carro (Marca | Modelo | Placa )</label>
+                                <input type="text" class="form-control" id="carro" value="COTIZACIÓN" disabled value="TOYOTA | RAV4 | XYZ-123">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-5">
+                        <table class="table table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                    <th scope="col">P. Unit.</th>
+                                    <th scope="col">Cant.</th>
+                                    <th scope="col">Subtotal</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td colspan="3">ASDSADSADSADSADSADSADSADSA</td>
+                                </tr>
+                                <tr>
+                                    <td>3.4</td>
+                                    <td>3.4</td>
+                                    <td>3.4</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer d-flex justify-content-between">
+                <button type="button" class="btn btn-secondary px-3">Cerrar</button>
+                <button type="button" class="btn btn-success px-3">Imprimir</button>
+            </div>
+        </div>
+    </div>
+</div>
