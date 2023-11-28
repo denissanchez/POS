@@ -1,5 +1,6 @@
-export type PERMISSION = "CAN_CREATE_USERS" | "CAN_REMOVE_USERS" | "CAN_UPDATE_USERS" | "CAN_VIEW_TRANSACTIONS" | "CAN_VIEW_METRICS";
+export type PERMISSION =  "CAN_VIEW_USERS" | "CAN_CREATE_USERS" | "CAN_REMOVE_USERS" | "CAN_UPDATE_USERS" | "CAN_VIEW_TRANSACTIONS" | "CAN_VIEW_METRICS";
 
+export const CAN_VIEW_USERS: PERMISSION = "CAN_VIEW_USERS";
 export const CAN_CREATE_USERS: PERMISSION = "CAN_CREATE_USERS";
 export const CAN_REMOVE_USERS: PERMISSION = "CAN_REMOVE_USERS";
 export const CAN_UPDATE_USERS: PERMISSION = "CAN_UPDATE_USERS";
@@ -22,7 +23,7 @@ export class User {
   }
 
   public static fromJSON(json: any): User {
-    return new User(json._id, json.name, json.username);
+    return new User(json._id, json.name, json.username, json.permissions);
   }
 }
 

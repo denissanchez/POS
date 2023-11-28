@@ -20,8 +20,7 @@
       "username": "wagner",
       "password": "$2b$10$Nv0cKAPRoOwetUi/67x67uKNmgP2p/HwgDWGKeu8xRTSQMMEmI56W",
       "permissions": [
-        "CAN_VIEW_TRANSACTIONS",
-        "CAN_VIEW_METRICS"
+        "CAN_VIEW_TRANSACTIONS"
       ]
     }
   ],

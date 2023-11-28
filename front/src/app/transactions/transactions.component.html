@@ -8,14 +8,14 @@
 </div>
 
 <ng-container *ngIf="transactions$ | async as transactions">
-    <app-general-stats [transactions]="transactions"></app-general-stats>
+    <app-general-stats *ngIf="canViewMetrics" [transactions]="transactions"></app-general-stats>
 
-    <div class="row mx-3">
+    <div class="row mt-3 mx-3">
         <div class="col-12">
             <ag-grid-angular
                 style="height: 50vh;"
                 class="w-100 ag-theme-alpine"
-                [rowData]="transactions$ | async"
+                [rowData]="transactions"
                 [columnDefs]="columnDefs">
             </ag-grid-angular>
         </div>

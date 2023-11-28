@@ -1,5 +1,7 @@
 import { Routes } from '@angular/router';
-import { canViewTransactions } from './shared/guards/can-view-transactions.guard';
+import { inject } from '@angular/core';
+import { AuthService } from './auth.service';
+import { CAN_VIEW_TRANSACTIONS, CAN_VIEW_USERS } from './shared/models/user';
 
 export const routes: Routes = [
     {
@@ -14,10 +16,11 @@ export const routes: Routes = [
     {
         path: 'transacciones',
         loadChildren: () => import('./transactions/transactions.module').then((m) => m.TransactionsModule),
-        canActivate: [canViewTransactions]
+        canActivate: [() => inject(AuthService).can(CAN_VIEW_TRANSACTIONS)]
     },
     {
         path: 'usuarios',
-        loadChildren: () => import('./users/users.module').then((m) => m.UsersModule)
+        loadChildren: () => import('./users/users.module').then((m) => m.UsersModule),
+        canActivate: [() => inject(AuthService).can(CAN_VIEW_USERS)]
     }
 ];

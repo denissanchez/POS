@@ -3,9 +3,9 @@ import { Transaction } from "@app/shared/models/transaction";
 import { ColDef } from 'ag-grid-community';
 import { Observable, of } from "rxjs";
 import { TransactionsService } from "./transactions.service";
-import { UserService } from "@app/shared/services/user.service";
 import { CAN_VIEW_METRICS } from "@app/shared/models/user";
 import { BtnTransactionDetailRenderer } from "./renderers/transaction-detail/transaction-detail.renderer";
+import { AuthService } from "@app/auth.service";
 
 
 declare const bootstrap: any;
@@ -43,15 +43,15 @@ export class TransactionsComponent implements OnInit {
         filter: true,
     };
 
-    public canShowMetrics: boolean = false;
+    public canViewMetrics: boolean = false;
 
     public transactions$: Observable<Transaction[]> = of([]);
 
-    constructor(private userService: UserService, private transactionsService: TransactionsService) {
+    constructor(private authService: AuthService, private transactionsService: TransactionsService) {
     }
 
     ngOnInit(): void {
-        this.canShowMetrics = this.userService.can(CAN_VIEW_METRICS);
+        this.authService.getCurrentUser().subscribe((user) => {this.canViewMetrics = user.can(CAN_VIEW_METRICS)})
         this.transactions$ = this.transactionsService.getAll(new Date(), new Date());
     }
 }
