@@ -25,7 +25,7 @@ export class ProductsComponent implements OnInit, AfterViewInit, OnDestroy {
 
     ngOnInit(): void {
         this.categories$ = this.posService.getCategories();
-        this.products$ = this.posService.getAvailableProducts(this.search, this.activeCategory);
+        this.refreshProducts();
     }
 
     ngAfterViewInit(): void {
@@ -39,6 +39,10 @@ export class ProductsComponent implements OnInit, AfterViewInit, OnDestroy {
             })
     }
 
+    refreshProducts() {
+        this.products$ = this.posService.getAvailableProducts(this.search, this.activeCategory);
+    }
+
     ngOnDestroy(): void {
         this.searchSubscription?.unsubscribe();
     }
@@ -46,5 +50,9 @@ export class ProductsComponent implements OnInit, AfterViewInit, OnDestroy {
     onChooseCategory(category: string) {
         this.activeCategory = category;
         this.products$ = this.posService.getAvailableProducts(this.search, this.activeCategory);
+    }
+
+    trackByProductId(index: number, product: Product) {
+        return product._id;
     }
 }

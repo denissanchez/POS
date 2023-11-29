@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, OnDestroy, OnInit, ViewChild } from "@angular/core";
+import { AfterViewInit, Component, ElementRef, EventEmitter, OnDestroy, OnInit, Output, ViewChild } from "@angular/core";
 import { PosService } from "../pos.service";
 import { Observable } from "rxjs";
 import { DraftTransaction, Item } from "@app/shared/models/transaction";
@@ -12,6 +12,8 @@ import { Product } from "@app/shared/models";
 export class SummaryComponent implements OnInit, AfterViewInit, OnDestroy {
     // @ts-ignore
     @ViewChild('searchCode', { static: false }) private searchCode: ElementRef;
+
+    @Output() onRegisterSuccess: EventEmitter<void> = new EventEmitter<void>();
 
     currentTransaction$: Observable<DraftTransaction>;
 

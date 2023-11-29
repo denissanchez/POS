@@ -2,7 +2,7 @@ import { AfterViewInit, Component, EventEmitter, Input, Output, ViewChild } from
 import { DraftTransaction } from "@app/shared/models/transaction";
 import { SwalComponent } from "@sweetalert2/ngx-sweetalert2";
 import { PosService } from "app/pos/pos.service";
-import { Subscription, debounceTime, fromEvent, map } from "rxjs";
+import { Subscription, debounceTime, fromEvent, map, tap } from "rxjs";
 import { SweetAlertResult } from "sweetalert2";
 
 declare const bootstrap: any;
@@ -24,7 +24,7 @@ export class RegisterComponent implements AfterViewInit {
 
     @Input({ required: true }) disabled: boolean = false;
 
-    @Output() onRegisterSucess: EventEmitter<void> = new EventEmitter<void>();
+    @Output() onRegisterSuccess: EventEmitter<void> = new EventEmitter<void>();
     @Output() onRegisterFail: EventEmitter<void> = new EventEmitter<void>();
 
     currentTransaction: DraftTransaction = new DraftTransaction();
@@ -54,7 +54,7 @@ export class RegisterComponent implements AfterViewInit {
     }
 
     onRegister() {
-        this.posService.register(this.currentTransaction).subscribe({
+        this.posService.register(this.currentTransaction).pipe(tap(() => setTimeout(() => this.onRegisterSuccess.emit(), 1_500))).subscribe({
             next: () => {
                 this.successRegistrationAlert.fire()
                     .then(() => this.cleanDetailConfirmation.fire())

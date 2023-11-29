@@ -25,8 +25,9 @@ const MONTHS = [
 const POR_MAYOR_SUFFIX = '(Por mayor)';
 const CON_TARJETA_SUFFIX = '(Con tarjeta)';
 
-const ESTADO_COBRADO = "COBRADO";
-const ESTADO_CREDITO = "CREDITO";
+const TIPO_COBRADO = "COBRADO";
+const TIPO_CREDITO = "CREDITO";
+
 const STORE_FIELDS_FOR_EACH_PRODUCT = ['price', 'quantity', 'name', 'category', 'row', 'cost']
 
 
@@ -216,20 +217,24 @@ class StockFileAdapter {
         });
     }
 
-    async updateStock(products) {
+    async updateStock(items) {
         const workbook = await XlsxPopulate.fromFileAsync(this._excelPath);
 
         const worksheet = workbook.sheet(STOCK_SHEET_NAME)
 
-        for (let product of products) {
-            const productDB = this.search(product.id);
-            worksheet.cell(`C${productDB.row}`).value(+worksheet.cell(`C${productDB.row}`).value() - +product.quantity);
+        for (let item of items) {
+            const productDB = this.getById(item.product._id);
+            worksheet.cell(`C${productDB.row}`).value(+worksheet.cell(`C${productDB.row}`).value() - +item.quantity);
         }
 
         await workbook.toFileAsync(this._excelPath)
     }
 
-    async registerTransaction(products, customerName = undefined) {
+    async registerTransaction(type, items, customer) {
+        if (![TIPO_COBRADO, TIPO_CREDITO].includes(type)) {
+            return;
+        }
+
         const now = new Date();
         const currentMonth = MONTHS[now.getMonth()];
         
@@ -260,24 +265,24 @@ class StockFileAdapter {
             row++;
         }
         
-        for (let product of products) {
-            const productDB = this.search(product.id);
+        for (let item of items) {
+            const productDB = this.getById(item.product._id);
 
-            const firstChart = product.id[0];
+            const firstChart = item.product._id[0];
 
             worksheet.cell(`${COLUMNS.TIPO_PRODUCTO}${row + 1}`).value(productDB.category);
             worksheet.cell(`${COLUMNS.DESCRIPCION_PRODUCTO}${row + 1}`).value(productDB.name.replace(POR_MAYOR_SUFFIX, "").replace(CON_TARJETA_SUFFIX, ""));
-            worksheet.cell(`${COLUMNS.CANTIDAD}${row + 1}`).value(product.quantity);
+            worksheet.cell(`${COLUMNS.CANTIDAD}${row + 1}`).value(item.quantity);
             worksheet.cell(`${COLUMNS.COSTO}${row + 1}`).value(productDB.cost);
             worksheet.cell(`${COLUMNS.TIPO_VENTA}${row + 1}`).value(firstChart === 'M' ? 'POR MAYOR': 'AL PUBLICO');
-            worksheet.cell(`${COLUMNS.PRECIO_UNIDAD}${row + 1}`).value(product.price);
+            worksheet.cell(`${COLUMNS.PRECIO_UNIDAD}${row + 1}`).value((item.subtotal / item.quantity).toFixed(2));
             worksheet.cell(`${COLUMNS.FECHA}${row + 1}`).value(now).style("numberFormat", "dddd, dd mmmm yyyy");
-            worksheet.cell(`${COLUMNS.TOTAL}${row + 1}`).value(product.quantity * product.price);
-            worksheet.cell(`${COLUMNS.UTILIDAD}${row + 1}`).value(product.quantity * (product.price - productDB.cost));
-            worksheet.cell(`${COLUMNS.ESTADO_PAGO}${row + 1}`).value(ESTADO_COBRADO);
+            worksheet.cell(`${COLUMNS.TOTAL}${row + 1}`).value(item.subtotal);
+            worksheet.cell(`${COLUMNS.UTILIDAD}${row + 1}`).value((item.quantity * (item.subtotal / item.quantity - productDB.cost)).toFixed(2));
+            worksheet.cell(`${COLUMNS.ESTADO_PAGO}${row + 1}`).value(type);
 
-            if (customerName) {
-                worksheet.cell(`${COLUMNS.CLIENTE}${row + 1}`).value(customerName);
+            if (customer) {
+                worksheet.cell(`${COLUMNS.CLIENTE}${row + 1}`).value(customer);
             }
 
             row++;

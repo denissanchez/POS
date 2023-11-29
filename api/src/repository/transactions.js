@@ -1,3 +1,4 @@
+import { getAdapter } from './excel.js';
 import { getConnection } from './db.js';
 import { v4 } from 'uuid';
 
@@ -9,6 +10,7 @@ export function getAll(start, end, types=["CREDITO", "COBRADO", "COTIZACION"]) {
 
 
 export async function createTransaction(payload) {
+    const adapter = getAdapter();
     const db = getConnection();
 
     db.data.transactions.push({
@@ -17,6 +19,13 @@ export async function createTransaction(payload) {
     });
 
     await db.write();
+
+    if (payload.type == "COTIZACION") {
+        return;
+    }
+    
+    await adapter.updateStock(payload.items);
+    await adapter.registerTransaction(payload.type, payload.items, payload.client.name);
 }
 
 

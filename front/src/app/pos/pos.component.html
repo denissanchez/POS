@@ -23,9 +23,9 @@
 
 <div class="row mx-3" style="height: calc(100vh - 120px); overflow: hidden;">
     <div class="col-12 col-md-7" style="overflow-x: hidden; height: 100%;">
-        <app-summary></app-summary>
+        <app-summary (onRegisterSuccess)="products.refreshProducts()"></app-summary>
     </div>
     <div class="col-12 col-md-5" style="overflow-x: hidden; height: 100%;">
-        <app-products></app-products>
+        <app-products #products></app-products>
     </div>
 </div>

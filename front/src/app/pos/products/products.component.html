@@ -17,7 +17,7 @@
         <div class="row" >
             <ng-container *ngIf="products$ | async as products">
                 <ng-container *ngIf="products.length > 0; else noProducts">
-                    <div *ngFor="let p of products" class="col-6 col-md-4 mb-2 px-1">
+                    <div *ngFor="let p of products; trackBy: trackByProductId" class="col-6 col-md-4 mb-2 px-1">
                         <app-product [product]="p"></app-product>
                     </div>
                 </ng-container>

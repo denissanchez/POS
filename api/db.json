@@ -179,6 +179,468 @@
       "type": "COBRADO",
       "validUntil": "2023-11-21T03:04:56.058Z",
       "createdAt": "2023-11-21T00:00:00Z"
+    },
+    {
+      "_id": "a4731ec8-8437-4d7f-b4aa-451a8674d5e8",
+      "items": [
+        {
+          "product": {
+            "_id": "1000094727",
+            "category": "ACCESORIOS",
+            "cost": 4,
+            "name": "AMBIENTADOR JUST EN SPRAY",
+            "price": 10,
+            "quantity": 11
+          },
+          "quantity": 5,
+          "discount": 0,
+          "subtotal": 50,
+          "subtotalDiscounted": 0
+        }
+      ],
+      "client": {
+        "_id": "73904197",
+        "name": "DERCO S.A.",
+        "phone": "950462729"
+      },
+      "car": {
+        "brand": "-",
+        "model": "-",
+        "plate": ""
+      },
+      "note": "",
+      "type": "COBRADO",
+      "validUntil": "2023-11-29T02:16:30.880Z",
+      "createdAt": "2023-11-29T02:17:01.709Z"
+    },
+    {
+      "_id": "45432bf4-a7ca-4cbb-be1c-f4df4d8f5ed7",
+      "items": [
+        {
+          "product": {
+            "_id": "1000094727",
+            "category": "ACCESORIOS",
+            "cost": 4,
+            "name": "AMBIENTADOR JUST EN SPRAY",
+            "price": 10,
+            "quantity": 11
+          },
+          "quantity": 5,
+          "discount": 0,
+          "subtotal": 50,
+          "subtotalDiscounted": 0
+        }
+      ],
+      "client": {
+        "_id": "",
+        "name": "Desconocido",
+        "phone": ""
+      },
+      "car": {
+        "brand": "-",
+        "model": "-",
+        "plate": ""
+      },
+      "note": "",
+      "type": "COBRADO",
+      "validUntil": "2023-11-29T02:25:59.881Z",
+      "createdAt": "2023-11-29T02:26:05.786Z"
+    },
+    {
+      "_id": "8283b8fc-4585-4a27-9f5a-6cd2939361ff",
+      "items": [
+        {
+          "product": {
+            "_id": "1000094727",
+            "category": "ACCESORIOS",
+            "cost": 4,
+            "name": "AMBIENTADOR JUST EN SPRAY",
+            "price": 10,
+            "quantity": 11
+          },
+          "quantity": 5,
+          "discount": 0,
+          "subtotal": 50,
+          "subtotalDiscounted": 0
+        }
+      ],
+      "client": {
+        "_id": "",
+        "name": "Desconocido",
+        "phone": ""
+      },
+      "car": {
+        "brand": "-",
+        "model": "-",
+        "plate": ""
+      },
+      "note": "",
+      "type": "COBRADO",
+      "validUntil": "2023-11-29T02:27:40.904Z",
+      "createdAt": "2023-11-29T02:27:44.135Z"
+    },
+    {
+      "_id": "9aa0fadf-30a8-46aa-9159-a4b9fd0d33df",
+      "items": [
+        {
+          "product": {
+            "_id": "1000094727",
+            "category": "ACCESORIOS",
+            "cost": 4,
+            "name": "AMBIENTADOR JUST EN SPRAY",
+            "price": 10,
+            "quantity": 11
+          },
+          "quantity": 5,
+          "discount": 0,
+          "subtotal": 50,
+          "subtotalDiscounted": 0
+        }
+      ],
+      "client": {
+        "_id": "",
+        "name": "Desconocido",
+        "phone": ""
+      },
+      "car": {
+        "brand": "-",
+        "model": "-",
+        "plate": ""
+      },
+      "note": "",
+      "type": "COBRADO",
+      "validUntil": "2023-11-29T02:28:27.134Z",
+      "createdAt": "2023-11-29T02:28:29.695Z"
+    },
+    {
+      "_id": "e4ed7a63-14ee-4ac1-8b78-2b7bace5e26b",
+      "items": [
+        {
+          "product": {
+            "_id": "1000094727",
+            "category": "ACCESORIOS",
+            "cost": 4,
+            "name": "AMBIENTADOR JUST EN SPRAY",
+            "price": 10,
+            "quantity": 11
+          },
+          "quantity": 5,
+          "discount": 0,
+          "subtotal": 50,
+          "subtotalDiscounted": 0
+        }
+      ],
+      "client": {
+        "_id": "",
+        "name": "Desconocido",
+        "phone": ""
+      },
+      "car": {
+        "brand": "-",
+        "model": "-",
+        "plate": ""
+      },
+      "note": "",
+      "type": "COBRADO",
+      "validUntil": "2023-11-29T02:31:07.008Z",
+      "createdAt": "2023-11-29T02:31:10.713Z"
+    },
+    {
+      "_id": "1cc15f2e-e381-457a-ad58-14e730d1f8d9",
+      "items": [
+        {
+          "product": {
+            "_id": "1000094727",
+            "category": "ACCESORIOS",
+            "cost": 4,
+            "name": "AMBIENTADOR JUST EN SPRAY",
+            "price": 10,
+            "quantity": 11
+          },
+          "quantity": 5,
+          "discount": 0,
+          "subtotal": 50,
+          "subtotalDiscounted": 0
+        }
+      ],
+      "client": {
+        "_id": "",
+        "name": "Desconocido",
+        "phone": ""
+      },
+      "car": {
+        "brand": "-",
+        "model": "-",
+        "plate": ""
+      },
+      "note": "",
+      "type": "COBRADO",
+      "validUntil": "2023-11-29T02:32:14.438Z",
+      "createdAt": "2023-11-29T02:32:16.561Z"
+    },
+    {
+      "_id": "022e67d2-5d84-4078-864e-97959a01a4c3",
+      "items": [
+        {
+          "product": {
+            "_id": "1000094727",
+            "category": "ACCESORIOS",
+            "cost": 4,
+            "name": "AMBIENTADOR JUST EN SPRAY",
+            "price": 10,
+            "quantity": 6
+          },
+          "quantity": 5,
+          "discount": 0,
+          "subtotal": 50,
+          "subtotalDiscounted": 0
+        }
+      ],
+      "client": {
+        "_id": "",
+        "name": "Desconocido",
+        "phone": ""
+      },
+      "car": {
+        "brand": "-",
+        "model": "-",
+        "plate": ""
+      },
+      "note": "",
+      "type": "COBRADO",
+      "validUntil": "2023-11-29T02:32:54.052Z",
+      "createdAt": "2023-11-29T02:32:57.228Z"
+    },
+    {
+      "_id": "eaabbff9-3217-4a89-bdf6-de35248b7b1a",
+      "items": [
+        {
+          "product": {
+            "_id": "M1000025038",
+            "category": "ACCESORIOS",
+            "cost": 13,
+            "name": "ANTENA DE RADIO AM FM DE PARABRISA (Por mayor)",
+            "price": 20,
+            "quantity": 13
+          },
+          "quantity": 5,
+          "discount": 0,
+          "subtotal": 100,
+          "subtotalDiscounted": 0
+        }
+      ],
+      "client": {
+        "_id": "",
+        "name": "Desconocido",
+        "phone": ""
+      },
+      "car": {
+        "brand": "-",
+        "model": "-",
+        "plate": ""
+      },
+      "note": "",
+      "type": "COBRADO",
+      "validUntil": "2023-11-29T02:37:05.993Z",
+      "createdAt": "2023-11-29T02:37:09.735Z"
+    },
+    {
+      "_id": "aa300e58-2076-444c-8902-4d20bccd22c8",
+      "items": [
+        {
+          "product": {
+            "_id": "M1000025038",
+            "category": "ACCESORIOS",
+            "cost": 13,
+            "name": "ANTENA DE RADIO AM FM DE PARABRISA (Por mayor)",
+            "price": 20,
+            "quantity": 8
+          },
+          "quantity": 1,
+          "discount": 0,
+          "subtotal": 20,
+          "subtotalDiscounted": 0
+        }
+      ],
+      "client": {
+        "_id": "",
+        "name": "Desconocido",
+        "phone": ""
+      },
+      "car": {
+        "brand": "-",
+        "model": "-",
+        "plate": ""
+      },
+      "note": "",
+      "type": "COBRADO",
+      "validUntil": "2023-11-29T02:37:24.732Z",
+      "createdAt": "2023-11-29T02:37:28.866Z"
+    },
+    {
+      "_id": "df9b1eeb-7ebc-4d8b-942c-65b731d983a6",
+      "items": [
+        {
+          "product": {
+            "_id": "M1000025038",
+            "category": "ACCESORIOS",
+            "cost": 13,
+            "name": "ANTENA DE RADIO AM FM DE PARABRISA (Por mayor)",
+            "price": 20,
+            "quantity": 7
+          },
+          "quantity": 1,
+          "discount": 0,
+          "subtotal": 20,
+          "subtotalDiscounted": 0
+        }
+      ],
+      "client": {
+        "_id": "",
+        "name": "Desconocido",
+        "phone": ""
+      },
+      "car": {
+        "brand": "-",
+        "model": "-",
+        "plate": ""
+      },
+      "note": "",
+      "type": "COBRADO",
+      "validUntil": "2023-11-29T02:38:32.007Z",
+      "createdAt": "2023-11-29T02:38:36.014Z"
+    },
+    {
+      "_id": "34f8aba9-7c2d-44f1-a629-63b7dc900c42",
+      "items": [
+        {
+          "product": {
+            "_id": "M1000025038",
+            "category": "ACCESORIOS",
+            "cost": 13,
+            "name": "ANTENA DE RADIO AM FM DE PARABRISA (Por mayor)",
+            "price": 20,
+            "quantity": 6
+          },
+          "quantity": 1,
+          "discount": 0,
+          "subtotal": 20,
+          "subtotalDiscounted": 0
+        }
+      ],
+      "client": {
+        "_id": "",
+        "name": "Desconocido",
+        "phone": ""
+      },
+      "car": {
+        "brand": "-",
+        "model": "-",
+        "plate": ""
+      },
+      "note": "",
+      "type": "COBRADO",
+      "validUntil": "2023-11-29T02:39:12.500Z",
+      "createdAt": "2023-11-29T02:39:15.138Z"
+    },
+    {
+      "_id": "6437d59b-3115-4c02-afdf-24d5ab8e17bb",
+      "items": [
+        {
+          "product": {
+            "_id": "1000010532",
+            "category": "ACCESORIOS",
+            "cost": 25,
+            "name": "ANTENAS ALETA DE TIBURON",
+            "price": 48,
+            "quantity": 15
+          },
+          "quantity": 1,
+          "discount": 0,
+          "subtotal": 48,
+          "subtotalDiscounted": 0
+        }
+      ],
+      "client": {
+        "_id": "",
+        "name": "Desconocido",
+        "phone": ""
+      },
+      "car": {
+        "brand": "-",
+        "model": "-",
+        "plate": ""
+      },
+      "note": "",
+      "type": "COBRADO",
+      "validUntil": "2023-11-29T02:41:05.153Z",
+      "createdAt": "2023-11-29T02:41:07.518Z"
+    },
+    {
+      "_id": "ab4b0ac6-61be-4f16-a3b5-b85f5d987b6d",
+      "items": [
+        {
+          "product": {
+            "_id": "1000010532",
+            "category": "ACCESORIOS",
+            "cost": 25,
+            "name": "ANTENAS ALETA DE TIBURON",
+            "price": 48,
+            "quantity": 14
+          },
+          "quantity": 1,
+          "discount": 0,
+          "subtotal": 48,
+          "subtotalDiscounted": 0
+        }
+      ],
+      "client": {
+        "_id": "",
+        "name": "Desconocido",
+        "phone": ""
+      },
+      "car": {
+        "brand": "-",
+        "model": "-",
+        "plate": ""
+      },
+      "note": "",
+      "type": "COBRADO",
+      "validUntil": "2023-11-29T02:41:14.670Z",
+      "createdAt": "2023-11-29T02:41:19.747Z"
+    },
+    {
+      "_id": "8e5164b6-7b47-460d-afba-216147f921c2",
+      "items": [
+        {
+          "product": {
+            "_id": "1000010532",
+            "category": "ACCESORIOS",
+            "cost": 25,
+            "name": "ANTENAS ALETA DE TIBURON",
+            "price": 48,
+            "quantity": 13
+          },
+          "quantity": 3,
+          "discount": 0,
+          "subtotal": 144,
+          "subtotalDiscounted": 0
+        }
+      ],
+      "client": {
+        "_id": "",
+        "name": "Desconocido",
+        "phone": ""
+      },
+      "car": {
+        "brand": "-",
+        "model": "-",
+        "plate": ""
+      },
+      "note": "",
+      "type": "COBRADO",
+      "validUntil": "2023-11-29T02:42:41.147Z",
+      "createdAt": "2023-11-29T02:42:44.188Z"
     }
   ],
   "products": [],

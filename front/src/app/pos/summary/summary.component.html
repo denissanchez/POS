@@ -34,7 +34,7 @@
                 <span>Total: S/ <strong>{{ transaction.total | number:'0.2-2' }}</strong></span>
             </div>
             <div class="col-3 d-grid gap-2">
-                <app-register [disabled]="transaction.total === 0"></app-register>
+                <app-register [disabled]="transaction.total === 0" (onRegisterSuccess)="onRegisterSuccess.emit()"></app-register>
             </div>
         </div>
     </div>
