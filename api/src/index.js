@@ -1,5 +1,6 @@
 import path from "path";
 import { fileURLToPath } from "url";
+import PDFDocument from "pdfkit";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -104,6 +105,73 @@ app.get("/setup", function (req, res) {
 });
 
 app.use("/api/v1", AuthRoutes);
+
+app.get("/api/print", async (req, res) => {
+  const doc = new PDFDocument({ bufferPages: true });
+    let filename = req.body.filename;
+    filename = encodeURIComponent(filename) + ".pdf";
+
+    res.setHeader("Content-disposition", 'inline; filename="' + filename + '"');
+    res.setHeader("Content-type", "application/pdf");
+
+    doc.pipe(res);
+
+    // add text with the content 'PROFORMA' horizontally centered inside PDF page
+    const pageWidth = doc.page.width;
+
+    console.log(pageWidth)
+
+    doc.fontSize(25).text('PROFORMA', (pageWidth / 2) - 80, 50);
+    doc.fontSize(11).text('DIRECCIÓN: Jr. Ayacucho B18 (Ref. a dos cuadras del real plaza)- Cajamarca', 50, 85);
+    doc.fontSize(11).text('RUC: 123456789', 450, 85);
+
+
+    doc.fontSize(20).text('DATOS DE CLIENTE', (pageWidth / 2) - 100, 120);
+    doc.fontSize(11).text('RAZÓN SOCIAL: DERCO S.A.C', 50, 150);
+    doc.fontSize(11).text('NRO. DOCUMENTO: 123456789', 50, 165);
+    doc.fontSize(11).text('TELEFONO: 123456789', 50, 180);
+
+    doc.fontSize(20).text('DATOS DEL VEHICULO', (pageWidth / 2) - 100, 220);
+    doc.fontSize(11).text('MARCA/MODELO: DERCO S.A.C', 50, 250);
+    doc.fontSize(11).text('AÑO: 123456789', 50, 265);
+    doc.fontSize(11).text('PLACA: 123456789', 50, 280);
+
+    // doc.fontSize(13).text('Quotation Number: 12345', 50, 80);
+    // doc.text('Date: ' + new Date().toLocaleDateString(), 50, 100);
+
+    let y = 320; // Initial vertical position for the table
+
+    const table = {
+      widths: [10, 30, 50, 30, 30, 30],
+      headers: ['ÍTEM', 'TIPO', 'DESCRIPCIÓN', 'CANTIDAD', 'P. UNIT.', 'SUBTOTAL'],
+      rows: [
+        [1, 'TIPO', 'DESCRIPCIÓN', 'CANTIDAD', 'P. UNIT.', 'SUBTOTAL'],
+        [2, 'TIPO', 'DESCRIPCIÓN', 'CANTIDAD', 'P. UNIT.', 'SUBTOTAL'],
+      ],
+    };
+
+    table.headers.forEach((header, i) => {
+      doc.fontSize(11).text(header, 50 + table.widths[i] + i*100, y);
+    });
+
+    // Draw a horizontal line
+    // doc.moveTo(50, y+20).lineTo(550, y+20).stroke();
+
+    // Draw the rows
+    // table.rows.forEach((row, i) => {
+    //   y = y + 30;
+    //   row.forEach((column, j) => {
+    //     doc.fontSize(10).text(column, 50 + j*100, y);
+    //   });
+    // });
+
+    // Calculate and write the total amount
+    // let totalAmount = table.rows.reduce((sum, row) => sum + parseFloat(row[4].substring(1)), 0);
+    // doc.fontSize(13).text('Total Amount: $' + totalAmount, 50, y + 50);
+
+
+    doc.end();
+})
 
 app.get('*.*', express.static(path.resolve(__dirname + "/front/browser"), {
   maxAge: process.env.ENVIRONMENT === 'production' ? '1y' : 0

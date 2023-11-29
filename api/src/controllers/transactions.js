@@ -62,6 +62,7 @@ router.get(
   "/print/:id",
   isAuthorized(CAN_VIEW_TRANSACTIONS),
   runAsyncWrapper(async (req, res) => {
+
     const doc = new PDFDocument({ bufferPages: true });
     let filename = req.body.filename;
     filename = encodeURIComponent(filename) + ".pdf";
@@ -69,36 +70,46 @@ router.get(
     res.setHeader("Content-disposition", 'inline; filename="' + filename + '"');
     res.setHeader("Content-type", "application/pdf");
 
-    let y = 50; // Initial vertical position for the table
+    doc.pipe(res);
+
+    // add text horizontally centered inside PDF page
+    doc.fontSize(25).text('PROFORMA', 100, 80);
+
+    doc.fontSize(13).text('Quotation Number: 12345', 50, 80);
+    doc.text('Date: ' + new Date().toLocaleDateString(), 50, 100);
+
+    let y = 150; // Initial vertical position for the table
 
     const table = {
-      headers: ["TIPO", "DESCRIPCIÓN", "CANT.", "P. UNIT.", "TOTAL"],
+      headers: ['Item', 'Description', 'Quantity', 'Unit Price', 'Total'],
       rows: [
-        ["SONIDO", "COMPONENTES JBL STAGE 3  67TF C CROSSOVER", "1", "S/ 440.00", "S/ 440.00"],
-        ["ACCESORIOS", "PORTAEQUIPAJE 360L  139x90x39CM", "1", "S/ 1,050.00", "S/ 1,050.00"],
+        ['Item 1', 'Description 1', '1', '$100', '$100'],
+        ['Item 2', 'Description 2', '2', '$200', '$400'],
+        // Add more rows as needed
       ],
     };
 
     // Draw the headers
     table.headers.forEach((header, i) => {
-      doc.fontSize(13).text(header, 50 + i * 200, y);
+      doc.fontSize(13).text(header, 50 + i*100, y);
     });
 
     // Draw a horizontal line
-    doc
-      .moveTo(50, y + 20)
-      .lineTo(650, y + 20)
-      .stroke();
+    doc.moveTo(50, y+20).lineTo(550, y+20).stroke();
 
     // Draw the rows
     table.rows.forEach((row, i) => {
       y = y + 30;
       row.forEach((column, j) => {
-        doc.fontSize(10).text(column, 50 + j * 200, y);
+        doc.fontSize(10).text(column, 50 + j*100, y);
       });
     });
 
-    doc.pipe(res);
+    // Calculate and write the total amount
+    let totalAmount = table.rows.reduce((sum, row) => sum + parseFloat(row[4].substring(1)), 0);
+    doc.fontSize(13).text('Total Amount: $' + totalAmount, 50, y + 50);
+
+
     doc.end();
   })
 );
