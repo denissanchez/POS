@@ -99,7 +99,7 @@
                     <hr>
                     <h5>Cliente</h5>
                     <label for="clientName" class="form-label mt-2">No. documento:</label>
-                    <input #clientDocument type="text" class="form-control" id="clientDocument" [(ngModel)]="currentTransaction.client._id" placeholder="No identificado">
+                    <input #clientDocument type="text" class="form-control" id="clientDocument" [(ngModel)]="currentTransaction.client._id" (ngModelChange)="searchClient($event)" placeholder="No identificado">
                 </div>
 
                 <div class="col-12 mb-3" [ngClass]="{'d-none': currentTransaction.client._id === ''}">

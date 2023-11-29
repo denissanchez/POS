@@ -707,8 +707,151 @@
       "type": "COTIZACION",
       "validUntil": "2023-12-06T00:00:00.000Z",
       "createdAt": "2023-11-29T02:54:55.714Z"
+    },
+    {
+      "_id": "27961230-3fed-4572-bef2-ff9e85177ac7",
+      "items": [
+        {
+          "product": {
+            "_id": "1000094727",
+            "category": "ACCESORIOS",
+            "cost": 4,
+            "name": "AMBIENTADOR JUST EN SPRAY",
+            "price": 10,
+            "quantity": 1
+          },
+          "quantity": 1,
+          "discount": 0,
+          "subtotal": 10,
+          "subtotalDiscounted": 0
+        }
+      ],
+      "client": {
+        "_id": "73904197",
+        "name": "Denis Sanchez",
+        "phone": "950462729"
+      },
+      "car": {
+        "brand": "-",
+        "model": "-",
+        "plate": ""
+      },
+      "note": "",
+      "type": "COTIZACION",
+      "validUntil": "2023-12-08T03:14:50.116Z",
+      "createdAt": "2023-11-29T03:15:29.651Z"
+    },
+    {
+      "_id": "967d837d-1357-4136-a946-8e8c42599e7c",
+      "items": [
+        {
+          "product": {
+            "_id": "1000094727",
+            "category": "ACCESORIOS",
+            "cost": 4,
+            "name": "AMBIENTADOR JUST EN SPRAY",
+            "price": 10,
+            "quantity": 1
+          },
+          "quantity": 1,
+          "discount": 0,
+          "subtotal": 10,
+          "subtotalDiscounted": 0
+        }
+      ],
+      "client": {
+        "_id": "73904197",
+        "name": "DENIS SANCHEZ",
+        "phone": ""
+      },
+      "car": {
+        "brand": "-",
+        "model": "-",
+        "plate": ""
+      },
+      "note": "",
+      "type": "COBRADO",
+      "validUntil": "2023-12-08T03:16:49.253Z",
+      "createdAt": "2023-11-29T03:17:04.331Z"
+    },
+    {
+      "_id": "0872950a-6d78-4b45-b898-a524ff1632de",
+      "items": [
+        {
+          "product": {
+            "_id": "M1000025038",
+            "category": "ACCESORIOS",
+            "cost": 13,
+            "name": "ANTENA DE RADIO AM FM DE PARABRISA (Por mayor)",
+            "price": 20,
+            "quantity": 5
+          },
+          "quantity": 1,
+          "discount": 0,
+          "subtotal": 20,
+          "subtotalDiscounted": 0
+        }
+      ],
+      "client": {
+        "_id": "12345678934",
+        "name": "DERCO",
+        "phone": ""
+      },
+      "car": {
+        "brand": "-",
+        "model": "-",
+        "plate": ""
+      },
+      "note": "",
+      "type": "COBRADO",
+      "validUntil": "2023-12-08T03:30:58.627Z",
+      "createdAt": "2023-11-29T03:31:28.117Z"
+    },
+    {
+      "_id": "a91ee213-8d12-45d6-98a0-db63d677c905",
+      "items": [
+        {
+          "product": {
+            "_id": "M1000010532",
+            "category": "ACCESORIOS",
+            "cost": 25,
+            "name": "ANTENAS ALETA DE TIBURON (Por mayor)",
+            "price": 32,
+            "quantity": 10
+          },
+          "quantity": 1,
+          "discount": 0,
+          "subtotal": 32,
+          "subtotalDiscounted": 0
+        }
+      ],
+      "client": {
+        "_id": "73904197",
+        "name": "DENIS SANCHEZ",
+        "phone": ""
+      },
+      "car": {
+        "brand": "-",
+        "model": "-",
+        "plate": ""
+      },
+      "note": "",
+      "type": "CREDITO",
+      "validUntil": "2023-12-08T03:32:09.147Z",
+      "createdAt": "2023-11-29T03:32:36.875Z"
     }
   ],
   "products": [],
-  "clients": []
+  "clients": [
+    {
+      "_id": "73904197",
+      "name": "DENIS SANCHEZ",
+      "phone": ""
+    },
+    {
+      "_id": "12345678934",
+      "name": "DERCO",
+      "phone": ""
+    }
+  ]
 }

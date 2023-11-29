@@ -1,8 +1,9 @@
-import { AfterViewInit, Component, EventEmitter, Input, Output, ViewChild } from "@angular/core";
+import { AfterViewInit, Component, EventEmitter, Input, OnDestroy, Output, ViewChild } from "@angular/core";
+import { Client } from "@app/shared/models";
 import { DraftTransaction } from "@app/shared/models/transaction";
 import { SwalComponent } from "@sweetalert2/ngx-sweetalert2";
 import { PosService } from "app/pos/pos.service";
-import { Subscription, debounceTime, fromEvent, map, tap } from "rxjs";
+import { Subscription, debounceTime, fromEvent, map, mergeMap, of, tap, throwError } from "rxjs";
 import { SweetAlertResult } from "sweetalert2";
 
 declare const bootstrap: any;
@@ -12,7 +13,7 @@ declare const bootstrap: any;
     templateUrl: './register.component.html',
     styleUrls: ['./register.component.scss'],
 })
-export class RegisterComponent implements AfterViewInit {
+export class RegisterComponent implements AfterViewInit, OnDestroy {
     // @ts-ignore
     @ViewChild('successRegistrationAlert', { static: false }) private successRegistrationAlert: SwalComponent;
     // @ts-ignore
@@ -30,27 +31,31 @@ export class RegisterComponent implements AfterViewInit {
     currentTransaction: DraftTransaction = new DraftTransaction();
     warnings: string[] = [];
 
-    searchClientSubscription: Subscription | undefined;
-
     constructor(private posService: PosService) {}
 
     ngAfterViewInit(): void {
-        this.searchClientSubscription = fromEvent(this.clientDocumentRef.nativeElement, 'input')
-            .pipe(
-                map((t: any) => t.target.value.trim()),
-                debounceTime(500),
-            ).subscribe({
-                next: () => {
-                    this.currentTransaction.client.name = "DERCO S.A.";
-                    this.currentTransaction.client.phone = "950462729";
-                },
-                error: console.error    
-            })
+    }
+
+    ngOnDestroy(): void {
     }
 
     onShowRegisterForm() {
         this.currentTransaction = this.posService.currentTransaction;
         this.warnings = this.currentTransaction.getUnsatisfiedProducts();        
+    }
+
+    searchClient(document: string): void {
+        const value = document.trim();
+        if (!value.match(/^\d{8,11}$/)) {
+            return;
+        }
+
+        this.posService.searchClient(value).subscribe({
+            next: (client: Client) => {
+                this.currentTransaction.client = client;
+            },
+            error: console.error
+        })
     }
 
     onChangeValidUntil(e: string) {

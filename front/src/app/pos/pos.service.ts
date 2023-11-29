@@ -1,6 +1,6 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { Category, Product } from "@app/shared/models";
+import { Category, Client, Product } from "@app/shared/models";
 import { DraftTransaction, Item } from "@app/shared/models/transaction";
 import { SwalComponent } from "@sweetalert2/ngx-sweetalert2";
 import { BehaviorSubject, Observable, map, of } from "rxjs";
@@ -32,6 +32,12 @@ export class PosService {
     }
 
     constructor(private http: HttpClient) {
+    }
+
+    searchClient(document: string): Observable<Client> {
+        return this.http.get<Client>(`/api/v1/clients/${document}`).pipe(
+            map((res: any) => Client.fromJson(res))
+        );
     }
 
     getCategories(): Observable<Category[]> {
