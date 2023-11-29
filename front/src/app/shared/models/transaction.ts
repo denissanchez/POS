@@ -1,6 +1,7 @@
 import { Client } from "./client";
 import { Product } from "./product";
 import { Car } from "./car";
+import { addBusinessDays } from "date-fns";
 
 
 function round(result: number) {
@@ -74,8 +75,8 @@ export class DraftTransaction {
         public car: Car = new Car(),
         public note: string = "",
         public type: TransactionType = "COBRADO",
-        public validUntil: Date = new Date(),
-    ) {}
+        public validUntil: Date = addBusinessDays(new Date(), 7),
+    ) { }
 
     public getUnsatisfiedProducts(): string[] {
         const warnings: string[] = [];

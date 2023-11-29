@@ -87,7 +87,11 @@
                             <hr>
                             <h5>Valida hasta</h5>
 
-                            <input type="date" class="form-control mt-2" id="validUntil" [(ngModel)]="currentTransaction.validUntil" placeholder="">
+                            <input type="date" class="form-control mt-2" 
+                                    id="validUntil"
+                                    [ngModel]="currentTransaction.validUntil | date: 'yyyy-MM-dd'"
+                                    (ngModelChange)="onChangeValidUntil($event)"
+                                    placeholder="">
                         </div>
                     </ng-container>
                 </ng-container>

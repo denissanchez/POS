@@ -641,6 +641,72 @@
       "type": "COBRADO",
       "validUntil": "2023-11-29T02:42:41.147Z",
       "createdAt": "2023-11-29T02:42:44.188Z"
+    },
+    {
+      "_id": "d56227e5-f66e-41fd-8cb9-9544e02e00af",
+      "items": [
+        {
+          "product": {
+            "_id": "1000094727",
+            "category": "ACCESORIOS",
+            "cost": 4,
+            "name": "AMBIENTADOR JUST EN SPRAY",
+            "price": 10,
+            "quantity": 1
+          },
+          "quantity": 5,
+          "discount": 0,
+          "subtotal": 50,
+          "subtotalDiscounted": 0
+        }
+      ],
+      "client": {
+        "_id": "",
+        "name": "Desconocido",
+        "phone": ""
+      },
+      "car": {
+        "brand": "-",
+        "model": "-",
+        "plate": ""
+      },
+      "note": "",
+      "type": "COTIZACION",
+      "validUntil": "2023-11-29T02:46:07.167Z",
+      "createdAt": "2023-11-29T02:46:20.873Z"
+    },
+    {
+      "_id": "9bef5476-815f-459b-941a-b1e5a5595ccf",
+      "items": [
+        {
+          "product": {
+            "_id": "M1000025038",
+            "category": "ACCESORIOS",
+            "cost": 13,
+            "name": "ANTENA DE RADIO AM FM DE PARABRISA (Por mayor)",
+            "price": 20,
+            "quantity": 5
+          },
+          "quantity": 5,
+          "discount": 0,
+          "subtotal": 100,
+          "subtotalDiscounted": 0
+        }
+      ],
+      "client": {
+        "_id": "73904197",
+        "name": "DERCO S.A.",
+        "phone": "950462729"
+      },
+      "car": {
+        "brand": "-",
+        "model": "-",
+        "plate": ""
+      },
+      "note": "",
+      "type": "COTIZACION",
+      "validUntil": "2023-12-06T00:00:00.000Z",
+      "createdAt": "2023-11-29T02:54:55.714Z"
     }
   ],
   "products": [],

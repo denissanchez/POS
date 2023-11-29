@@ -53,6 +53,15 @@ export class RegisterComponent implements AfterViewInit {
         this.warnings = this.currentTransaction.getUnsatisfiedProducts();        
     }
 
+    onChangeValidUntil(e: string) {
+        try {
+            this.currentTransaction.validUntil = new Date(e);
+        } catch (e) {
+            console.error(e)
+            this.currentTransaction.validUntil = new Date();
+        }
+    }
+
     onRegister() {
         this.posService.register(this.currentTransaction).pipe(tap(() => setTimeout(() => this.onRegisterSuccess.emit(), 1_500))).subscribe({
             next: () => {
