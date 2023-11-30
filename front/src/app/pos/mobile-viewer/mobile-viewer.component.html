@@ -1,0 +1,40 @@
+<div class="col-12 mt-4">
+  <button type="button" class="btn btn-lg btn-info w-100" (click)="enableCapture()"><i class="bi bi-search"></i> Capturar</button>
+</div>
+
+<div *ngIf="product$ | async as product; else productNotFound" class="row d-flex justify-content-center d-md-none">
+    <div class="col-md-12 mt-3">
+        <label for="smProductCode" class="form-label">CODIGO</label>
+        <input type="text" class="form-control" id="smProductCode" [value]="product._id" disabled>
+      </div>
+      <div class="col-md-6 mt-3">
+        <label for="smProductDescription" class="form-label">DESCRIPCIÓN</label>
+        <textarea name="smProductCode" id="smProductDescription" cols="30" rows="3" class="form-control" disabled>{{ product.name }}</textarea>
+      </div>
+      <div class="col-md-6 mt-3">
+        <label for="smProductPrecio" class="form-label">PRECIO</label>
+        <input type="text" class="form-control" name="smProductPrecio" id="smProductPrecio" [value]="product.price" disabled>
+      </div>
+      <div class="col-md-6 mt-3">
+        <label for="smProductCantidad" class="form-label">STOCK DISPONIBLE</label>
+        <input type="text" class="form-control" name="smProductCantidad" id="smProductCantidad" [value]="product.quantity" disabled>
+      </div>
+      <div class="col-md-6 mt-3">
+        <label for="smProductReadAt" class="form-label">ÚLTIMA LECTURA</label>
+        <input type="text" class="form-control" name="smProductReadAt" id="smProductReadAt" [value]="lastRead " disabled>
+      </div>
+</div>
+
+<ng-template #productNotFound>
+  <div class="alert alert-warning d-flex align-items-center mt-3" role="alert">
+    <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Warning:"><use xlink:href="#exclamation-triangle-fill"/></svg>
+    <div>
+      El último producto escaneado no ha sido encontrado. La lectura fue <strong>{{ lastRead }}</strong>
+    </div>
+  </div>
+</ng-template>
+
+<div class="col-12 mt-3">
+  <button type="button" class="btn btn-lg btn-danger w-100" (click)="cancel()"><i class="bi bi-x-octagon"></i> Cancelar</button>
+</div>
+

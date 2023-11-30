@@ -21,7 +21,7 @@
     [focusCancel]="true">
 </swal>
 
-<div class="row mx-3" style="height: calc(100vh - 120px); overflow: hidden;">
+<div *ngIf="!isMobile" class="row d-none d-md-flex mx-3" style="height: calc(100vh - 120px); overflow: hidden;">
     <div class="col-12 col-md-7" style="overflow-x: hidden; height: 100%;">
         <app-summary (onRegisterSuccess)="products.refreshProducts()"></app-summary>
     </div>
@@ -29,3 +29,5 @@
         <app-products #products></app-products>
     </div>
 </div>
+
+<app-mobile-viewer *ngIf="isMobile"></app-mobile-viewer>

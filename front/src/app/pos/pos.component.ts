@@ -13,6 +13,8 @@ export class PosComponent implements OnInit, AfterViewInit {
     // @ts-ignore
     @ViewChild('exceededStockAlert', { static: false }) private exceededStockAlert: SwalComponent;
 
+    isMobile = window.innerWidth < 450;
+
     constructor(private posService: PosService) {
     }
 

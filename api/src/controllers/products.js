@@ -32,11 +32,20 @@ router.get('/', runAsyncWrapper(async(req, res)  => {
 
 
 router.get('/:id', runAsyncWrapper(async(req, res) => {
+    const { scanned } = req.query;
     const product = await getById(req.params.id);
 
     if (product) {
+        if (Number(scanned) === 1) {
+            req.io.emit('product:scanned', product);
+        }
+
         res.json(product)
     } else {
+        if (Number(scanned) === 1) {
+            req.io.emit('product:not-found');
+        }
+
         res.status(404).json({
             'message': 'Producto no encontrado'
         })

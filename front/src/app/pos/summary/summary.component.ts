@@ -3,6 +3,7 @@ import { PosService } from "../pos.service";
 import { Observable } from "rxjs";
 import { DraftTransaction, Item } from "@app/shared/models/transaction";
 import { Product } from "@app/shared/models";
+import { Socket, io } from 'socket.io-client';
 
 @Component({
     selector: 'app-summary',
@@ -15,6 +16,8 @@ export class SummaryComponent implements OnInit, AfterViewInit, OnDestroy {
 
     @Output() onRegisterSuccess: EventEmitter<void> = new EventEmitter<void>();
 
+    private socket!: Socket;
+
     currentTransaction$: Observable<DraftTransaction>;
 
     constructor(private posService: PosService) {
@@ -25,6 +28,18 @@ export class SummaryComponent implements OnInit, AfterViewInit, OnDestroy {
     }
 
     ngAfterViewInit(): void {
+        this.socket = io('/');
+
+        this.socket.on('summary:capture', (product) => {
+            setTimeout(() => {
+                this.searchCode.nativeElement.focus();
+            }, 50);
+        });
+
+        this.socket.on('summary:cancel', (product) => {
+            this.onCancelTransaction();
+        });
+
         this.searchCode.nativeElement.addEventListener('keydown', this.onCodeSubmitted.bind(this));
     }
 
@@ -43,7 +58,9 @@ export class SummaryComponent implements OnInit, AfterViewInit, OnDestroy {
             return
         }
 
-        this.posService.getProductById(productId).subscribe({
+        this.searchCode.nativeElement.value = "";
+
+        this.posService.getProductById(productId, true).subscribe({
             next: (product: Product) => {
                 this.posService.addProduct(product)
 

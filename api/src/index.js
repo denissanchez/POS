@@ -71,6 +71,32 @@ passport.deserializeUser(function (_id, done) {
 app.use(passport.initialize());
 app.use(passport.session());
 
+
+const server = createServer(app);
+const io = new Server(server);
+
+app.use((req, res, next) => {
+  req.io = io;
+  next();
+});
+
+io.on("connection", (socket) => {
+  const adapter = getAdapter();
+  const id = adapter.addSubscriber(socket);
+
+  socket.on('summary:capture', () => {
+    io.emit('summary:capture')
+  })
+
+  socket.on('summary:cancel', () => {
+    io.emit('summary:cancel')
+  })
+
+  socket.on("disconnect", () => {
+    adapter.removeSubscriber(id);
+  });
+});
+
 app.get("/login", function (req, res) {
   res.render('login');
 });
@@ -181,20 +207,8 @@ app.get("*", isAuthenticated, function (req, res) {
   res.sendFile(__dirname + "/front/browser/index.html");
 });
 
-const server = createServer(app);
-const io = new Server(server);
-
-io.on("connection", (socket) => {
-  const adapter = getAdapter();
-  const id = adapter.addSubscriber(socket);
-
-  socket.on("disconnect", () => {
-    adapter.removeSubscriber(id);
-  });
-});
-
 const port = process.env.PORT || 8080;
 
-server.listen(port, () => {
+server.listen(port, '0.0.0.0', () => {
   console.log(`server listening on http://localhost:${port}`);
 });

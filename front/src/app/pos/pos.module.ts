@@ -9,6 +9,7 @@ import { PosService } from "./pos.service";
 import { SharedModule } from "@app/shared/shared.module";
 import { CategoryBtnComponent } from "./products/category-btn/category-btn.component";
 import { RegisterComponent } from "./summary/register/register.component";
+import { MobileViewerComponent } from "./mobile-viewer/mobile-viewer.component";
 
 @NgModule({
     declarations: [
@@ -18,7 +19,8 @@ import { RegisterComponent } from "./summary/register/register.component";
         ItemComponent,
         ProductComponent,
         CategoryBtnComponent,
-        RegisterComponent
+        RegisterComponent,
+        MobileViewerComponent
     ],
     providers: [
         PosService

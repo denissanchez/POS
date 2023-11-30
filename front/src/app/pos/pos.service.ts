@@ -46,8 +46,8 @@ export class PosService {
         )
     }
 
-    getProductById(_id: string): Observable<Product> {
-        return this.http.get<Record<string, string | number>>(`/api/v1/products/${_id}`).pipe(
+    getProductById(_id: string, scanned: boolean = false): Observable<Product> {
+        return this.http.get<Record<string, string | number>>(`/api/v1/products/${_id}?scanned=${Number(scanned)}`).pipe(
             map((res) => Product.fromJson(res))
         )
     }
