@@ -147,49 +147,68 @@ app.get("/api/print", async (req, res) => {
 
     console.log(pageWidth)
 
-    doc.fontSize(25).text('PROFORMA', (pageWidth / 2) - 80, 50);
-    doc.fontSize(11).text('DIRECCIÓN: Jr. Ayacucho B18 (Ref. a dos cuadras del real plaza)- Cajamarca', 50, 85);
-    doc.fontSize(11).text('RUC: 123456789', 450, 85);
+    doc.image(path.join(__dirname, "./front/browser/assets/img/logo.jpeg"), 230, 50, { width: 150 });
 
+    // draw a blue rectangle
+    doc.rect(50, 105, pageWidth - 100, 27).fill("#1E90FF");
 
-    doc.fontSize(20).text('DATOS DE CLIENTE', (pageWidth / 2) - 100, 120);
-    doc.fontSize(11).text('RAZÓN SOCIAL: DERCO S.A.C', 50, 150);
-    doc.fontSize(11).text('NRO. DOCUMENTO: 123456789', 50, 165);
-    doc.fontSize(11).text('TELEFONO: 123456789', 50, 180);
+    doc.fontSize(23).fill("#FFFFFF").text('PROFORMA', (pageWidth / 2) - 80, 110);
 
-    doc.fontSize(20).text('DATOS DEL VEHICULO', (pageWidth / 2) - 100, 220);
-    doc.fontSize(11).text('MARCA/MODELO: DERCO S.A.C', 50, 250);
-    doc.fontSize(11).text('AÑO: 123456789', 50, 265);
-    doc.fontSize(11).text('PLACA: 123456789', 50, 280);
+    // print text using white color
+    doc.fillColor("#000000");
+    doc.fontSize(11).text('DIRECCIÓN: Jr. Ayacucho B18 (Ref. a dos cuadras del real plaza)- Cajamarca', 50, 140);
+    doc.fontSize(11).text('RUC: 123456789', 450, 140);
+
+    doc.rect(50, 165, pageWidth - 100, 24).fill("#1E90FF");
+    doc.fillColor("#0000CD");
+    doc.fontSize(20).text('DATOS DE CLIENTE:', (pageWidth / 2) - 100, 170);
+
+    doc.fillColor("black");
+    doc.fontSize(11).text('RAZÓN SOCIAL: DERCO S.A.C', 50, 200);
+    doc.fontSize(11).text('NRO. DOCUMENTO: 123456789', 50, 215);
+    doc.fontSize(11).text('TELEFONO: 123456789', 50, 230);
+
+    doc.rect(50, 250, pageWidth - 100, 24).fill("#1E90FF");
+    doc.fillColor("#0000CD");
+    doc.fontSize(20).text('DATOS DEL VEHICULO:', (pageWidth / 2) - 110, 255);
+
+    doc.fillColor("black");
+    doc.fontSize(11).text('MARCA/MODELO: DERCO S.A.C', 50, 285);
+    doc.fontSize(11).text('AÑO: 123456789', 50, 300);
+    doc.fontSize(11).text('PLACA: 123456789', 50, 315);
 
     // doc.fontSize(13).text('Quotation Number: 12345', 50, 80);
     // doc.text('Date: ' + new Date().toLocaleDateString(), 50, 100);
 
-    let y = 320; // Initial vertical position for the table
+    let y = 340; // Initial vertical position for the table
 
     const table = {
-      widths: [10, 30, 50, 30, 30, 30],
-      headers: ['ÍTEM', 'TIPO', 'DESCRIPCIÓN', 'CANTIDAD', 'P. UNIT.', 'SUBTOTAL'],
-      rows: [
-        [1, 'TIPO', 'DESCRIPCIÓN', 'CANTIDAD', 'P. UNIT.', 'SUBTOTAL'],
-        [2, 'TIPO', 'DESCRIPCIÓN', 'CANTIDAD', 'P. UNIT.', 'SUBTOTAL'],
-      ],
+      starts: [50, 100, 210, 370, 420, 480],
+      headers: ['ÍTEM', 'TIPO', 'DESCRIPCIÓN', 'CANT.', 'P. UNIT.', 'SUBTOTAL'],
     };
 
     table.headers.forEach((header, i) => {
-      doc.fontSize(11).text(header, 50 + table.widths[i] + i*100, y);
+      doc.fontSize(11).text(header, table.starts[i], y);
     });
 
-    // Draw a horizontal line
-    // doc.moveTo(50, y+20).lineTo(550, y+20).stroke();
+    doc.moveTo(50, y + 15).lineTo(pageWidth - 50, y + 15).stroke();
 
-    // Draw the rows
-    // table.rows.forEach((row, i) => {
-    //   y = y + 30;
-    //   row.forEach((column, j) => {
-    //     doc.fontSize(10).text(column, 50 + j*100, y);
-    //   });
-    // });
+    const items = {
+      starts: [50, 80, 180, 380, 410, 480],
+      rows: [
+        [1, 'BOCINA', 'PERILLA 10" TOPE GAMA (2+32)\n APPLE CAR + QLED+CHIP', '5', 'S/ 440.00', 'S/ 440.00'],
+        [1, 'ACCESORIOS', 'PORTAEQUIPAJE 360L  139x90x39CM', '10', 'S/ 10440.00', 'S/ 10440.00'],
+        [1, 'BOCINA', 'PERILLA 10" TOPE GAMA (2+32)\n APPLE CAR + QLED+CHIP', '5', 'S/ 440.00', 'S/ 440.00'],
+      ], 
+    }
+
+    items.rows.forEach((row, i) => {
+      y = i === 0 ? y + 20 : y + 25;
+      row.forEach((column, j) => {
+        doc.fontSize(10).text(column, items.starts[j], i === 0 ? y : y + (i + 15));
+        doc.moveTo(50, i === 0 ? y + 30 : y + 40).lineTo(pageWidth - 50, i === 0 ? y + 30 : y + 40).stroke();
+      });
+    });
 
     // Calculate and write the total amount
     // let totalAmount = table.rows.reduce((sum, row) => sum + parseFloat(row[4].substring(1)), 0);

@@ -21,7 +21,6 @@ export async function create(payload) {
     }
 
     if (client) {
-        console.log("Client already exists");
         return;
     }
 
