@@ -1,0 +1,46 @@
+name: build
+run-name: Building POS
+on: [workflow_dispatch]
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use Node.js 20.x
+        uses: actions/setup-node@v1
+        with:
+          node-version: 20.x
+      - name: frontend, npm install and build
+        working-directory: ./front
+        run: |
+          npm install --legacy-peer-deps
+          npm run build
+      - name: api, npm install and build
+        working-directory: ./api
+        run: |
+          npm install
+      - name: Compressing api
+        uses: montudor/action-zip@v0.2.0
+        with:
+          files: ./api
+          dest: ./api.zip
+      - name: Create Release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ github.ref }}
+          release_name: Release ${{ github.ref }}
+          draft: false
+          prerelease: false
+      - name: Upload a Release Asset
+        id: upload-release-asset
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./api.zip
+          asset_name: pos.zip
+          asset_content_type: application/zip
