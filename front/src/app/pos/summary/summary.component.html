@@ -1,4 +1,17 @@
 <div class="card" *ngIf="currentTransaction$ | async as transaction"  style="height: 100%;">
+    <div class="card-header">
+        <div class="row">
+            <div class="col d-grid px-0">
+                <button type="button" class="btn btn-light text-light rounded-0 gap-2 rounded-start" [ngClass]="type === 'COBRADO'? 'bg-primary' : 'bg-secondary'" (click)="changeType('COBRADO')">VENTA</button>
+            </div>
+            <div class="col d-grid px-0">
+                <button type="button" class="btn btn-light text-light rounded-0 gap-2" [ngClass]="type === 'CREDITO'? 'bg-primary' : 'bg-secondary'" (click)="changeType('CREDITO')">VENTA CRÉDITO</button>
+            </div>
+            <div class="col d-grid px-0">
+                <button type="button" class="btn btn-light text-light rounded-0 gap-2 rounded-end" [ngClass]="type === 'COTIZACION' ? 'bg-primary' : 'bg-secondary'" (click)="changeType('COTIZACION')">COTIZACIÓN</button>
+            </div>
+        </div>
+    </div>
     <div class="card-body" style="overflow: hidden;">
         <div class="mb-3">
             <label for="searchCode" class="form-label">Buscar por código de barras</label>

@@ -1,7 +1,7 @@
 import { AfterViewInit, Component, ElementRef, OnDestroy, OnInit, ViewChild } from "@angular/core";
-import { PosService } from "../pos.service";
-import { Observable, Subscription, debounceTime, filter, fromEvent, map, mergeMap, of, tap } from "rxjs";
 import { Category, Product } from "@app/shared/models";
+import { Observable, Subscription, debounceTime, fromEvent, map, of } from "rxjs";
+import { PosService } from "../pos.service";
 
 @Component({
     selector: 'app-products',

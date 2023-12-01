@@ -1,9 +1,10 @@
 import { AfterViewInit, Component, ElementRef, EventEmitter, OnDestroy, OnInit, Output, ViewChild } from "@angular/core";
 import { PosService } from "../pos.service";
 import { Observable } from "rxjs";
-import { DraftTransaction, Item } from "@app/shared/models/transaction";
+import { DraftTransaction, Item, TransactionType } from "@app/shared/models/transaction";
 import { Product } from "@app/shared/models";
 import { Socket, io } from 'socket.io-client';
+import NoSleep from 'nosleep.js';
 
 @Component({
     selector: 'app-summary',
@@ -16,6 +17,9 @@ export class SummaryComponent implements OnInit, AfterViewInit, OnDestroy {
 
     @Output() onRegisterSuccess: EventEmitter<void> = new EventEmitter<void>();
 
+    public type: TransactionType = "COBRADO";
+
+    private _noSleep = new NoSleep();
     private socket!: Socket;
 
     currentTransaction$: Observable<DraftTransaction>;
@@ -28,6 +32,8 @@ export class SummaryComponent implements OnInit, AfterViewInit, OnDestroy {
     }
 
     ngAfterViewInit(): void {
+        this._noSleep.enable();
+
         this.socket = io('/');
 
         this.socket.on('summary:capture', (product) => {
@@ -44,6 +50,8 @@ export class SummaryComponent implements OnInit, AfterViewInit, OnDestroy {
     }
 
     ngOnDestroy(): void {
+        this.socket.disconnect();
+        this._noSleep.disable();
         this.searchCode.nativeElement.removeEventListener('keydown', this.onCodeSubmitted.bind(this));
     }
 
@@ -72,6 +80,10 @@ export class SummaryComponent implements OnInit, AfterViewInit, OnDestroy {
 
     onDelete(productId: string) {
         this.posService.removeProduct(productId)
+    }
+
+    changeType(type: TransactionType) {
+        this.type = type;
     }
 
     onCancelTransaction() {

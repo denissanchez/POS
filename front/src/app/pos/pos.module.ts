@@ -1,4 +1,5 @@
 import { NgModule } from "@angular/core";
+import {ScrollingModule} from '@angular/cdk/scrolling';
 import { PosComponent } from "./pos.component";
 import { PosRoutingModule } from "./pos-routing.module";
 import { ProductsComponent } from "./products/products.component";
@@ -27,6 +28,7 @@ import { MobileViewerComponent } from "./mobile-viewer/mobile-viewer.component";
     ],
     imports: [
         SharedModule,
+        ScrollingModule,
         PosRoutingModule
     ],
 })

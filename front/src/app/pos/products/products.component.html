@@ -13,20 +13,13 @@
             </div>
         </div>
     </div>
-    <div class="card-body" style="max-height: 999%; overflow-x: hidden; overflow-y: scroll;">
-        <div class="row" >
-            <ng-container *ngIf="products$ | async as products">
-                <ng-container *ngIf="products.length > 0; else noProducts">
-                    <div *ngFor="let p of products; trackBy: trackByProductId" class="col-6 col-md-4 mb-2 px-1">
-                        <app-product [product]="p"></app-product>
-                    </div>
-                </ng-container>
-                <ng-template #noProducts>
-                    <div class="col-12 text-center">
-                        <h5 class="h2 mt-5 text-secondary">No se han encontrado productos</h5>
-                    </div>
-                </ng-template>
-            </ng-container>
+    <div class="card-body">
+        <div class="row">
+            <cdk-virtual-scroll-viewport itemSize="150" class="products-viewport">
+                <div *cdkVirtualFor="let p of products$ | async; trackBy: trackByProductId" class="col-12 mb-2 px-2">
+                    <app-product [product]="p"></app-product>
+                </div>
+            </cdk-virtual-scroll-viewport>
         </div>
     </div>
 </div>
