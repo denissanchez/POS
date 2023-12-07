@@ -1277,6 +1277,109 @@
       "type": "COBRADO",
       "validUntil": "2023-12-14T03:01:47.835Z",
       "createdAt": "2023-12-05T03:01:53.081Z"
+    },
+    {
+      "_id": "d2e30901-a522-4ca2-b4ae-f8c35bc8ec82",
+      "items": [
+        {
+          "product": {
+            "_id": "1000013603",
+            "category": "ACCESORIOS",
+            "cost": 560,
+            "name": "ANTIVUELCO HILUX CROMADO",
+            "price": 730,
+            "quantity": 11
+          },
+          "quantity": 1,
+          "discount": 0,
+          "subtotal": 730,
+          "subtotalDiscounted": 0
+        },
+        {
+          "product": {
+            "_id": "1000013603",
+            "category": "ACCESORIOS",
+            "cost": 560,
+            "name": "ANTIVUELCO HILUX CROMADO",
+            "price": 730,
+            "quantity": 11
+          },
+          "quantity": 1,
+          "discount": 0,
+          "subtotal": 730,
+          "subtotalDiscounted": 0
+        },
+        {
+          "product": {
+            "_id": "1000013603",
+            "category": "ACCESORIOS",
+            "cost": 560,
+            "name": "ANTIVUELCO HILUX CROMADO",
+            "price": 730,
+            "quantity": 11
+          },
+          "quantity": 1,
+          "discount": 0,
+          "subtotal": 730,
+          "subtotalDiscounted": 0
+        },
+        {
+          "product": {
+            "_id": "1000013603",
+            "category": "ACCESORIOS",
+            "cost": 560,
+            "name": "ANTIVUELCO HILUX CROMADO",
+            "price": 730,
+            "quantity": 11
+          },
+          "quantity": 1,
+          "discount": 0,
+          "subtotal": 730,
+          "subtotalDiscounted": 0
+        },
+        {
+          "product": {
+            "_id": "1000013603",
+            "category": "ACCESORIOS",
+            "cost": 560,
+            "name": "ANTIVUELCO HILUX CROMADO",
+            "price": 730,
+            "quantity": 11
+          },
+          "quantity": 1,
+          "discount": 0,
+          "subtotal": 730,
+          "subtotalDiscounted": 0
+        },
+        {
+          "product": {
+            "_id": "1000013603",
+            "category": "ACCESORIOS",
+            "cost": 560,
+            "name": "ANTIVUELCO HILUX CROMADO",
+            "price": 730,
+            "quantity": 11
+          },
+          "quantity": 1,
+          "discount": 0,
+          "subtotal": 730,
+          "subtotalDiscounted": 0
+        }
+      ],
+      "client": {
+        "_id": "73904197",
+        "name": "DENIS SANCHEZ",
+        "phone": "950462729"
+      },
+      "car": {
+        "brand": "-",
+        "model": "-",
+        "plate": ""
+      },
+      "note": "",
+      "type": "COTIZACION",
+      "validUntil": "2023-12-18T16:23:49.599Z",
+      "createdAt": "2023-12-07T16:33:32.732Z"
     }
   ],
   "products": [],

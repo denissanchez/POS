@@ -150,7 +150,7 @@ export class Transaction {
     }
 
     public get printUrl(): string {
-        return `/api/transactions/print/${this._id}`;
+        return `/api/v1/transactions/print/${this._id}`;
     }
 
     constructor(

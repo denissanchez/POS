@@ -1,13 +1,21 @@
+import { format } from 'date-fns';
+import { es } from 'date-fns/locale/index.js';
 import { Router } from "express";
-import { runAsyncWrapper } from "../utils/wrapper.js";
+import path from "path";
+import PDFDocument from "pdfkit";
+import { fileURLToPath } from "url";
+import wrapAnsi from 'wrap-ansi';
+import { isAuthorized } from "../middlewares/authorization.js";
 import {
+  createTransaction,
   getAll,
   getById,
-  createTransaction,
 } from "../repository/transactions.js";
-import { isAuthorized } from "../middlewares/authorization.js";
 import { CAN_VIEW_TRANSACTIONS } from "../utils/constants.js";
-import PDFDocument from "pdfkit";
+import { runAsyncWrapper } from "../utils/wrapper.js";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const router = Router();
 
@@ -62,6 +70,15 @@ router.get(
   "/print/:id",
   isAuthorized(CAN_VIEW_TRANSACTIONS),
   runAsyncWrapper(async (req, res) => {
+    const transaction = await getById(req.params.id);
+
+    if (!transaction) {
+      res.status(404).json({
+        message: "Transacción no encontrada",
+      });
+
+      return;
+    }
 
     const doc = new PDFDocument({ bufferPages: true });
     let filename = req.body.filename;
@@ -72,43 +89,150 @@ router.get(
 
     doc.pipe(res);
 
-    // add text horizontally centered inside PDF page
-    doc.fontSize(25).text('PROFORMA', 100, 80);
+    const pageWidth = doc.page.width;
 
-    doc.fontSize(13).text('Quotation Number: 12345', 50, 80);
-    doc.text('Date: ' + new Date().toLocaleDateString(), 50, 100);
+    console.log(pageWidth)
 
-    let y = 150; // Initial vertical position for the table
+    doc.image(path.join(__dirname, "./../front/browser/assets/img/logo.jpeg"), 240, 40, { width: 130 });
+
+    doc.rect(50, 100, pageWidth - 100, 27).fill("#005b96");
+
+    doc.font('Helvetica-Bold')
+    doc.fontSize(23).fill("#f3f6f4").text('PROFORMA', (pageWidth / 2) - 80, 105);
+    doc.font('Helvetica')
+
+    doc.fillColor("black");
+    doc.font('Helvetica-Bold')
+    doc.fontSize(11).text('DIRECCIÓN:', 50, 135);
+    doc.font('Helvetica')
+    doc.fontSize(11).text('Jr. Ayacucho B18 (Ref. a dos cuadras del Real Plaza) - Cajamarca', 150, 135);
+
+    doc.font('Helvetica-Bold')
+    doc.fontSize(11).text('RUC:', 50, 150);
+    doc.font('Helvetica')
+    doc.fontSize(11).text('10736606319', 150, 150);
+
+    doc.rect(50, 165, pageWidth - 100, 24).fill("#005b96");
+
+    doc.font('Helvetica-Bold')
+    doc.fontSize(20).fill("#f3f6f4").text('DATOS DE CLIENTE:', (pageWidth / 2) - 100, 170);
+    doc.font('Helvetica')
+
+    doc.fillColor("black");
+    doc.font('Helvetica-Bold')
+    doc.fontSize(11).text(`RAZÓN SOCIAL:`, 50, 200);
+    
+    doc.font('Helvetica')
+    doc.fontSize(11).text(`${transaction.client.name}`, 150, 200);
+
+    doc.font('Helvetica-Bold')
+    doc.fontSize(11).text(`RUC/DNI:`, 50, 215);
+
+    doc.font('Helvetica')
+    doc.fontSize(11).text(`${transaction.client._id}`, 150, 215);
+
+    doc.font('Helvetica-Bold')
+    doc.fontSize(11).text(`TELEFONO:`, 50, 230);
+    
+    doc.font('Helvetica')
+    doc.fontSize(11).text(`${transaction.client.phone}`, 150, 230);
+
+    doc.rect(50, 250, pageWidth - 100, 24).fill("#005b96");
+
+    doc.font('Helvetica-Bold')
+    doc.fontSize(20).fill("#f3f6f4").text('DATOS DEL VEHICULO:', (pageWidth / 2) - 110, 255);
+    doc.font('Helvetica')
+
+    doc.fillColor("black");
+
+    doc.font('Helvetica-Bold')
+    doc.fontSize(11).text(`MARCA/MODELO:`, 50, 285);
+    
+    doc.font('Helvetica')
+    doc.fontSize(11).text(`${transaction.car.brand} ${transaction.car.model}`, 150, 285);
+    
+    doc.font('Helvetica-Bold')
+    doc.fontSize(11).text(`AÑO:`, 50, 300);
+
+    doc.font('Helvetica')
+    doc.fontSize(11).text(`${transaction.car.year || '-'} ${transaction.car.model}`, 150, 300);
+
+    doc.font('Helvetica-Bold')
+    doc.fontSize(11).text(`PLACA:`, 50, 315);
+
+    doc.font('Helvetica')
+    doc.fontSize(11).text(`${transaction.car.plate}`, 150, 315);
+
+    let y = 345;
 
     const table = {
-      headers: ['Item', 'Description', 'Quantity', 'Unit Price', 'Total'],
-      rows: [
-        ['Item 1', 'Description 1', '1', '$100', '$100'],
-        ['Item 2', 'Description 2', '2', '$200', '$400'],
-        // Add more rows as needed
-      ],
+      starts: [50, 100, 210, 370, 420, 480],
+      headers: ['ÍTEM', 'TIPO', 'DESCRIPCIÓN', 'CANT.', 'P. UNIT.', 'SUBTOTAL'],
     };
 
-    // Draw the headers
+    doc.font('Helvetica-Bold')
+
     table.headers.forEach((header, i) => {
-      doc.fontSize(13).text(header, 50 + i*100, y);
+      doc.fontSize(11).text(header, table.starts[i], y);
     });
 
-    // Draw a horizontal line
-    doc.moveTo(50, y+20).lineTo(550, y+20).stroke();
+    doc.font('Helvetica')
 
-    // Draw the rows
-    table.rows.forEach((row, i) => {
-      y = y + 30;
+    doc.moveTo(50, y + 15).lineTo(pageWidth - 50, y + 15).stroke();
+
+    const items = {
+      starts: [60, 85, 180, 380, 415, 485],
+      rows: transaction.items.map((item, index) => [
+        index + 1,
+        item.product.category,
+        wrapAnsi(item.product.name, 30),
+        item.quantity,
+        `S/ ${(item.subtotal / item.quantity).toFixed(2)}`,
+        `S/ ${item.subtotal.toFixed(2)}`
+      ])
+    }
+
+    y = y + 20;
+
+    items.rows.forEach((row, i) => {
       row.forEach((column, j) => {
-        doc.fontSize(10).text(column, 50 + j*100, y);
+        doc.fontSize(10).text(column, items.starts[j], y);
       });
+
+      y = y + 25;
+      doc.moveTo(50, y).lineTo(pageWidth - 50, y).stroke();
+
+      y = y + 5;
     });
 
-    // Calculate and write the total amount
-    let totalAmount = table.rows.reduce((sum, row) => sum + parseFloat(row[4].substring(1)), 0);
-    doc.fontSize(13).text('Total Amount: $' + totalAmount, 50, y + 50);
+    const subtotal = transaction.items.reduce((acc, item) => acc + item.subtotal, 0);
+    const igv = subtotal * 0.18;
+    const total = subtotal + igv;
 
+    doc.font('Helvetica-Bold').fontSize(11).text(`SUBTOTAL:`, 415, y + 5);
+    doc.font('Helvetica').fontSize(11).text(`S/ ${subtotal.toFixed(2)}`, 485, y + 5);
+    
+    doc.font('Helvetica-Bold').fontSize(11).text(`IGV:`, 415, y + 20);
+    doc.font('Helvetica').fontSize(11).text(`S/ ${igv.toFixed(2)}`, 485, y + 20);
+
+    doc.font('Helvetica-Bold').fontSize(11).text(`TOTAL:`, 415, y + 35);
+    doc.font('Helvetica').fontSize(11).text(`S/ ${total.toFixed(2)}`, 485, y + 35);
+
+    y = 645;
+
+    doc.fillColor("red");
+    doc.font('Helvetica-Bold').fontSize(11).text('NOTA', 50, y);
+
+    doc.fillColor("black");
+    doc.font('Helvetica').fontSize(11).text(transaction.note || '-', 50, y + 15);
+
+    y = 690;
+
+    doc.font('Helvetica-Bold').fontSize(11).text(`FECHA`, 50, y);
+    doc.font('Helvetica').fontSize(11).text(format(new Date(transaction.createdAt), "eeee, dd 'de' MMMM 'del' yyyy", { locale: es }), 110, y);
+
+    doc.font('Helvetica-Bold').fontSize(11).text(`VIGENCIA:`, 50, y + 15);
+    doc.font('Helvetica').fontSize(11).text(`3 dias hábiles desde su emisión.`, 110, y + 15);
 
     doc.end();
   })
