@@ -15,12 +15,12 @@ router.get(
   "/",
   isAuthorized(CAN_VIEW_TRANSACTIONS),
   runAsyncWrapper(async (req, res) => {
-    const { type, start, end } = req.query;
+    const { type, from, to } = req.query;
 
     if (!type || type === "") {
-      res.json(getAll(start, end));
+      res.json(getAll(from, to));
     } else {
-      res.json(getAll(start, end, [type]));
+      res.json(getAll(from, to, [type]));
     }
   })
 );

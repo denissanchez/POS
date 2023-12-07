@@ -1,7 +1,7 @@
 
 <div class="modal fade" #transactionDetail id="transactionDetail" tabindex="-1" aria-labelledby="transactionDetailLabel" aria-hidden="true">
     <div class="modal-dialog modal-xl">
-        <div class="modal-content">
+        <div *ngIf="transaction$ | async as transaction" class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="transactionDetailLabel">Detalle de transacción</h5>
                 <a class="btn-close" routerLink="/transacciones" aria-label="Close" (click)="onClose()"></a>
@@ -12,20 +12,20 @@
                         <div class="row">
                             <div class="col-7 mb-3">
                                 <label for="fechaRegistro" class="form-label">Fecha registro</label>
-                                <input type="text" class="form-control" id="fechaRegistro" disabled>
+                                <input type="text" class="form-control" id="fechaRegistro" [ngModel]="transaction.createdAt | date: 'dd/MM/yyyy' " disabled>
                             </div>
                             <div class="col-5 mb-3">
                                 <label for="tipoTransaccion" class="form-label">Tipo</label>
-                                <input type="text" class="form-control" id="tipoTransaccion" value="COTIZACIÓN" disabled>
+                                <input type="text" class="form-control" id="tipoTransaccion" [ngModel]="transaction.type" disabled>
                             </div>
                             <div class="col-12 mb-3">
                                 <label for="clientName" class="form-label">Cliente</label>
-                                <textarea name="clientName" class="form-control" id="clientName" cols="30" rows="3" disabled></textarea>
+                                <textarea name="clientName" class="form-control" id="clientName" cols="30" rows="3" [ngModel]="transaction.client.name" disabled></textarea>
                             </div>
 
                             <div class="col-12 mb-3">
                                 <label for="carro" class="form-label">Carro (Marca | Modelo | Placa )</label>
-                                <input type="text" class="form-control" id="carro" value="COTIZACIÓN" disabled value="TOYOTA | RAV4 | XYZ-123">
+                                <input type="text" class="form-control" id="carro" [ngModel]="transaction.car.summary" disabled>
                             </div>
                         </div>
                     </div>
@@ -39,14 +39,16 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td colspan="3">ASDSADSADSADSADSADSADSADSA</td>
-                                </tr>
-                                <tr>
-                                    <td>3.4</td>
-                                    <td>3.4</td>
-                                    <td>3.4</td>
-                                </tr>
+                                <ng-container *ngFor="let item of transaction.items">
+                                    <tr>
+                                        <td colspan="3">{{ item.product.name }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>{{ item.product.price }}</td>
+                                        <td>{{ item.quantity }}</td>
+                                        <td>{{ item.subtotal }}</td>
+                                    </tr>
+                                </ng-container>
                             </tbody>
                         </table>
                     </div>
@@ -54,7 +56,9 @@
             </div>
             <div class="modal-footer d-flex justify-content-between">
                 <a routerLink="/transacciones" class="btn btn-secondary px-3" (click)="onClose()">Cerrar</a>
-                <button type="button" class="btn btn-success px-3">Imprimir</button>
+                <ng-container *ngIf="transaction.isPrintable">
+                    <a target="_blank" [href]="transaction.printUrl" class="btn btn-success px-3">Imprimir</a>
+                </ng-container>
             </div>
         </div>
     </div>

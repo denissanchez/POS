@@ -42,6 +42,9 @@ export class TransactionsComponent implements OnInit {
 
     ngOnInit(): void {
         this.authService.getCurrentUser().subscribe((user) => {this.canViewMetrics = user.can(CAN_VIEW_METRICS)})
-        this.transactions$ = this.transactionsService.getAll(new Date(), new Date());
+    }
+
+    updateRange($event: { from: string; to: string; }) {
+        this.transactions$ = this.transactionsService.getAll(new Date($event.from), new Date($event.to));
     }
 }

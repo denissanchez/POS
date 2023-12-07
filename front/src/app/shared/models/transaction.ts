@@ -13,9 +13,14 @@ export class Item {
     public get subtotal() {
         const base = this.product.price * this.quantity;
 
+        if (!isNaN(+this.increment) && this.increment > 0) {
+            return round(base + (base * this.increment / 100))
+        }
+
         if (!isNaN(+this.discount) && this.discount > 0) {
             return round(base - (base * this.discount / 100))
         }
+
         return round(base)
     }
 
@@ -29,31 +34,57 @@ export class Item {
         return round(0)
     }
 
+    public get subtotalIncremented() {
+        const base = this.product.price * this.quantity;
+
+        if (!isNaN(+this.increment) && this.increment > 0) {
+            return round(base * this.increment / 100);
+        }
+
+        return round(0)
+    }
+
+    get unitPrice() {
+        const base = this.product.price;
+
+        if (!isNaN(+this.increment) && this.increment > 0) {
+            return round(base + (base * this.increment / 100))
+        }
+
+        if (!isNaN(+this.discount) && this.discount > 0) {
+            return round(base - (base * this.discount / 100))
+        }
+
+        return round(base)
+    }
+
     constructor(
         public product: Product = new Product(),
         public quantity: number = 1,
         public discount: number = 0,
+        public increment: number = 0,
     ) {}
+
+    toggleDiscount() {
+        this.discount = 0;
+    }
+
+    toggleIncrement(enabled: boolean) {
+        if (enabled) {
+            this.increment = 5;
+        } else {
+            this.increment = 0;
+        }
+    }
 
     json() {
         return {
             product: this.product.json(),
             quantity: this.quantity,
             discount: this.discount,
+            increment: this.increment,
             subtotal: this.subtotal,
             subtotalDiscounted: this.subtotalDiscounted
-        }
-    }
-}
-
-export class Payment {
-    constructor(public amount: number, public date: Date = new Date()) {
-    }
-
-    json() {
-        return {
-            amount: this.amount,
-            date: this.date.toISOString(),
         }
     }
 }
@@ -112,6 +143,14 @@ export class DraftTransaction {
 export class Transaction {
     public get total() {
         return this.items.reduce((acc, curr) => curr.subtotal + acc, 0)
+    }
+
+    public get isPrintable(): boolean {
+        return this.type === "COTIZACION";
+    }
+
+    public get printUrl(): string {
+        return `/api/transactions/print/${this._id}`;
     }
 
     constructor(

@@ -839,6 +839,444 @@
       "type": "CREDITO",
       "validUntil": "2023-12-08T03:32:09.147Z",
       "createdAt": "2023-11-29T03:32:36.875Z"
+    },
+    {
+      "_id": "f7fe98d1-833b-48e1-8e2d-8f976a460a31",
+      "items": [],
+      "client": {
+        "_id": "",
+        "name": "Desconocido",
+        "phone": ""
+      },
+      "car": {
+        "brand": "-",
+        "model": "-",
+        "plate": ""
+      },
+      "note": "",
+      "type": "COBRADO",
+      "validUntil": "2023-12-12T22:59:02.315Z",
+      "createdAt": "2023-12-02T22:59:05.757Z"
+    },
+    {
+      "_id": "35ed240e-5036-4201-a4c5-2097515c0c38",
+      "items": [],
+      "client": {
+        "_id": "",
+        "name": "Desconocido",
+        "phone": ""
+      },
+      "car": {
+        "brand": "-",
+        "model": "-",
+        "plate": ""
+      },
+      "note": "",
+      "type": "COBRADO",
+      "validUntil": "2023-12-12T22:59:35.903Z",
+      "createdAt": "2023-12-02T22:59:38.997Z"
+    },
+    {
+      "_id": "4f87c15b-f498-4b3c-9ec3-b817f7d89437",
+      "items": [
+        {
+          "product": {
+            "_id": "M1000066016",
+            "category": "ACCESORIOS",
+            "cost": 680,
+            "name": "ANTIVUELCO CON LUCES DE RETROCESO Y DISEÑO (Por mayor)",
+            "price": 780,
+            "quantity": 15
+          },
+          "quantity": 1,
+          "discount": 0,
+          "subtotal": 780,
+          "subtotalDiscounted": 0
+        }
+      ],
+      "client": {
+        "_id": "",
+        "name": "Desconocido",
+        "phone": ""
+      },
+      "car": {
+        "brand": "-",
+        "model": "-",
+        "plate": ""
+      },
+      "note": "",
+      "type": "COBRADO",
+      "validUntil": "2023-12-12T23:00:04.530Z",
+      "createdAt": "2023-12-02T23:00:05.320Z"
+    },
+    {
+      "_id": "d00250a6-b2a6-48c0-a728-6f462b7bbbb9",
+      "items": [
+        {
+          "product": {
+            "_id": "1000066016",
+            "category": "ACCESORIOS",
+            "cost": 680,
+            "name": "ANTIVUELCO CON LUCES DE RETROCESO Y DISEÑO",
+            "price": 900,
+            "quantity": 14
+          },
+          "quantity": 1,
+          "discount": 0,
+          "subtotal": 900,
+          "subtotalDiscounted": 0
+        }
+      ],
+      "client": {
+        "_id": "",
+        "name": "Desconocido",
+        "phone": ""
+      },
+      "car": {
+        "brand": "-",
+        "model": "-",
+        "plate": ""
+      },
+      "note": "",
+      "type": "COBRADO",
+      "validUntil": "2023-12-12T23:01:48.122Z",
+      "createdAt": "2023-12-02T23:01:48.871Z"
+    },
+    {
+      "_id": "314e9349-082f-481e-825d-e44bd224ea84",
+      "items": [
+        {
+          "product": {
+            "_id": "1000010532",
+            "category": "ACCESORIOS",
+            "cost": 25,
+            "name": "ANTENAS ALETA DE TIBURON",
+            "price": 48,
+            "quantity": 9
+          },
+          "quantity": 1,
+          "discount": 0,
+          "subtotal": 48,
+          "subtotalDiscounted": 0
+        }
+      ],
+      "client": {
+        "_id": "",
+        "name": "Desconocido",
+        "phone": ""
+      },
+      "car": {
+        "brand": "-",
+        "model": "-",
+        "plate": ""
+      },
+      "note": "",
+      "type": "COBRADO",
+      "validUntil": "2023-12-12T23:03:54.567Z",
+      "createdAt": "2023-12-02T23:03:54.992Z"
+    },
+    {
+      "_id": "553cfec3-cff3-4989-ba55-c8b7fc3298f2",
+      "items": [
+        {
+          "product": {
+            "_id": "M1000010532",
+            "category": "ACCESORIOS",
+            "cost": 25,
+            "name": "ANTENAS ALETA DE TIBURON (Por mayor)",
+            "price": 32,
+            "quantity": 8
+          },
+          "quantity": 1,
+          "discount": 0,
+          "subtotal": 32,
+          "subtotalDiscounted": 0
+        }
+      ],
+      "client": {
+        "_id": "",
+        "name": "Desconocido",
+        "phone": ""
+      },
+      "car": {
+        "brand": "-",
+        "model": "-",
+        "plate": ""
+      },
+      "note": "",
+      "type": "COBRADO",
+      "validUntil": "2023-12-12T23:04:27.473Z",
+      "createdAt": "2023-12-02T23:04:29.284Z"
+    },
+    {
+      "_id": "f6796973-f1dc-42bf-9d5e-8c6fca486d58",
+      "items": [
+        {
+          "product": {
+            "_id": "M1000010532",
+            "category": "ACCESORIOS",
+            "cost": 25,
+            "name": "ANTENAS ALETA DE TIBURON (Por mayor)",
+            "price": 32,
+            "quantity": 7
+          },
+          "quantity": 1,
+          "discount": 0,
+          "subtotal": 32,
+          "subtotalDiscounted": 0
+        }
+      ],
+      "client": {
+        "_id": "",
+        "name": "Desconocido",
+        "phone": ""
+      },
+      "car": {
+        "brand": "-",
+        "model": "-",
+        "plate": ""
+      },
+      "note": "",
+      "type": "COBRADO",
+      "validUntil": "2023-12-12T23:06:18.180Z",
+      "createdAt": "2023-12-02T23:06:18.637Z"
+    },
+    {
+      "_id": "8b8d3835-5bb4-4349-b56a-9c5407393175",
+      "items": [
+        {
+          "product": {
+            "_id": "1000010532",
+            "category": "ACCESORIOS",
+            "cost": 25,
+            "name": "ANTENAS ALETA DE TIBURON",
+            "price": 48,
+            "quantity": 6
+          },
+          "quantity": 1,
+          "discount": 0,
+          "subtotal": 48,
+          "subtotalDiscounted": 0
+        }
+      ],
+      "client": {
+        "_id": "",
+        "name": "Desconocido",
+        "phone": ""
+      },
+      "car": {
+        "brand": "-",
+        "model": "-",
+        "plate": ""
+      },
+      "note": "",
+      "type": "COBRADO",
+      "validUntil": "2023-12-12T23:06:24.143Z",
+      "createdAt": "2023-12-02T23:06:25.096Z"
+    },
+    {
+      "_id": "c35776de-f105-47c3-9030-a662ed5cf921",
+      "items": [
+        {
+          "product": {
+            "_id": "1000010532",
+            "category": "ACCESORIOS",
+            "cost": 25,
+            "name": "ANTENAS ALETA DE TIBURON",
+            "price": 48,
+            "quantity": 5
+          },
+          "quantity": 1,
+          "discount": 0,
+          "subtotal": 48,
+          "subtotalDiscounted": 0
+        }
+      ],
+      "client": {
+        "_id": "",
+        "name": "Desconocido",
+        "phone": ""
+      },
+      "car": {
+        "brand": "-",
+        "model": "-",
+        "plate": ""
+      },
+      "note": "",
+      "type": "COBRADO",
+      "validUntil": "2023-12-12T23:07:18.608Z",
+      "createdAt": "2023-12-02T23:07:20.821Z"
+    },
+    {
+      "_id": "7d698f57-a8c6-474c-b351-7f1100f21dbd",
+      "items": [
+        {
+          "product": {
+            "_id": "M1000013603",
+            "category": "ACCESORIOS",
+            "cost": 560,
+            "name": "ANTIVUELCO HILUX CROMADO (Por mayor)",
+            "price": 690,
+            "quantity": 15
+          },
+          "quantity": 4,
+          "discount": 0,
+          "subtotal": 2760,
+          "subtotalDiscounted": 0
+        }
+      ],
+      "client": {
+        "_id": "",
+        "name": "Desconocido",
+        "phone": ""
+      },
+      "car": {
+        "brand": "-",
+        "model": "-",
+        "plate": ""
+      },
+      "note": "",
+      "type": "COBRADO",
+      "validUntil": "2023-12-14T02:30:36.991Z",
+      "createdAt": "2023-12-05T02:30:38.453Z"
+    },
+    {
+      "_id": "51a3536d-f0a1-4550-ac19-37ec74964846",
+      "items": [
+        {
+          "product": {
+            "_id": "M1000017212",
+            "category": "ACCESORIOS",
+            "cost": 660,
+            "name": "ANTIVUELCO CON DISEÑO OFF ROAD CROMADO (Por mayor)",
+            "price": 720,
+            "quantity": 15
+          },
+          "quantity": 1,
+          "discount": 0,
+          "subtotal": 720,
+          "subtotalDiscounted": 0
+        }
+      ],
+      "client": {
+        "_id": "",
+        "name": "Desconocido",
+        "phone": ""
+      },
+      "car": {
+        "brand": "-",
+        "model": "-",
+        "plate": ""
+      },
+      "note": "",
+      "type": "COBRADO",
+      "validUntil": "2023-12-14T02:50:20.928Z",
+      "createdAt": "2023-12-05T02:50:29.893Z"
+    },
+    {
+      "_id": "addc3f0f-826d-4dc6-afc5-a3133605d454",
+      "items": [
+        {
+          "product": {
+            "_id": "1000013603",
+            "category": "ACCESORIOS",
+            "cost": 560,
+            "name": "ANTIVUELCO HILUX CROMADO",
+            "price": 730,
+            "quantity": 11
+          },
+          "quantity": 1,
+          "discount": 0,
+          "subtotal": 730,
+          "subtotalDiscounted": 0
+        }
+      ],
+      "client": {
+        "_id": "",
+        "name": "Desconocido",
+        "phone": ""
+      },
+      "car": {
+        "brand": "-",
+        "model": "-",
+        "plate": ""
+      },
+      "note": "",
+      "type": "COBRADO",
+      "validUntil": "2023-12-14T02:52:51.845Z",
+      "createdAt": "2023-12-05T02:52:59.373Z"
+    },
+    {
+      "_id": "76e8071c-fc17-4932-9b46-956e6fabf0b2",
+      "items": [],
+      "client": {
+        "_id": "",
+        "name": "Desconocido",
+        "phone": ""
+      },
+      "car": {
+        "brand": "-",
+        "model": "-",
+        "plate": ""
+      },
+      "note": "",
+      "type": "COBRADO",
+      "validUntil": "2023-12-14T02:53:26.128Z",
+      "createdAt": "2023-12-05T02:53:34.367Z"
+    },
+    {
+      "_id": "ec4a5795-b27e-4bd5-a9d0-224f679d0992",
+      "items": [],
+      "client": {
+        "_id": "",
+        "name": "Yan Minchan",
+        "phone": ""
+      },
+      "car": {
+        "brand": "-",
+        "model": "-",
+        "plate": ""
+      },
+      "note": "",
+      "type": "COBRADO",
+      "validUntil": "2023-12-14T02:53:44.739Z",
+      "createdAt": "2023-12-05T02:54:00.166Z"
+    },
+    {
+      "_id": "cd573c11-0eec-47b4-8175-35098fa0cb2c",
+      "items": [],
+      "client": {
+        "_id": "",
+        "name": "Desconocido",
+        "phone": ""
+      },
+      "car": {
+        "brand": "-",
+        "model": "-",
+        "plate": ""
+      },
+      "note": "",
+      "type": "COBRADO",
+      "validUntil": "2023-12-14T02:58:02.096Z",
+      "createdAt": "2023-12-05T02:58:04.750Z"
+    },
+    {
+      "_id": "d5c5dcac-0b28-4ac8-ae2d-8eab62056b28",
+      "items": [],
+      "client": {
+        "_id": "",
+        "name": "Desconocido",
+        "phone": ""
+      },
+      "car": {
+        "brand": "-",
+        "model": "-",
+        "plate": ""
+      },
+      "note": "",
+      "type": "COBRADO",
+      "validUntil": "2023-12-14T03:01:47.835Z",
+      "createdAt": "2023-12-05T03:01:53.081Z"
     }
   ],
   "products": [],

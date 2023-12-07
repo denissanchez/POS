@@ -281,7 +281,7 @@ class StockFileAdapter {
             worksheet.cell(`${COLUMNS.UTILIDAD}${row + 1}`).value((item.quantity * (item.subtotal / item.quantity - productDB.cost)).toFixed(2));
             worksheet.cell(`${COLUMNS.ESTADO_PAGO}${row + 1}`).value(type);
 
-            if (customer) {
+            if (customer && customer !== "Desconocido") {
                 worksheet.cell(`${COLUMNS.CLIENTE}${row + 1}`).value(customer);
             }
 

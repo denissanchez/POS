@@ -21,16 +21,49 @@
     confirmButtonText="Remover">
 </swal>
 
-<button type="button" class="h-100 w-100 btn btn-success fs-5" data-bs-toggle="modal" data-bs-target="#registerBackdrop" (click)="onShowRegisterForm()" [disabled]="disabled">
-    <i class="bi bi-check"></i> Continuar
-</button>
+<ng-container [ngSwitch]="type">
+    <button *ngSwitchCase="'COBRADO'" type="button" class="h-100 w-100 btn btn-success fs-5" (click)="register()" [disabled]="disabled">
+        <i class="bi bi-check"></i> {{ confirmationLabel }}
+    </button>
+    <button *ngSwitchCase="'CREDITO'" type="button" class="h-100 w-100 btn btn-success fs-5" (click)="launchModal(registerCreditoModal)" [disabled]="disabled">
+        <i class="bi bi-check"></i> {{ confirmationLabel }}
+    </button>
+    <button *ngSwitchCase="'COTIZACION'" type="button" class="h-100 w-100 btn btn-success fs-5" (click)="launchModal(registerCotizacionModal)" [disabled]="disabled">
+        <i class="bi bi-check"></i> {{ confirmationLabel }}
+    </button>
+</ng-container>
 
-<div class="modal fade" id="registerBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="registerBackdropLabel" aria-hidden="true">
+
+<div class="modal fade" tabindex="-1" aria-hidden="true" #registerCreditoModal>
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="registerBackdropLabel">Registrar transacción</h5>
+                <button type="button" class="btn-close" aria-label="Close" (click)="closeModal()"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-12 mb-3">
+                        <label for="clientName" class="form-label">Cliente:</label>
+                        <input type="text" class="form-control disabled" id="clientName" placeholder="" [(ngModel)]="currentTransaction.client.name">
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" (click)="closeModal()">Cancelar</button>
+                <button type="button" class="btn btn-primary" (click)="register()">Registrar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade" tabindex="-1" aria-hidden="true" #registerCotizacionModal>
     <div class="modal-dialog">
         <div class="modal-content">
         <div class="modal-header">
-            <h5 class="modal-title" id="registerBackdropLabel">Registrar transacción</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            <h5 class="modal-title">Registrar transacción</h5>
+            <button type="button" class="btn-close" (click)="closeModal()" aria-label="Close"></button>
         </div>
         <div class="modal-body">
             <div class="row">
@@ -42,61 +75,8 @@
                         </ul>
                     </div>
                 </div>
-                <div class="col-12">
-                    <h5>Tipo de transacción</h5>
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" [(ngModel)]="currentTransaction.type" name="transactionType" id="paidTransaction" value="COBRADO">
-                        <label class="form-check-label" for="paidTransaction">
-                            Venta cobrada
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" [(ngModel)]="currentTransaction.type" name="transactionType" id="creditTransaction" value="CREDITO">
-                        <label class="form-check-label" for="creditTransaction">
-                            Venta al crédito
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" [(ngModel)]="currentTransaction.type" name="transactionType" id="quotation" value="COTIZACION">
-                        <label class="form-check-label" for="quotation">
-                            Cotización
-                        </label>
-                    </div>
-                </div>
-                <ng-container [ngSwitch]="currentTransaction.type">
-                    <ng-container *ngSwitchCase="'COTIZACION'">
-                        <div class="col-12">
-                            <hr>
-                            <h5>Datos de vehículo</h5>
-                        </div>
-                        <div class="col-8 mb-3">
-                            <label for="carBrand" class="form-label">Marca:</label>
-                            <input type="text" class="form-control" id="carBrand" placeholder="">
-                        </div>
 
-                        <div class="col-4 mb-3">
-                            <label for="carPlate" class="form-label">Placa:</label>
-                            <input type="text" class="form-control" id="carPlate" placeholder="">
-                        </div>
-
-                        <div class="col-12 mb-3">
-                            <label for="carModel" class="form-label">Modelo:</label>
-                            <input type="text" class="form-control" id="carModel" placeholder="">
-                        </div>
-                        <div class="col-12">
-                            <hr>
-                            <h5>Valida hasta</h5>
-
-                            <input type="date" class="form-control mt-2" 
-                                    id="validUntil"
-                                    [ngModel]="currentTransaction.validUntil | date: 'yyyy-MM-dd'"
-                                    (ngModelChange)="onChangeValidUntil($event)"
-                                    placeholder="">
-                        </div>
-                    </ng-container>
-                </ng-container>
                 <div class="col-12 mt-2 mb-3">
-                    <hr>
                     <h5>Cliente</h5>
                     <label for="clientName" class="form-label mt-2">No. documento:</label>
                     <input #clientDocument type="text" class="form-control" id="clientDocument" [(ngModel)]="currentTransaction.client._id" (ngModelChange)="searchClient($event)" placeholder="No identificado">
@@ -112,11 +92,40 @@
                     <input type="text" class="form-control disabled" id="clientPhone" placeholder="" [(ngModel)]="currentTransaction.client.phone">
                 </div>
 
+                <div class="col-12">
+                    <hr>
+                    <h5>Datos de vehículo</h5>
+                </div>
+                <div class="col-8 mb-3">
+                    <label for="carBrand" class="form-label">Marca:</label>
+                    <input type="text" class="form-control" id="carBrand" placeholder="">
+                </div>
+
+                <div class="col-4 mb-3">
+                    <label for="carPlate" class="form-label">Placa:</label>
+                    <input type="text" class="form-control" id="carPlate" placeholder="">
+                </div>
+
+                <div class="col-12 mb-3">
+                    <label for="carModel" class="form-label">Modelo:</label>
+                    <input type="text" class="form-control" id="carModel" placeholder="">
+                </div>
+                <div class="col-12">
+                    <hr>
+                    <h5>Valida hasta</h5>
+
+                    <input type="date" class="form-control mt-2" 
+                            id="validUntil"
+                            [ngModel]="currentTransaction.validUntil | date: 'yyyy-MM-dd'"
+                            (ngModelChange)="onChangeValidUntil($event)"
+                            placeholder="">
+                </div>
+
             </div>
         </div>
         <div class="modal-footer d-flex justify-content-between">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-            <button type="button" class="btn btn-primary" data-bs-dismiss="modal" (click)="onRegister()">Registrar</button>
+            <button type="button" class="btn btn-secondary" (click)="closeModal()">Cancelar</button>
+            <button type="button" class="btn btn-primary" (click)="register()">Registrar</button>
         </div>
         </div>
     </div>
