@@ -36,10 +36,13 @@ router.get(
 router.post(
   "/",
   runAsyncWrapper(async (req, res) => {
+    const { name, _id } = req.user;
+
     try {
       await createTransaction({
         ...req.body,
         createdAt: new Date().toISOString(),
+        seller: { _id, name},
       });
     } catch (e) {
       console.log(e);
@@ -90,8 +93,6 @@ router.get(
     doc.pipe(res);
 
     const pageWidth = doc.page.width;
-
-    console.log(pageWidth)
 
     doc.image(path.join(__dirname, "./../front/browser/assets/img/logo.jpeg"), 240, 40, { width: 130 });
 

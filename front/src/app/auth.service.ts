@@ -1,17 +1,20 @@
 import { Injectable } from "@angular/core";
-import { Observable, from, map, mergeMap, of, tap } from "rxjs";
+import { BehaviorSubject, Observable, from, map, mergeMap, of, tap } from "rxjs";
 import { PERMISSION, User } from "./shared/models/user";
 
 @Injectable({
     providedIn: 'root'
 })
 export class AuthService {
-    // @ts-ignore
-    private _user: User;
+    private _user: BehaviorSubject<User | undefined> = new BehaviorSubject<User | undefined>(undefined);
+
+    get user$(): Observable<User | undefined> {
+        return this._user.asObservable();
+    }
 
     public getCurrentUser(): Observable<User> {
-        if (this._user) {
-            return of(this._user);
+        if (this._user.value) {
+            return <Observable<User>>(this._user.asObservable());
         }
 
         return from(fetch("/user", {
@@ -23,7 +26,7 @@ export class AuthService {
         })).pipe(
             mergeMap((res) => from(res.json())),
             map((res: any) => User.fromJSON(res)),
-            tap((user) => this._user = user),
+            tap((user) => this._user.next(user)),
         );
     }
 

@@ -8,7 +8,6 @@
       "permissions": [
         "CAN_CREATE_USERS",
         "CAN_REMOVE_USERS",
-        "CAN_UPDATE_USERS",
         "CAN_VIEW_USERS",
         "CAN_VIEW_TRANSACTIONS",
         "CAN_VIEW_METRICS"
@@ -1380,6 +1379,131 @@
       "type": "COTIZACION",
       "validUntil": "2023-12-18T16:23:49.599Z",
       "createdAt": "2023-12-07T16:33:32.732Z"
+    },
+    {
+      "_id": "58ea107f-146d-487c-a94a-26ff0ff120d5",
+      "items": [],
+      "client": {
+        "_id": "73904197",
+        "name": "DENIS SANCHEZ",
+        "phone": "950462729"
+      },
+      "car": {
+        "brand": "TOYOTA",
+        "model": "COROLLA",
+        "plate": "XYZ-123",
+        "year": "2020"
+      },
+      "note": "SE INCLUIYE INSUMOS E INSTALACIÓN",
+      "type": "COBRADO",
+      "validUntil": "2023-12-19T01:22:58.051Z",
+      "createdAt": "2023-12-08T01:23:44.644Z"
+    },
+    {
+      "_id": "d69474de-e0b0-4825-95a4-95f36cdecf6f",
+      "items": [
+        {
+          "product": {
+            "_id": "M1000017212",
+            "category": "ACCESORIOS",
+            "cost": 660,
+            "name": "ANTIVUELCO CON DISEÑO OFF ROAD CROMADO (Por mayor)",
+            "price": 720,
+            "quantity": 14
+          },
+          "quantity": 1,
+          "discount": 0,
+          "increment": 0,
+          "subtotal": 720,
+          "subtotalDiscounted": 0
+        }
+      ],
+      "client": {
+        "_id": "73904197",
+        "name": "DENIS SANCHEZ",
+        "phone": ""
+      },
+      "car": {
+        "brand": "TOYOTA",
+        "model": "FORTUNER",
+        "plate": "XYZ-123",
+        "year": "2021"
+      },
+      "note": "SE INCLUIYE INSUMOS E INSTALACIÓN",
+      "type": "COTIZACION",
+      "createdAt": "2023-12-08T01:48:13.492Z"
+    },
+    {
+      "_id": "1f5c8781-f300-4e30-b910-034bcf46237e",
+      "items": [
+        {
+          "product": {
+            "_id": "M1000013603",
+            "category": "ACCESORIOS",
+            "cost": 560,
+            "name": "ANTIVUELCO HILUX CROMADO (Por mayor)",
+            "price": 690,
+            "quantity": 10
+          },
+          "quantity": 1,
+          "discount": 0,
+          "increment": 0,
+          "subtotal": 690,
+          "subtotalDiscounted": 0
+        }
+      ],
+      "client": {
+        "_id": "",
+        "name": "Desconocido",
+        "phone": ""
+      },
+      "car": {
+        "brand": "-",
+        "model": "-",
+        "plate": "",
+        "year": ""
+      },
+      "note": "SE INCLUIYE INSUMOS E INSTALACIÓN",
+      "type": "COBRADO",
+      "createdAt": "2023-12-08T01:50:12.427Z"
+    },
+    {
+      "_id": "9a648bb5-958c-460e-99b3-ea55ef7153d0",
+      "items": [
+        {
+          "product": {
+            "_id": "1000054364",
+            "category": "ACCESORIOS",
+            "cost": 15,
+            "name": "CABLE TIPO C",
+            "price": 25,
+            "quantity": 13
+          },
+          "quantity": 1,
+          "discount": 0,
+          "increment": 5,
+          "subtotal": 26.25,
+          "subtotalDiscounted": 0
+        }
+      ],
+      "client": {
+        "_id": "",
+        "name": "DENIS SANCHEZ",
+        "phone": ""
+      },
+      "car": {
+        "brand": "-",
+        "model": "-",
+        "plate": "",
+        "year": ""
+      },
+      "note": "SE INCLUIYE INSUMOS E INSTALACIÓN",
+      "type": "CREDITO",
+      "createdAt": "2023-12-08T01:52:27.651Z",
+      "seller": {
+        "_id": "3f6a6aa4-a538-482f-8308-85e6e97b76bd",
+        "name": "Denis Sanchez"
+      }
     }
   ],
   "products": [],

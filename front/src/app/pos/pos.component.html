@@ -1,26 +1,3 @@
-<swal
-    #lowStockAlert
-    title="Producto sin stock"
-    text="Desea agregar de todas maneras?"
-    icon="error"
-    cancelButtonText="Ignorar"
-    [showCancelButton]="true"
-    confirmButtonText="Agregar"
-    [focusCancel]="true">
-</swal>
-
-
-<swal
-    #exceededStockAlert
-    title="No hay más unidades"
-    text="Desea agregar de todas maneras?"
-    icon="warning"
-    cancelButtonText="Ignorar"
-    [showCancelButton]="true"
-    confirmButtonText="Continuar"
-    [focusCancel]="true">
-</swal>
-
 <div *ngIf="!isMobile" class="row d-none d-md-flex mx-3" style="height: calc(100vh - 120px); overflow: hidden;">
     <div class="col-12 col-md-9" style="overflow-x: hidden; height: 100%;">
         <app-summary (onRegisterSuccess)="products.refreshProducts()"></app-summary>

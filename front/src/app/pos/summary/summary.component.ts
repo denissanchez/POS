@@ -12,12 +12,9 @@ import NoSleep from 'nosleep.js';
     styleUrls: ['./summary.component.scss'],
 })
 export class SummaryComponent implements OnInit, AfterViewInit, OnDestroy {
-    // @ts-ignore
-    @ViewChild('searchCode', { static: false }) private searchCode: ElementRef;
+    @ViewChild('searchCode', { static: false }) private searchCode!: ElementRef;
 
     @Output() onRegisterSuccess: EventEmitter<void> = new EventEmitter<void>();
-
-    public type: TransactionType = "COBRADO";
 
     private _noSleep = new NoSleep();
     private socket!: Socket;
@@ -83,7 +80,7 @@ export class SummaryComponent implements OnInit, AfterViewInit, OnDestroy {
     }
 
     changeType(type: TransactionType) {
-        this.type = type;
+        this.posService.changeType(type);
     }
 
     onCancelTransaction() {

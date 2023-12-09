@@ -2,13 +2,13 @@
     <div class="card-header">
         <div class="row">
             <div class="col d-grid px-0">
-                <button type="button" class="btn btn-light text-light rounded-0 gap-2 rounded-start" [ngClass]="type === 'COBRADO'? 'bg-primary' : 'bg-secondary'" (click)="changeType('COBRADO')">VENTA</button>
+                <button type="button" class="btn btn-light text-light rounded-0 gap-2 rounded-start" [ngClass]="transaction.type === 'COBRADO'? 'bg-primary' : 'bg-secondary'" (click)="changeType('COBRADO')">VENTA</button>
             </div>
             <div class="col d-grid px-0">
-                <button type="button" class="btn btn-light text-light rounded-0 gap-2" [ngClass]="type === 'CREDITO'? 'bg-primary' : 'bg-secondary'" (click)="changeType('CREDITO')">VENTA CRÉDITO</button>
+                <button type="button" class="btn btn-light text-light rounded-0 gap-2" [ngClass]="transaction.type === 'CREDITO'? 'bg-primary' : 'bg-secondary'" (click)="changeType('CREDITO')">VENTA CRÉDITO</button>
             </div>
             <div class="col d-grid px-0">
-                <button type="button" class="btn btn-light text-light rounded-0 gap-2 rounded-end" [ngClass]="type === 'COTIZACION' ? 'bg-primary' : 'bg-secondary'" (click)="changeType('COTIZACION')">COTIZACIÓN</button>
+                <button type="button" class="btn btn-light text-light rounded-0 gap-2 rounded-end" [ngClass]="transaction.type === 'COTIZACION' ? 'bg-primary' : 'bg-secondary'" (click)="changeType('COTIZACION')">COTIZACIÓN</button>
             </div>
         </div>
     </div>
@@ -27,14 +27,14 @@
             <div class="col-5">Descripción</div>
             <div class="col-1">P.U.</div>
             <div class="col-2">Cant.</div>
-            <div class="col-2" *ngIf="type !== 'CREDITO'">Dscto.</div>
-            <div class="col-2" *ngIf="type === 'CREDITO'">Incr.</div>
+            <div class="col-2" *ngIf="transaction.type !== 'CREDITO'">Dscto.</div>
+            <div class="col-2" *ngIf="transaction.type === 'CREDITO'">Incr.</div>
             <div class="col-2">Total</div>
         </div>
 
         <div style="height: calc(100% - 240px); overflow-x: hidden; overflow-y: scroll;">
             <div *ngFor="let item of transaction.items; let i = index; trackBy: trackByProductId" class="my-2 mx-2">
-                <app-item [index]="i" [item]="item" [showDiscount]="type !== 'CREDITO'" [showIncrement]="type === 'CREDITO'" (onDelete)="onDelete(item.product._id)"></app-item>
+                <app-item [index]="i" [item]="item" [showDiscount]="transaction.type !== 'CREDITO'" [showIncrement]="transaction.type === 'CREDITO'" (onDelete)="onDelete(item.product._id)"></app-item>
             </div>
         </div>
 
@@ -48,7 +48,7 @@
                 <span>Total: S/ <strong>{{ transaction.total | number:'0.2-2' }}</strong></span>
             </div>
             <div class="col-3 d-grid gap-2">
-                <app-register [disabled]="transaction.total === 0" [type]="type" (onRegisterSuccess)="onRegisterSuccess.emit()"></app-register>
+                <app-register [disabled]="transaction.total === 0" [transaction]="transaction" (onRegisterSuccess)="onRegisterSuccess.emit()"></app-register>
             </div>
         </div>
     </div>

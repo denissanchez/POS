@@ -20,7 +20,6 @@ export class TransactionsComponent implements OnInit {
         { field: 'type', headerName: 'Tipo' },
         { field: 'note', headerName: 'Nota' },
         { field: 'total', headerName: 'Total', valueFormatter: (params) => `S/ ${params.value.toFixed(2)}` },
-        { field: 'validUntil', headerName: 'Válido hasta', valueFormatter: (params) => new Date(params.value).toLocaleDateString()},
         {
             field: 'detail',
             headerName: '',

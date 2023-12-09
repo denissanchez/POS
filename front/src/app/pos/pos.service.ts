@@ -1,27 +1,14 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Category, Client, Product } from "@app/shared/models";
-import { DraftTransaction, Item } from "@app/shared/models/transaction";
-import { SwalComponent } from "@sweetalert2/ngx-sweetalert2";
-import { BehaviorSubject, Observable, map, of } from "rxjs";
-import { SweetAlertResult } from "sweetalert2";
+import { DraftTransaction, Item, TransactionType } from "@app/shared/models/transaction";
+import { BehaviorSubject, Observable, map, tap } from "rxjs";
 
 @Injectable({
     providedIn: 'platform'
 })
 export class PosService {
     private _currentTransaction: BehaviorSubject<DraftTransaction>= new BehaviorSubject<DraftTransaction>(new DraftTransaction());
-
-    private _lowStockSwal: SwalComponent | undefined;
-    private _exceededStockSwal: SwalComponent | undefined;
-
-    public set lowStockSwal(swal: SwalComponent) {
-        this._lowStockSwal = swal;
-    }
-
-    public set exceededStockSwal(swal: SwalComponent) {
-        this._exceededStockSwal = swal;
-    }
 
     public get currentTransaction(): DraftTransaction {
         return this._currentTransaction.value;
@@ -59,50 +46,17 @@ export class PosService {
     }
 
     async addProduct(product: Product) {
-        if (product.quantity == 0) {
-            if (this._lowStockSwal) {
-                const result: SweetAlertResult = await this._lowStockSwal.fire();
-
-                if (!result.isConfirmed) {
-                    return;
-                }
-            } else {
-                const confirmed = confirm("Producto sin stock. Desea agregarlo?")
-
-                if (!confirmed) {
-                    return;
-                }
-            }
-        }
-
         const currentIndex = this._currentTransaction.value.items.findIndex(x => x.product._id === product._id);
 
         let items = this._currentTransaction.value.items;
 
         if (currentIndex >= 0) {
-            if (product.quantity < items[currentIndex].quantity + 1) {
-
-                if (this._exceededStockSwal) {
-                    const result: SweetAlertResult = await this._exceededStockSwal.fire();
-
-                    if (!result.isConfirmed) {
-                        return;
-                    }
-                } else { 
-                    const confirmed = confirm("No hay más unidades en stock. Desea agregar de todas maneras?")
-
-                    if (!confirmed) {
-                        return;
-                    }
-                }
-            }
-
             items[currentIndex].quantity = items[currentIndex].quantity + 1;
         } else {
             items = [...items, new Item(product.clone())]
         }
 
-        const transaction = new DraftTransaction(items);
+        const transaction = DraftTransaction.fromJson(<any>{...this._currentTransaction.value.json(), items: items.map(x => x.json())});
         this._currentTransaction.next(transaction);
     }
 
@@ -110,6 +64,11 @@ export class PosService {
         const items = this._currentTransaction.value.items.filter(x => x.product._id !== productId);
         const transaction = new DraftTransaction(items);
         this._currentTransaction.next(transaction);
+    }
+
+    changeType(type: TransactionType) {
+        const transaction = this._currentTransaction.value.json();
+        this._currentTransaction.next(DraftTransaction.fromJson(<any>{...transaction, type}));
     }
 
     restartCurrentTransaction() {

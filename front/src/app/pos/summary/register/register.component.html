@@ -21,7 +21,7 @@
     confirmButtonText="Remover">
 </swal>
 
-<ng-container [ngSwitch]="type">
+<ng-container [ngSwitch]="transaction.type">
     <button *ngSwitchCase="'COBRADO'" type="button" class="h-100 w-100 btn btn-success fs-5" (click)="register()" [disabled]="disabled">
         <i class="bi bi-check"></i> {{ confirmationLabel }}
     </button>
@@ -45,7 +45,7 @@
                 <div class="row">
                     <div class="col-12 mb-3">
                         <label for="clientName" class="form-label">Cliente:</label>
-                        <input type="text" class="form-control disabled" id="clientName" placeholder="" [(ngModel)]="currentTransaction.client.name">
+                        <input type="text" class="form-control disabled" id="clientName" placeholder="" [(ngModel)]="transaction.client.name">
                     </div>
                 </div>
             </div>
@@ -79,46 +79,46 @@
                 <div class="col-12 mt-2 mb-3">
                     <h5>Cliente</h5>
                     <label for="clientName" class="form-label mt-2">No. documento:</label>
-                    <input #clientDocument type="text" class="form-control" id="clientDocument" [(ngModel)]="currentTransaction.client._id" (ngModelChange)="searchClient($event)" placeholder="No identificado">
+                    <input #clientDocument type="text" class="form-control" id="clientDocument" [(ngModel)]="transaction.client._id" (ngModelChange)="searchClient($event)" placeholder="No identificado">
                 </div>
 
-                <div class="col-12 mb-3" [ngClass]="{'d-none': currentTransaction.client._id === ''}">
+                <div class="col-12 mb-3" [ngClass]="{'d-none': transaction.client._id === ''}">
                     <label for="clientName" class="form-label">Razón social:</label>
-                    <input type="text" class="form-control disabled" id="clientName" placeholder="" [(ngModel)]="currentTransaction.client.name">
+                    <input type="text" class="form-control disabled" id="clientName" placeholder="" [(ngModel)]="transaction.client.name">
                 </div>
 
-                <div class="col-12 mb-3" [ngClass]="{'d-none': currentTransaction.client._id === ''}">
+                <div class="col-12 mb-3" [ngClass]="{'d-none': transaction.client._id === ''}">
                     <label for="clientPhone" class="form-label">Telefono:</label>
-                    <input type="text" class="form-control disabled" id="clientPhone" placeholder="" [(ngModel)]="currentTransaction.client.phone">
+                    <input type="text" class="form-control disabled" id="clientPhone" placeholder="" [(ngModel)]="transaction.client.phone">
                 </div>
 
                 <div class="col-12">
-                    <hr>
                     <h5>Datos de vehículo</h5>
                 </div>
+                
                 <div class="col-8 mb-3">
                     <label for="carBrand" class="form-label">Marca:</label>
-                    <input type="text" class="form-control" id="carBrand" placeholder="">
+                    <input type="text" class="form-control" id="carBrand" [(ngModel)]="transaction.car.brand" placeholder="">
                 </div>
 
                 <div class="col-4 mb-3">
-                    <label for="carPlate" class="form-label">Placa:</label>
-                    <input type="text" class="form-control" id="carPlate" placeholder="">
+                    <label for="carPlate" class="form-label">Año:</label>
+                    <input type="text" class="form-control" id="carPlate" [(ngModel)]="transaction.car.year" placeholder="">
                 </div>
 
-                <div class="col-12 mb-3">
+                <div class="col-7 mb-3">
                     <label for="carModel" class="form-label">Modelo:</label>
-                    <input type="text" class="form-control" id="carModel" placeholder="">
+                    <input type="text" class="form-control" id="carModel" [(ngModel)]="transaction.car.model" placeholder="">
                 </div>
-                <div class="col-12">
-                    <hr>
-                    <h5>Valida hasta</h5>
 
-                    <input type="date" class="form-control mt-2" 
-                            id="validUntil"
-                            [ngModel]="currentTransaction.validUntil | date: 'yyyy-MM-dd'"
-                            (ngModelChange)="onChangeValidUntil($event)"
-                            placeholder="">
+                <div class="col-5 mb-3">
+                    <label for="carPlate" class="form-label">Placa:</label>
+                    <input type="text" class="form-control" id="carPlate" [(ngModel)]="transaction.car.plate" placeholder="">
+                </div>
+
+                <div class="col-12">
+                    <label for="carModel" class="form-label">Nota:</label>
+                    <textarea name="note" id="note" cols="30" rows="3" class="form-control" [(ngModel)]="transaction.note"></textarea>
                 </div>
 
             </div>

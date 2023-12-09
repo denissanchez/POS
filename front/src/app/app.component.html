@@ -7,7 +7,8 @@
 
     <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
       <li><a routerLink="/pos" routerLinkActive="link-primary" class="nav-link link-secondary px-2">Punto de venta</a></li>
-      <li><a routerLink="/transacciones" routerLinkActive="link-primary" class="nav-link link-secondary px-2">Transacciones</a></li>
+      <li><a *ngIf="canViewTransactions" routerLink="/transacciones" routerLinkActive="link-primary" class="nav-link link-secondary px-2">Transacciones</a></li>
+      <li><a *ngIf="canViewUsers" routerLink="/usuarios" routerLinkActive="link-primary" class="nav-link link-secondary px-2">Usuarios</a></li>
     </ul>
 
     <div class="col-md-3 text-end">
@@ -17,3 +18,6 @@
 
   <router-outlet></router-outlet>
 </div>
+
+
+<ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)" size = "large" color = "#468ac2" type = "ball-atom" [fullScreen] = "true"><p style="color: white" > Cargando... </p></ngx-spinner>

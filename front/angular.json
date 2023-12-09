@@ -32,7 +32,8 @@
             "styles": [
               "src/styles.scss",
               "./node_modules/@sweetalert2/theme-bootstrap-4/bootstrap-4.min.css",
-              "./node_modules/bootstrap-icons/font/bootstrap-icons.min.css"
+              "./node_modules/bootstrap-icons/font/bootstrap-icons.min.css",
+              "./node_modules/ngx-spinner/animations/ball-atom.css"
             ],
             "scripts": [
               "./node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"

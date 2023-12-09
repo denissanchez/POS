@@ -1,7 +1,6 @@
+import { Car } from "./car";
 import { Client } from "./client";
 import { Product } from "./product";
-import { Car } from "./car";
-import { addBusinessDays } from "date-fns";
 
 
 function round(result: number) {
@@ -104,9 +103,8 @@ export class DraftTransaction {
         public items: Item[] = [],
         public client: Client = new Client(),
         public car: Car = new Car(),
-        public note: string = "",
+        public note: string = "SE INCLUIYE INSUMOS E INSTALACIÓN",
         public type: TransactionType = "COBRADO",
-        public validUntil: Date = addBusinessDays(new Date(), 7),
     ) { }
 
     public getUnsatisfiedProducts(): string[] {
@@ -133,9 +131,22 @@ export class DraftTransaction {
             client: this.client.json(),
             car: this.car.json(),
             note: this.note,
-            type: this.type,
-            validUntil: this.validUntil.toISOString()
+            type: this.type
         }
+    }
+
+    public static fromJson(data: Record<string, string | number | Record<string, string | number>>) {
+        const { items: _items, client: _client, car: _car } = data;
+
+        const items = (<any>_items).map((x: any) => {
+            const { product, quantity, discount } = x;
+            return new Item(Product.fromJson(product), quantity, discount);
+        });
+
+        const client = Client.fromJson(<any>_client);
+        const car = Car.fromJson(<any>_car);
+
+        return new DraftTransaction(items, client, car, <string>data['note'], <TransactionType>data['type'])
     }
 }
 
@@ -160,8 +171,7 @@ export class Transaction {
         public car: Car,
         public note: string,
         public type: TransactionType,
-        public validUntil: Date,
-        public createdAt: Date
+        public createdAt: Date,
     ) {
     }
     
@@ -177,7 +187,7 @@ export class Transaction {
         const client = Client.fromJson(<any>_client);
         const car = Car.fromJson(<any>_car);
 
-        return new Transaction(<string>data['_id'], items, client, car, <string>data['note'], <TransactionType>data['type'], new Date(<string>data['validUntil']), new Date(<string>data['createdAt']))
+        return new Transaction(<string>data['_id'], items, client, car, <string>data['note'], <TransactionType>data['type'], new Date(<string>data['createdAt']))
     }
 
     static fromList(transactions: Array<any>): Transaction[] {
