@@ -4,6 +4,7 @@ import { ColDef } from "ag-grid-community";
 import { Observable, of } from "rxjs";
 import { UsersService } from "./users.service";
 import { AuthService } from "@app/auth.service";
+import { BtnUserDetailRenderer } from "./renderers/user-detail.renderer";
 
 
 @Component({
@@ -17,6 +18,12 @@ export class UsersComponent implements OnInit {
     public columnDefs: ColDef[] = [
         { field: 'username', headerName: 'Nombre de usuario' },
         { field: 'name', headerName: 'Nombres y apellidos' },
+        {
+            field: 'detail',
+            headerName: '',
+            cellRenderer: BtnUserDetailRenderer,
+            valueGetter: (params) => params.data,
+        }
     ];
     public users$: Observable<User[]> = of([]);
 

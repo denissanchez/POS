@@ -17,6 +17,12 @@ export class UsersService {
         );
     }
 
+    public getById(_id: string): Observable<User> {
+        return this.http.get(`/api/v1/users/${_id}`).pipe(
+            map((res: any) => User.fromJSON(res))
+        );
+    }
+
     public registerUser(user: User) {
         return this.http.post('/api/v1/users', user.json());
     }

@@ -6,9 +6,11 @@ import { UsersRoutingModule } from "./users-routing.module";
 import { UsersComponent } from "./users.component";
 import { UsersService } from "./users.service";
 import { AgGridModule } from "ag-grid-angular";
+import { BtnUserDetailRenderer } from "./renderers/user-detail.renderer";
+import { DetailComponent } from "./detail/detail.component";
 
 @NgModule({
-    declarations: [UsersComponent, RegisterComponent],
+    declarations: [UsersComponent, RegisterComponent, BtnUserDetailRenderer, DetailComponent],
     imports: [SharedModule, UsersRoutingModule, AgGridModule, ReactiveFormsModule],
     exports: [],
     providers: [UsersService],

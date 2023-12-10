@@ -66,7 +66,7 @@ export class RegisterComponent implements AfterViewInit {
     return (group: AbstractControl): ValidationErrors | null => {
       let password = group.get('password')?.value;
       let confirmPassword = group.get('confirmPassword')?.value;
-      return password === confirmPassword ? null : { notSame: true }  
+      return password === confirmPassword ? null : { notSame: true }
     }
   }
 
@@ -80,7 +80,7 @@ export class RegisterComponent implements AfterViewInit {
   onSubmit() {
     const selectedPermissions = this.userForm.value.permissions
       .map((checked: boolean, i: number) => checked ? this.availablePermissions[i] : null)
-      .filter((v: string) => v !== null);    
+      .filter((v: string) => v !== null);
 
     const { name, username, password } = this.userForm.value;
 
@@ -95,7 +95,7 @@ export class RegisterComponent implements AfterViewInit {
       },
       error: (err) => {
         this.errorRegistrationAlertRef.fire();
-        
+
         if (err.status === 400) {
           this.userForm.setErrors(err.error.errors);
         }
