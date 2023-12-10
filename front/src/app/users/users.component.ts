@@ -5,6 +5,7 @@ import { Observable, of } from "rxjs";
 import { UsersService } from "./users.service";
 import { AuthService } from "@app/auth.service";
 import { BtnUserDetailRenderer } from "./renderers/user-detail.renderer";
+import { BtnUserRemoveRenderer } from "./renderers/user-remove.renderer";
 
 
 @Component({
@@ -22,6 +23,12 @@ export class UsersComponent implements OnInit {
             field: 'detail',
             headerName: '',
             cellRenderer: BtnUserDetailRenderer,
+            valueGetter: (params) => params.data,
+        },
+        {
+            field: 'remove',
+            headerName: '',
+            cellRenderer: BtnUserRemoveRenderer,
             valueGetter: (params) => params.data,
         }
     ];

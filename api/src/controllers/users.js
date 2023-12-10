@@ -43,6 +43,11 @@ router.get('/:id', isAuthorized(CAN_VIEW_USERS), runAsyncWrapper(async (req, res
 
 router.delete('/:id', isAuthorized(CAN_REMOVE_USERS), runAsyncWrapper(async (req, res) => {
   const { id } = req.params;
+
+  if (req.user._id === id) {
+    res.status(400).json({ errors: { id: 'You cannot remove yourself' } });
+    return;
+  }
   
   remove(id);
   

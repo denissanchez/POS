@@ -26,4 +26,8 @@ export class UsersService {
     public registerUser(user: User) {
         return this.http.post('/api/v1/users', user.json());
     }
+
+    public remove(_id: string) {
+        return this.http.delete(`/api/v1/users/${_id}`);
+    }
 }

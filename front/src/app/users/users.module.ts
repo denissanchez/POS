@@ -8,9 +8,10 @@ import { UsersService } from "./users.service";
 import { AgGridModule } from "ag-grid-angular";
 import { BtnUserDetailRenderer } from "./renderers/user-detail.renderer";
 import { DetailComponent } from "./detail/detail.component";
+import { BtnUserRemoveRenderer } from "./renderers/user-remove.renderer";
 
 @NgModule({
-    declarations: [UsersComponent, RegisterComponent, BtnUserDetailRenderer, DetailComponent],
+    declarations: [UsersComponent, RegisterComponent, BtnUserDetailRenderer, DetailComponent, BtnUserRemoveRenderer],
     imports: [SharedModule, UsersRoutingModule, AgGridModule, ReactiveFormsModule],
     exports: [],
     providers: [UsersService],

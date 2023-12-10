@@ -1,10 +1,10 @@
 {
   "users": [
     {
-      "_id": "3f6a6aa4-a538-482f-8308-85e6e97b76bd",
+      "_id": "9ca639a0-0e1c-4111-b3f9-d20ccddb272f",
       "name": "Denis Sanchez",
-      "username": "admin",
-      "password": "$2b$10$BfzFC1eRoZHHn1yja0Jr4uYyrNcSpdmp/lfYq.I.0Oh9fTGKFUW6.",
+      "username": "desanchezca",
+      "password": "$2b$10$qyVRxowsWqgNa.pUn6ccquov0DzD6bMNAbh.InU3VZtprJ0BUXiKm",
       "permissions": [
         "CAN_CREATE_USERS",
         "CAN_REMOVE_USERS",
@@ -12,32 +12,6 @@
         "CAN_VIEW_TRANSACTIONS",
         "CAN_VIEW_METRICS"
       ]
-    },
-    {
-      "_id": "0a61e8f4-9235-4ea3-b7c1-3e151a626b1f",
-      "name": "Wagner",
-      "username": "wagner",
-      "password": "$2b$10$Nv0cKAPRoOwetUi/67x67uKNmgP2p/HwgDWGKeu8xRTSQMMEmI56W",
-      "permissions": [
-        "CAN_VIEW_TRANSACTIONS"
-      ]
-    },
-    {
-      "_id": "9ca639a0-0e1c-4111-b3f9-d20ccddb272f",
-      "name": "Denis Sanchez",
-      "username": "desanchezca",
-      "password": "$2b$10$qyVRxowsWqgNa.pUn6ccquov0DzD6bMNAbh.InU3VZtprJ0BUXiKm",
-      "permissions": [
-        "CAN_VIEW_USERS",
-        "CAN_CREATE_USERS"
-      ]
-    },
-    {
-      "_id": "b058f57a-e082-4a20-9059-104ab7a17078",
-      "name": "Yan Minchan",
-      "username": "yanminchan",
-      "password": "$2b$10$li6s6eOQbBgd.tD7W8iX9O.yQRS3zJGJHDdpAVZWNtGQ64bzQ8aw6",
-      "permissions": []
     }
   ],
   "transactions": [
