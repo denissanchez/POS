@@ -36,5 +36,8 @@ export class User {
   public static fromJSON(json: any): User {
     return new User(json._id, json.name, json.username, json.permissions);
   }
-}
 
+  public static fromList(list: any[]): User[] {
+    return list.map(User.fromJSON);
+  }
+}

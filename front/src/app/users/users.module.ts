@@ -5,10 +5,11 @@ import { RegisterComponent } from "./register/register.component";
 import { UsersRoutingModule } from "./users-routing.module";
 import { UsersComponent } from "./users.component";
 import { UsersService } from "./users.service";
+import { AgGridModule } from "ag-grid-angular";
 
 @NgModule({
     declarations: [UsersComponent, RegisterComponent],
-    imports: [SharedModule, UsersRoutingModule, ReactiveFormsModule],
+    imports: [SharedModule, UsersRoutingModule, AgGridModule, ReactiveFormsModule],
     exports: [],
     providers: [UsersService],
 })
