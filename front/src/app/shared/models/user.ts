@@ -23,6 +23,16 @@ export class User {
     this.password = password;
   }
 
+  public json() {
+    return {
+      _id: this._id,
+      name: this.name,
+      username: this.username,
+      permissions: this.permissions,
+      password: this.password
+    }
+  }
+
   public static fromJSON(json: any): User {
     return new User(json._id, json.name, json.username, json.permissions);
   }

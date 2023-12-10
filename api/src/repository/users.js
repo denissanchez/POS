@@ -16,12 +16,22 @@ export function getById(_id) {
 
 export function create(user) {
     const db = getConnection();
+
+    const exists = db.data.users.find(x => x.username === user.username);
+
+    if (exists) {
+        return [{
+            "usernameAlreadyExists": true
+        }, null]
+    }
     
     const hashedPassword = bcrypt.hashSync(user.password, 10);
     user.password = hashedPassword;
 
     db.data.users.push({ _id: v4(), ...user});
     db.write();
+
+    return [null, user];
 }
 
 

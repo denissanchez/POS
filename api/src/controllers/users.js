@@ -16,8 +16,13 @@ router.get('/', isAuthorized(CAN_VIEW_USERS), runAsyncWrapper((req, res) => {
 
 router.post('/', isAuthorized(CAN_CREATE_USERS), runAsyncWrapper(async (req, res) => {
   const { name, username, password, permissions } = req.body;
-  
-  create({ name, username, password, permissions });
+
+  const [errors, ] = create({ name, username, password, permissions });
+
+  if (errors) {
+    res.status(400).json({ errors });
+    return;
+  }
   
   res.status(201).end();
 }));

@@ -1,3 +1,20 @@
+<swal
+    #succcessRegistrationAlert
+    title="Completado"
+    text="Se registró el usuario exitosamente."
+    icon="success"
+    confirmButtonText="Aceptar"
+    [showCancelButton]="false">
+</swal>
+
+<swal
+    #errorRegistrationAlert
+    title="Algo salió mal"
+    text="Ocurrió un error al registrar el usuario."
+    icon="error"
+    confirmButtonText="Aceptar"
+    [showCancelButton]="false">
+</swal>
 
 <div [formGroup]="userForm" class="modal fade" #form tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-lg">
@@ -13,12 +30,16 @@
 
                             <div class="col-12 mb-3">
                                 <label for="username" class="form-label">Usuario</label>
-                                <input type="text" class="form-control" [class.is-valid]="username.valid && username.touched" [class.is-invalid]="username.invalid && username.touched" id="username" formControlName="username">
+                                <input type="text" class="form-control" [class.is-valid]="username.valid && username.touched" [class.is-invalid]="(username.invalid && username.touched) || userForm.errors?.['usernameAlreadyExists']" id="username" formControlName="username">
                                 <ng-container *ngIf="username.invalid && username.touched">
                                     <div *ngIf="username.errors?.['required']" class="invalid-feedback">
                                         Nombre de usuario requerido.
                                     </div>
                                 </ng-container>
+
+                                <div *ngIf="userForm.errors?.['usernameAlreadyExists']" class="invalid-feedback d-block">
+                                    El nombre de usuario ya existe.
+                                </div>
                             </div>
 
                             <div class="col-12 mb-3">

@@ -1,6 +1,9 @@
 import { AfterViewInit, Component, ElementRef, ViewChild } from "@angular/core";
-import { AbstractControl, FormArray, FormBuilder, FormControl, FormGroup, ValidationErrors, Validator, ValidatorFn, Validators } from "@angular/forms";
-import { PERMISSION, PERMISSIONS } from "@app/shared/models/user";
+import { AbstractControl, FormArray, FormControl, FormGroup, ValidationErrors, ValidatorFn, Validators } from "@angular/forms";
+import { PERMISSION, PERMISSIONS, User } from "@app/shared/models/user";
+import { UsersService } from "../users.service";
+import { SwalComponent } from "@sweetalert2/ngx-sweetalert2";
+import { Router } from "@angular/router";
 
 
 declare const bootstrap: any;
@@ -13,6 +16,8 @@ declare const bootstrap: any;
 export class RegisterComponent implements AfterViewInit {
   private modal: any;
   @ViewChild('form', { static: false }) formRef!: ElementRef<HTMLDivElement>;
+  @ViewChild('succcessRegistrationAlert', { static: false }) successRegistrationAlertRef!: SwalComponent;
+  @ViewChild('errorRegistrationAlert', { static: false }) errorRegistrationAlertRef!: SwalComponent;
 
   public availablePermissions: PERMISSION[] = [...PERMISSIONS];
   public userForm: FormGroup;
@@ -37,7 +42,7 @@ export class RegisterComponent implements AfterViewInit {
     return this.userForm.get('permissions') as FormArray;
   }
 
-  constructor(private fb: FormBuilder) {
+  constructor(private usersService: UsersService, private router: Router) {
     this.userForm = new FormGroup({
       name: new FormControl('', [Validators.required]),
       username: new FormControl('', [Validators.required]),
@@ -67,9 +72,9 @@ export class RegisterComponent implements AfterViewInit {
 
   buildPermissionsArray() {
     const arr = this.availablePermissions.map(_ => {
-      return this.fb.control(false);
+      return new FormControl(false);
     });
-    return this.fb.array(arr);
+    return new FormArray(arr);
   }
 
   onSubmit() {
@@ -79,17 +84,27 @@ export class RegisterComponent implements AfterViewInit {
 
     const { name, username, password } = this.userForm.value;
 
-    const user = {
-      name: name.trim(),
-      username: username.trim(),
-      password,
-      permissions: selectedPermissions
-    };
+    const user = new User(undefined, name, username, selectedPermissions);
+    user.setPassword(password);
 
-    console.log(user);
+    this.usersService.registerUser(user).subscribe({
+      next: () => {
+        this.successRegistrationAlertRef.fire().then(() => {
+          this.onClose();
+        });
+      },
+      error: (err) => {
+        this.errorRegistrationAlertRef.fire();
+        
+        if (err.status === 400) {
+          this.userForm.setErrors(err.error.errors);
+        }
+      }
+    });
   }
 
   onClose() {
     this.modal.hide();
+    this.router.navigate(['/usuarios']);
   }
 }
