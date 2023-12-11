@@ -22,8 +22,10 @@ export async function createTransaction(payload) {
     const adapter = getAdapter();
     const db = getConnection();
 
+    const _id = v4();
+
     db.data.transactions.push({
-        _id: v4(),
+        _id,
         ...payload
     });
 
@@ -34,11 +36,13 @@ export async function createTransaction(payload) {
     }
 
     if (payload.type == "COTIZACION") {
-        return;
+        return { _id };
     }
 
     await adapter.updateStock(payload.items);
     await adapter.registerTransaction(payload.type, payload.items, payload.client.name);
+
+    return { _id };
 }
 
 

@@ -39,17 +39,17 @@ router.post(
     const { name, _id } = req.user;
 
     try {
-      await createTransaction({
+      const transaction = await createTransaction({
         ...req.body,
         createdAt: new Date().toISOString(),
         seller: { _id, name},
       });
+
+      res.status(201).json(transaction);
     } catch (e) {
       console.log(e);
       res.status(500).send(e);
     }
-
-    res.status(201).end();
   })
 );
 
@@ -156,7 +156,7 @@ router.get(
     doc.fontSize(11).text(`AÑO:`, 50, 300);
 
     doc.font('Helvetica')
-    doc.fontSize(11).text(`${transaction.car.year || '-'} ${transaction.car.model}`, 150, 300);
+    doc.fontSize(11).text(`${transaction.car.year || '-'}`, 150, 300);
 
     doc.font('Helvetica-Bold')
     doc.fontSize(11).text(`PLACA:`, 50, 315);

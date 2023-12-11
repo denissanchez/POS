@@ -78,7 +78,10 @@ export class Item {
 
     json() {
         return {
-            product: this.product.json(),
+            product: {
+                ...this.product.json(),
+                price: this.unitPrice
+            },
             quantity: this.quantity,
             discount: this.discount,
             increment: this.increment,
@@ -153,7 +156,7 @@ export class DraftTransaction {
 
 export class Transaction {
     public get total() {
-        return this.items.reduce((acc, curr) => curr.subtotal + acc, 0)
+        return this.items.reduce((acc, curr) => (curr.product.price * curr.quantity) + acc, 0)
     }
 
     public get isPrintable(): boolean {

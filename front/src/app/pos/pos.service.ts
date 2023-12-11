@@ -75,8 +75,8 @@ export class PosService {
         this._currentTransaction.next(new DraftTransaction());
     }
 
-    register(transaction: DraftTransaction) {
-        return this.http.post<void>(`/api/v1/transactions`, transaction.json());
+    register(transaction: DraftTransaction): Observable<{ _id: string }> {
+        return this.http.post<{ _id: string }>(`/api/v1/transactions`, transaction.json());
     }
 
     getAllClients(): Observable<Client[]> {

@@ -80,13 +80,18 @@ export class RegisterComponent implements OnInit, AfterViewInit, OnDestroy {
 
     register(): void {
         this.posService.register(this.transaction).pipe(tap(() => setTimeout(() => this.onRegisterSuccess.emit(), 1_500))).subscribe({
-            next: () => {
+            next: (response: { _id: string }) => {
                 this.successRegistrationAlert.fire()
+                    .then(() => {
+                        if (this.transaction.type === 'COTIZACION') {
+                            window.open(`/api/v1/transactions/print/${response._id}`, '_blank');
+                        }
+                    })
                     .then(() => this.posService.restartCurrentTransaction())
             },
             complete: () => {
                 this.closeModal();
-                this.clients$ = this.posService.getAllClients();
+                this.clients$ = this.posService.getAllClients(); 
             }
         })
     }

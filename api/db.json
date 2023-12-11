@@ -1660,6 +1660,386 @@
         "_id": "d309c086-884f-4d02-b7c6-0a531800d23f",
         "name": "Denis Sanchez"
       }
+    },
+    {
+      "_id": "ee95e93c-7b43-496a-8ad6-a3d399a093d0",
+      "items": [
+        {
+          "product": {
+            "_id": "1000082757",
+            "category": "ACCESORIOS",
+            "cost": 69,
+            "name": "BARRAS TRANSVERSALES CON ANCLAJE",
+            "price": 150,
+            "quantity": 1
+          },
+          "quantity": 1,
+          "discount": 0,
+          "increment": 0,
+          "subtotal": 150,
+          "subtotalDiscounted": 0
+        }
+      ],
+      "client": {
+        "_id": "20100047218",
+        "name": "Banco de Credito del Peru",
+        "phone": ""
+      },
+      "car": {
+        "brand": "TOYOTA",
+        "model": "HILUX",
+        "plate": "YUX-239",
+        "year": "2020"
+      },
+      "note": "SE INCLUIYE INSUMOS E INSTALACIÓN",
+      "type": "COTIZACION",
+      "createdAt": "2023-12-11T03:12:41.158Z",
+      "seller": {
+        "_id": "d309c086-884f-4d02-b7c6-0a531800d23f",
+        "name": "Denis Sanchez"
+      }
+    },
+    {
+      "_id": "b137e3ef-537b-412e-8944-dc700600e178",
+      "items": [
+        {
+          "product": {
+            "_id": "M1000017212",
+            "category": "ACCESORIOS",
+            "cost": 660,
+            "name": "ANTIVUELCO CON DISEÑO OFF ROAD CROMADO (Por mayor)",
+            "price": 720,
+            "quantity": 14
+          },
+          "quantity": 1,
+          "discount": 0,
+          "increment": 0,
+          "subtotal": 720,
+          "subtotalDiscounted": 0
+        }
+      ],
+      "client": {
+        "_id": "20100047218",
+        "name": "Banco de Credito del Peru",
+        "phone": ""
+      },
+      "car": {
+        "brand": "TOYOTA",
+        "model": "RAV4",
+        "plate": "HG3-X31",
+        "year": "2018"
+      },
+      "note": "SE INCLUIYE INSUMOS E INSTALACIÓN",
+      "type": "COTIZACION",
+      "createdAt": "2023-12-11T03:13:45.272Z",
+      "seller": {
+        "_id": "d309c086-884f-4d02-b7c6-0a531800d23f",
+        "name": "Denis Sanchez"
+      }
+    },
+    {
+      "_id": "687ed710-644a-48ba-be93-345312082caa",
+      "items": [
+        {
+          "product": {
+            "_id": "M4902505343544",
+            "category": "ACCESORIOS",
+            "cost": 650,
+            "name": "ANTIVUELCO DE TOLVA TRD NEGRO MATE LONG (Por mayor)",
+            "price": 730,
+            "quantity": 15
+          },
+          "quantity": 1,
+          "discount": 0,
+          "increment": 0,
+          "subtotal": 730,
+          "subtotalDiscounted": 0
+        }
+      ],
+      "client": {
+        "_id": "73904197",
+        "name": "DENIS SANCHEZ",
+        "phone": ""
+      },
+      "car": {
+        "brand": "TOYOTA",
+        "model": "RUSH",
+        "plate": "HX7-623",
+        "year": "2012"
+      },
+      "note": "SE INCLUIYE INSUMOS E INSTALACIÓN",
+      "type": "COTIZACION",
+      "createdAt": "2023-12-11T03:15:01.223Z",
+      "seller": {
+        "_id": "d309c086-884f-4d02-b7c6-0a531800d23f",
+        "name": "Denis Sanchez"
+      }
+    },
+    {
+      "_id": "150715cb-98ed-4252-b470-3a947a6cc357",
+      "items": [
+        {
+          "product": {
+            "_id": "M1000017212",
+            "category": "ACCESORIOS",
+            "cost": 660,
+            "name": "ANTIVUELCO CON DISEÑO OFF ROAD CROMADO (Por mayor)",
+            "price": 684,
+            "quantity": 14
+          },
+          "quantity": 1,
+          "discount": 5,
+          "increment": 0,
+          "subtotal": 684,
+          "subtotalDiscounted": 36
+        }
+      ],
+      "client": {
+        "_id": "",
+        "name": "Desconocido",
+        "phone": ""
+      },
+      "car": {
+        "brand": "-",
+        "model": "-",
+        "plate": "",
+        "year": ""
+      },
+      "note": "SE INCLUIYE INSUMOS E INSTALACIÓN",
+      "type": "COBRADO",
+      "createdAt": "2023-12-11T03:20:41.584Z",
+      "seller": {
+        "_id": "d309c086-884f-4d02-b7c6-0a531800d23f",
+        "name": "Denis Sanchez"
+      }
+    },
+    {
+      "_id": "1f773cbb-3259-489e-924f-71dc7c142c59",
+      "items": [
+        {
+          "product": {
+            "_id": "1000008141",
+            "category": "ACCESORIOS",
+            "cost": 35,
+            "name": "PISOS DE JEBE NEGRO",
+            "price": 75,
+            "quantity": 6
+          },
+          "quantity": 1,
+          "discount": 0,
+          "increment": 0,
+          "subtotal": 75,
+          "subtotalDiscounted": 0
+        }
+      ],
+      "client": {
+        "_id": "",
+        "name": "Desconocido",
+        "phone": ""
+      },
+      "car": {
+        "brand": "-",
+        "model": "-",
+        "plate": "",
+        "year": ""
+      },
+      "note": "SE INCLUIYE INSUMOS E INSTALACIÓN",
+      "type": "COBRADO",
+      "createdAt": "2023-12-11T03:25:37.825Z",
+      "seller": {
+        "_id": "d309c086-884f-4d02-b7c6-0a531800d23f",
+        "name": "Denis Sanchez"
+      }
+    },
+    {
+      "_id": "e0fbf262-e665-4e05-ae5b-7028e660f875",
+      "items": [
+        {
+          "product": {
+            "_id": "M1000026232",
+            "category": "AUTORADIO",
+            "cost": 400,
+            "name": "9\" ANDROID DE (2+32)  APPLE CAR + QLED (Por mayor)",
+            "price": 520,
+            "quantity": 7
+          },
+          "quantity": 1,
+          "discount": 0,
+          "increment": 0,
+          "subtotal": 520,
+          "subtotalDiscounted": 0
+        }
+      ],
+      "client": {
+        "_id": "",
+        "name": "Desconocido",
+        "phone": ""
+      },
+      "car": {
+        "brand": "-",
+        "model": "-",
+        "plate": "",
+        "year": ""
+      },
+      "note": "SE INCLUIYE INSUMOS E INSTALACIÓN",
+      "type": "COBRADO",
+      "createdAt": "2023-12-11T03:25:57.839Z",
+      "seller": {
+        "_id": "d309c086-884f-4d02-b7c6-0a531800d23f",
+        "name": "Denis Sanchez"
+      }
+    },
+    {
+      "_id": "49084801-624c-4c6e-a198-3af990c7486b",
+      "items": [
+        {
+          "product": {
+            "_id": "1000048840",
+            "category": "CONECTORES",
+            "cost": 18,
+            "name": "TOYOTA CON ANT",
+            "price": 42.5,
+            "quantity": 9
+          },
+          "quantity": 1,
+          "discount": 15,
+          "increment": 0,
+          "subtotal": 42.5,
+          "subtotalDiscounted": 7.5
+        }
+      ],
+      "client": {
+        "_id": "",
+        "name": "Desconocido",
+        "phone": ""
+      },
+      "car": {
+        "brand": "-",
+        "model": "-",
+        "plate": "",
+        "year": ""
+      },
+      "note": "SE INCLUIYE INSUMOS E INSTALACIÓN",
+      "type": "COBRADO",
+      "createdAt": "2023-12-11T03:26:27.164Z",
+      "seller": {
+        "_id": "d309c086-884f-4d02-b7c6-0a531800d23f",
+        "name": "Denis Sanchez"
+      }
+    },
+    {
+      "_id": "4f1686c1-0982-47ad-803d-6293e9e5aeb1",
+      "items": [
+        {
+          "product": {
+            "_id": "M1000059332",
+            "category": "CONECTORES",
+            "cost": 22,
+            "name": "KIA/HYUNDAI 2017 A MAS (Por mayor)",
+            "price": 44,
+            "quantity": 5
+          },
+          "quantity": 1,
+          "discount": 0,
+          "increment": 10,
+          "subtotal": 44,
+          "subtotalDiscounted": 0
+        }
+      ],
+      "client": {
+        "_id": "",
+        "name": "Edison",
+        "phone": ""
+      },
+      "car": {
+        "brand": "-",
+        "model": "-",
+        "plate": "",
+        "year": ""
+      },
+      "note": "SE INCLUIYE INSUMOS E INSTALACIÓN",
+      "type": "CREDITO",
+      "createdAt": "2023-12-11T03:28:34.692Z",
+      "seller": {
+        "_id": "d309c086-884f-4d02-b7c6-0a531800d23f",
+        "name": "Denis Sanchez"
+      }
+    },
+    {
+      "_id": "4b76091c-17c1-4789-bd38-08f515853f69",
+      "items": [
+        {
+          "product": {
+            "_id": "097855161789",
+            "category": "ACCESORIOS",
+            "cost": 780,
+            "name": "ESPACIADORES DE RUEDA",
+            "price": 950.6,
+            "quantity": 74
+          },
+          "quantity": 1,
+          "discount": 3,
+          "increment": 0,
+          "subtotal": 950.6,
+          "subtotalDiscounted": 29.4
+        }
+      ],
+      "client": {
+        "_id": "20100047218",
+        "name": "Banco de Credito del Peru",
+        "phone": ""
+      },
+      "car": {
+        "brand": "KIA",
+        "model": "RIO",
+        "plate": "XU9-239",
+        "year": "2018"
+      },
+      "note": "SE INCLUIYE INSUMOS E INSTALACIÓN",
+      "type": "COTIZACION",
+      "createdAt": "2023-12-11T03:31:05.041Z",
+      "seller": {
+        "_id": "d309c086-884f-4d02-b7c6-0a531800d23f",
+        "name": "Denis Sanchez"
+      }
+    },
+    {
+      "_id": "8a2aebe3-10e7-423f-b0e5-bee67351df55",
+      "items": [
+        {
+          "product": {
+            "_id": "M1000066016",
+            "category": "ACCESORIOS",
+            "cost": 680,
+            "name": "ANTIVUELCO CON LUCES DE RETROCESO Y DISEÑO (Por mayor)",
+            "price": 780,
+            "quantity": 12
+          },
+          "quantity": 1,
+          "discount": 0,
+          "increment": 0,
+          "subtotal": 780,
+          "subtotalDiscounted": 0
+        }
+      ],
+      "client": {
+        "_id": "20100047218",
+        "name": "Banco de Credito del Peru",
+        "phone": ""
+      },
+      "car": {
+        "brand": "thghg",
+        "model": "uyjhjj",
+        "plate": "jhv567",
+        "year": "6767"
+      },
+      "note": "SE INCLUIYE INSUMOS E INSTALACIÓN",
+      "type": "COTIZACION",
+      "createdAt": "2023-12-11T03:33:13.422Z",
+      "seller": {
+        "_id": "d309c086-884f-4d02-b7c6-0a531800d23f",
+        "name": "Denis Sanchez"
+      }
     }
   ],
   "products": [],
