@@ -30,4 +30,8 @@ export class UsersService {
     public remove(_id: string) {
         return this.http.delete(`/api/v1/users/${_id}`);
     }
+
+    public update(user: User) {
+        return this.http.put(`/api/v1/users/${user._id}`, user.json());
+    }
 }

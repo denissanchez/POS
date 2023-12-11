@@ -1,14 +1,27 @@
 {
   "users": [
     {
+      "_id": "d309c086-884f-4d02-b7c6-0a531800d23f",
+      "name": "Denis Sanchez",
+      "username": "admin",
+      "password": "$2b$10$XRxVS9nRNJUm6CsKBAplyOs8Ucq.fXJh5TftuvzAxVOq6Oj8.qUVm",
+      "permissions": [
+        "CAN_VIEW_USERS",
+        "CAN_CREATE_USERS",
+        "CAN_REMOVE_USERS",
+        "CAN_VIEW_TRANSACTIONS",
+        "CAN_VIEW_METRICS"
+      ]
+    },
+    {
       "_id": "9ca639a0-0e1c-4111-b3f9-d20ccddb272f",
       "name": "Denis Sanchez",
       "username": "desanchezca",
-      "password": "$2b$10$qyVRxowsWqgNa.pUn6ccquov0DzD6bMNAbh.InU3VZtprJ0BUXiKm",
+      "password": "$2b$10$BTfe3cQbMhvPai1nK4/hmuUz.JB0EEEDyie.X3lId36B7PLo0Dl8G",
       "permissions": [
+        "CAN_VIEW_USERS",
         "CAN_CREATE_USERS",
         "CAN_REMOVE_USERS",
-        "CAN_VIEW_USERS",
         "CAN_VIEW_TRANSACTIONS",
         "CAN_VIEW_METRICS"
       ]
@@ -1495,6 +1508,158 @@
         "_id": "3f6a6aa4-a538-482f-8308-85e6e97b76bd",
         "name": "Denis Sanchez"
       }
+    },
+    {
+      "_id": "56fea2c5-e850-4c7e-952e-91186324e07f",
+      "items": [
+        {
+          "product": {
+            "_id": "M1000010532",
+            "category": "ACCESORIOS",
+            "cost": 25,
+            "name": "ANTENAS ALETA DE TIBURON (Por mayor)",
+            "price": 32,
+            "quantity": 4
+          },
+          "quantity": 1,
+          "discount": 0,
+          "increment": 0,
+          "subtotal": 32,
+          "subtotalDiscounted": 0
+        }
+      ],
+      "client": {
+        "_id": "",
+        "name": "Desconocido",
+        "phone": ""
+      },
+      "car": {
+        "brand": "-",
+        "model": "-",
+        "plate": "",
+        "year": ""
+      },
+      "note": "SE INCLUIYE INSUMOS E INSTALACIÓN",
+      "type": "COBRADO",
+      "createdAt": "2023-12-11T02:45:16.858Z",
+      "seller": {
+        "_id": "9ca639a0-0e1c-4111-b3f9-d20ccddb272f",
+        "name": "Denis Sanchez"
+      }
+    },
+    {
+      "_id": "19921371-93c4-415b-a1cf-a1faea57a5b1",
+      "items": [
+        {
+          "product": {
+            "_id": "M1000013603",
+            "category": "ACCESORIOS",
+            "cost": 560,
+            "name": "ANTIVUELCO HILUX CROMADO (Por mayor)",
+            "price": 690,
+            "quantity": 9
+          },
+          "quantity": 1,
+          "discount": 0,
+          "increment": 0,
+          "subtotal": 690,
+          "subtotalDiscounted": 0
+        }
+      ],
+      "client": {
+        "_id": "20512528458",
+        "name": "SHALOM PERU SAC",
+        "phone": "960437874"
+      },
+      "car": {
+        "brand": "TOYOTA",
+        "model": "HILUX",
+        "plate": "XYZ-123",
+        "year": "2020"
+      },
+      "note": "SE INCLUIYE INSUMOS E INSTALACIÓN",
+      "type": "COTIZACION",
+      "createdAt": "2023-12-11T03:01:43.917Z",
+      "seller": {
+        "_id": "9ca639a0-0e1c-4111-b3f9-d20ccddb272f",
+        "name": "Denis Sanchez"
+      }
+    },
+    {
+      "_id": "0de93265-4bee-4ee7-8789-3edea7e6a80d",
+      "items": [
+        {
+          "product": {
+            "_id": "M1000066016",
+            "category": "ACCESORIOS",
+            "cost": 680,
+            "name": "ANTIVUELCO CON LUCES DE RETROCESO Y DISEÑO (Por mayor)",
+            "price": 780,
+            "quantity": 13
+          },
+          "quantity": 1,
+          "discount": 0,
+          "increment": 0,
+          "subtotal": 780,
+          "subtotalDiscounted": 0
+        }
+      ],
+      "client": {
+        "_id": "20100047218",
+        "name": "Banco de Credito del Peru",
+        "phone": ""
+      },
+      "car": {
+        "brand": "HYUNDAI",
+        "model": "TUCSON",
+        "plate": "IU8-231",
+        "year": "2014"
+      },
+      "note": "SE INCLUIYE INSUMOS E INSTALACIÓN",
+      "type": "COTIZACION",
+      "createdAt": "2023-12-11T03:05:07.053Z",
+      "seller": {
+        "_id": "d309c086-884f-4d02-b7c6-0a531800d23f",
+        "name": "Denis Sanchez"
+      }
+    },
+    {
+      "_id": "faa2f935-feb4-4f7f-8edc-b00287a7c8dc",
+      "items": [
+        {
+          "product": {
+            "_id": "1000066016",
+            "category": "ACCESORIOS",
+            "cost": 680,
+            "name": "ANTIVUELCO CON LUCES DE RETROCESO Y DISEÑO",
+            "price": 900,
+            "quantity": 13
+          },
+          "quantity": 1,
+          "discount": 0,
+          "increment": 5,
+          "subtotal": 945,
+          "subtotalDiscounted": 0
+        }
+      ],
+      "client": {
+        "_id": "",
+        "name": "YAN",
+        "phone": ""
+      },
+      "car": {
+        "brand": "-",
+        "model": "-",
+        "plate": "",
+        "year": ""
+      },
+      "note": "SE INCLUIYE INSUMOS E INSTALACIÓN",
+      "type": "CREDITO",
+      "createdAt": "2023-12-11T03:05:59.569Z",
+      "seller": {
+        "_id": "d309c086-884f-4d02-b7c6-0a531800d23f",
+        "name": "Denis Sanchez"
+      }
     }
   ],
   "products": [],
@@ -1507,6 +1672,11 @@
     {
       "_id": "12345678934",
       "name": "DERCO",
+      "phone": ""
+    },
+    {
+      "_id": "20100047218",
+      "name": "Banco de Credito del Peru",
       "phone": ""
     }
   ]

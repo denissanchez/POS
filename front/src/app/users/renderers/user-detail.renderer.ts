@@ -1,5 +1,6 @@
 import { Component } from "@angular/core";
 import { Transaction } from "@app/shared/models/transaction";
+import { User } from "@app/shared/models/user";
 import { ICellRendererAngularComp } from "ag-grid-angular";
 import { ICellRendererParams } from "ag-grid-community";
 
@@ -11,9 +12,9 @@ import { ICellRendererParams } from "ag-grid-community";
 })
 export class BtnUserDetailRenderer implements ICellRendererAngularComp {
     // @ts-ignore
-    public params: ICellRendererParams<Transaction, Transaction>;
+    public params: ICellRendererParams<User, User>;
 
-    agInit(params: ICellRendererParams<Transaction, Transaction>): void {
+    agInit(params: ICellRendererParams<User, User>): void {
         this.params = params;
     }
 

@@ -29,12 +29,12 @@ export async function createTransaction(payload) {
 
     await db.write();
 
-    if (payload.type == "COTIZACION") {
-        return;
-    }
-
     if (payload.client._id.trim() !== "") {
         await createClient(payload.client);
+    }
+
+    if (payload.type == "COTIZACION") {
+        return;
     }
 
     await adapter.updateStock(payload.items);

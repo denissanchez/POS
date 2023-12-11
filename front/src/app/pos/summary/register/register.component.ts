@@ -1,9 +1,9 @@
-import { AfterViewInit, Component, EventEmitter, Input, OnDestroy, Output, TemplateRef, ViewChild } from "@angular/core";
+import { AfterViewInit, Component, EventEmitter, Input, OnDestroy, OnInit, Output, TemplateRef, ViewChild } from "@angular/core";
 import { Client } from "@app/shared/models";
 import { DraftTransaction } from "@app/shared/models/transaction";
 import { SwalComponent } from "@sweetalert2/ngx-sweetalert2";
 import { PosService } from "app/pos/pos.service";
-import { tap } from "rxjs";
+import { Observable, map, of, tap } from "rxjs";
 
 declare const bootstrap: any;
 
@@ -12,9 +12,8 @@ declare const bootstrap: any;
     templateUrl: './register.component.html',
     styleUrls: ['./register.component.scss'],
 })
-export class RegisterComponent implements AfterViewInit, OnDestroy {
-    // @ts-ignore
-    @ViewChild('successRegistrationAlert', { static: false }) private successRegistrationAlert: SwalComponent;
+export class RegisterComponent implements OnInit, AfterViewInit, OnDestroy {
+    @ViewChild('successRegistrationAlert', { static: false }) private successRegistrationAlert!: SwalComponent;
 
     @Input({ required: true }) transaction: DraftTransaction = new DraftTransaction();
     @Input({ required: true }) disabled: boolean = false;
@@ -26,6 +25,8 @@ export class RegisterComponent implements AfterViewInit, OnDestroy {
 
     private _currentModal: any | undefined = undefined;
 
+    public clients$: Observable<Client[]> = of([]);
+
     get confirmationLabel(): string {
         if (this.transaction.type === 'COBRADO') {
             return 'Confirmar';
@@ -36,24 +37,28 @@ export class RegisterComponent implements AfterViewInit, OnDestroy {
 
     constructor(private posService: PosService) {}
 
+    ngOnInit(): void {
+        this.clients$ = this.posService.getAllClients();
+    }
+
     ngAfterViewInit(): void {
     }
 
     ngOnDestroy(): void {
     }
 
-    searchClient(document: string): void {
-        const value = document.trim();
-        if (!value.match(/^\d{8,11}$/)) {
+    onChangeClient(event: { label: string } | Client) {
+        if (!event) {
+            this.transaction.client = new Client();
             return;
         }
 
-        this.posService.searchClient(value).subscribe({
-            next: (client: Client) => {
-                this.transaction.client = client;
-            },
-            error: console.error
-        })
+        if ('_id' in event) {
+            this.transaction.client = event;
+            return;
+        } else {
+            this.transaction.client = new Client(event.label);
+        }
     }
 
     launchModal(modal: HTMLDivElement): void {
@@ -81,6 +86,7 @@ export class RegisterComponent implements AfterViewInit, OnDestroy {
             },
             complete: () => {
                 this.closeModal();
+                this.clients$ = this.posService.getAllClients();
             }
         })
     }

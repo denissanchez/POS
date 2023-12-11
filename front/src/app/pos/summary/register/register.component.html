@@ -76,10 +76,11 @@
                     </div>
                 </div>
 
+                <h5>Cliente</h5>
+
                 <div class="col-12 mt-2 mb-3">
-                    <h5>Cliente</h5>
-                    <label for="clientName" class="form-label mt-2">No. documento:</label>
-                    <input #clientDocument type="text" class="form-control" id="clientDocument" [(ngModel)]="transaction.client._id" (ngModelChange)="searchClient($event)" placeholder="No identificado">
+                    <ng-select [items]="clients$ | async" bindValue="_id" [addTag]="true" addTagText="Registrar nuevo cliente" placeholder="Seleccione una opción" (change)="onChangeClient($event)">
+                    </ng-select>
                 </div>
 
                 <div class="col-12 mb-3" [ngClass]="{'d-none': transaction.client._id === ''}">

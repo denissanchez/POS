@@ -4,6 +4,7 @@ import { NgModule } from "@angular/core";
 import { FormsModule } from "@angular/forms";
 import { SweetAlert2Module } from "@sweetalert2/ngx-sweetalert2";
 import { LabelizePermissionPipe } from "./pipes/labelize-permission.pipe";
+import { NgSelectModule } from "@ng-select/ng-select";
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { LabelizePermissionPipe } from "./pipes/labelize-permission.pipe";
         CommonModule,
         HttpClientModule,
         FormsModule,
-        SweetAlert2Module
+        SweetAlert2Module,
+        NgSelectModule,
     ],
     exports: [
         CommonModule,
@@ -23,6 +25,7 @@ import { LabelizePermissionPipe } from "./pipes/labelize-permission.pipe";
         FormsModule,
         SweetAlert2Module,
         LabelizePermissionPipe,
+        NgSelectModule,
     ],
 })
 export class SharedModule {

@@ -78,4 +78,10 @@ export class PosService {
     register(transaction: DraftTransaction) {
         return this.http.post<void>(`/api/v1/transactions`, transaction.json());
     }
+
+    getAllClients(): Observable<Client[]> {
+        return this.http.get<Client[]>(`/api/v1/clients`).pipe(
+            map((res: any[]) => Client.fromList(res))
+        );
+    }
 }

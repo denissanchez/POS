@@ -6,6 +6,7 @@ import { UsersService } from "./users.service";
 import { AuthService } from "@app/auth.service";
 import { BtnUserDetailRenderer } from "./renderers/user-detail.renderer";
 import { BtnUserRemoveRenderer } from "./renderers/user-remove.renderer";
+import { BtnUserEditRenderer } from "./renderers/user-edit.renderer";
 
 
 @Component({
@@ -23,6 +24,12 @@ export class UsersComponent implements OnInit {
             field: 'detail',
             headerName: '',
             cellRenderer: BtnUserDetailRenderer,
+            valueGetter: (params) => params.data,
+        },
+        {
+            field: 'edit',
+            headerName: '',
+            cellRenderer: BtnUserEditRenderer,
             valueGetter: (params) => params.data,
         },
         {

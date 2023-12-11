@@ -14,7 +14,7 @@ export function getById(_id) {
 }
 
 
-export function create(user) {
+export function create(user, _id = undefined) {
     const db = getConnection();
 
     const exists = db.data.users.find(x => x.username === user.username);
@@ -28,7 +28,7 @@ export function create(user) {
     const hashedPassword = bcrypt.hashSync(user.password, 10);
     user.password = hashedPassword;
 
-    db.data.users.push({ _id: v4(), ...user});
+    db.data.users.push({ _id: _id || v4(), ...user});
     db.write();
 
     return [null, user];

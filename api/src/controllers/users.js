@@ -8,7 +8,7 @@ import { CAN_CREATE_USERS, CAN_REMOVE_USERS, CAN_VIEW_USERS } from "../utils/con
 const router = Router();
 
 
-router.get('/', isAuthorized(CAN_VIEW_USERS), runAsyncWrapper((req, res) => {
+router.get('/', isAuthorized(CAN_VIEW_USERS), runAsyncWrapper(async (req, res) => {
   const users = getAll();
   res.json(users);
 }));
@@ -57,10 +57,19 @@ router.delete('/:id', isAuthorized(CAN_REMOVE_USERS), runAsyncWrapper(async (req
 
 router.put('/:id', isAuthorized(CAN_CREATE_USERS), runAsyncWrapper(async (req, res) => {
   const { id } = req.params;
-  const { name, username, password, permissions } = req.body;
+  const { name, username, password: possiblePassword, permissions } = req.body;
+
+  const user = getById(id);
+
+  if (!user) {
+    res.status(404).end();
+    return;
+  }
+
+  const password = possiblePassword !== "" ? possiblePassword : user.password;
   
   remove(id);
-  create({ name, username, password, permissions });
+  create({ name, username, password, permissions }, id);
   
   res.status(204).end();
 }));
