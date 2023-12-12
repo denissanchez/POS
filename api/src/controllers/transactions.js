@@ -75,6 +75,8 @@ router.get(
   runAsyncWrapper(async (req, res) => {
     const transaction = await getById(req.params.id);
 
+    const title = ('PROFORMA_' + transaction.client.name.replace(/\s/g, '_')).toUpperCase();
+
     if (!transaction) {
       res.status(404).json({
         message: "Transacción no encontrada",
@@ -84,11 +86,13 @@ router.get(
     }
 
     const doc = new PDFDocument({ bufferPages: true });
-    let filename = req.body.filename;
-    filename = encodeURIComponent(filename) + ".pdf";
+    const filename = encodeURIComponent(title) + ".pdf";
 
     res.setHeader("Content-disposition", 'inline; filename="' + filename + '"');
     res.setHeader("Content-type", "application/pdf");
+
+
+    doc.info['Title'] = title;
 
     doc.pipe(res);
 
@@ -186,7 +190,7 @@ router.get(
       rows: transaction.items.map((item, index) => [
         index + 1,
         item.product.category,
-        wrapAnsi(item.product.name, 30),
+        wrapAnsi(item.product.name.replace('(Por mayor)', '').replace('(Con tarjeta)', ''), 30),
         item.quantity,
         `S/ ${(item.subtotal / item.quantity).toFixed(2)}`,
         `S/ ${item.subtotal.toFixed(2)}`

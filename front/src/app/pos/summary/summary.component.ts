@@ -41,7 +41,27 @@ export class SummaryComponent implements OnInit, AfterViewInit, OnDestroy {
 
         this.socket.on('summary:cancel', (product) => {
             this.onCancelTransaction();
+            this.socket.emit('summary:sync', this.posService.currentTransaction.json());
         });
+
+        this.socket.on('summary:sync_request', () => {
+            this.socket.emit('summary:sync', this.posService.currentTransaction.json());
+        })
+
+        this.socket.on('summary:plus_one', (productId: string) => {
+            this.posService.plusOne(productId);
+            this.socket.emit('summary:sync', this.posService.currentTransaction.json());
+        })
+
+        this.socket.on('summary:minus_one', (productId: string) => {
+            this.posService.minusOne(productId);
+            this.socket.emit('summary:sync', this.posService.currentTransaction.json());
+        })
+
+        this.socket.on('summary:remove', (productId: string) => {
+            this.posService.removeProduct(productId);
+            this.socket.emit('summary:sync', this.posService.currentTransaction.json());
+        })
 
         this.searchCode.nativeElement.addEventListener('keydown', this.onCodeSubmitted.bind(this));
     }

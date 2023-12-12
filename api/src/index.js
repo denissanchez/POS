@@ -92,6 +92,26 @@ io.on("connection", (socket) => {
     io.emit('summary:cancel')
   })
 
+  socket.on('summary:sync_request', () => {
+    io.emit('summary:sync_request')
+  })
+
+  socket.on('summary:sync', (data) => {
+    io.emit('summary:sync', data)
+  })
+
+  socket.on('summary:plus_one', (data) => {
+    io.emit('summary:plus_one', data)
+  })
+
+  socket.on('summary:minus_one', (data) => {
+    io.emit('summary:minus_one', data)
+  })
+
+  socket.on('summary:remove', (data) => {
+    io.emit('summary:remove', data)
+  })
+
   socket.on("disconnect", () => {
     adapter.removeSubscriber(id);
   });

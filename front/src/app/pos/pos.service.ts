@@ -71,6 +71,35 @@ export class PosService {
         this._currentTransaction.next(DraftTransaction.fromJson(<any>{...transaction, type}));
     }
 
+    plusOne(productId: string) {
+        const items = this.currentTransaction.items.map((item) => {
+            if (item.product._id === productId) {
+                item.quantity = item.quantity + 1;
+            }
+
+            return item;
+        });
+
+        this._currentTransaction.next(DraftTransaction.fromJson(<any>{...this._currentTransaction.value.json(), items: items.map(x => x.json())}));
+    }
+
+    minusOne(productId: string) {
+        const items = this.currentTransaction.items.map((item) => {
+            if (item.product._id === productId && item.quantity > 1) {
+                item.quantity = item.quantity - 1;
+            }
+
+            return item;
+        });
+
+        this._currentTransaction.next(DraftTransaction.fromJson(<any>{...this._currentTransaction.value.json(), items: items.map(x => x.json())}));
+    }
+
+    removeItem(productId: string) {
+        const items = this.currentTransaction.items.filter(x => x.product._id !== productId);
+        this._currentTransaction.next(DraftTransaction.fromJson(<any>{...this._currentTransaction.value.json(), items: items.map(x => x.json())}));
+    }
+
     restartCurrentTransaction() {
         this._currentTransaction.next(new DraftTransaction());
     }

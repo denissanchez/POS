@@ -102,6 +102,10 @@ export class DraftTransaction {
         return this.items.reduce((acc, curr) => curr.subtotalDiscounted + acc, 0)
     }
 
+    public get totalWithTaxes() {
+        return round(this.total * 1.18);
+    }
+
     constructor(
         public items: Item[] = [],
         public client: Client = new Client(),

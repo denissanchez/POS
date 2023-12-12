@@ -1,5 +1,6 @@
 <div class="col-12 mt-4">
-  <button type="button" class="btn btn-lg btn-info w-100" (click)="enableCapture()"><i class="bi bi-search"></i> Capturar</button>
+  <button type="button" class="btn btn-lg btn-info w-100 mb-3" (click)="enableCapture()"><i class="bi bi-search"></i> Capturar</button>
+  <button type="button" class="btn btn-lg btn-primary w-100 mb-3" (click)="syncRequest()"><i class="bi bi-arrow-repeat"></i> Sincronizar</button>
 </div>
 
 <div *ngIf="product$ | async as product; else productNotFound" class="row d-flex justify-content-center d-md-none">
@@ -34,7 +35,56 @@
   </div>
 </ng-template>
 
+
+<ng-container *ngIf="currentTransaction">
+  <hr>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th style="width: 30%;" scope="col">Precio</th>
+        <th style="width: 35%;" scope="col">Cantidad</th>
+        <th style="width: 35%;" scope="col">Subtotal</th>
+      </tr>
+    </thead>
+    <tbody>
+      <ng-container *ngFor="let item of currentTransaction.items; let i = index">
+        <tr [ngClass]="{'table-secondary': i % 2 != 0}">
+          <td class="fw-bold" [ngClass]="{'table-warning': item.product.quantity < 5 }">Stock: {{ item.product.quantity }}</td>
+          <td colspan="2">{{ item.product.name }}</td>
+        </tr>
+        <tr [ngClass]="{'table-secondary': i % 2 != 0}">
+          <td>S/ {{ item.product.price }}</td>
+          <td>{{ item.quantity }}</td>
+          <td class="fw-bold">S/ {{ item.subtotal }}</td>
+        </tr>
+        <tr [ngClass]="{'table-secondary': i % 2 != 0}">
+          <td>
+            <button type="button" class="btn btn-info w-100" (click)="plusOne(item.product._id)"><i class="bi bi-plus"></i></button>
+          </td>
+          <td>
+            <button type="button" class="btn btn-info w-100" (click)="minusOne(item.product._id)"><i class="bi bi-dash"></i></button>
+          </td>
+          <td>
+            <button type="button" class="btn btn-danger w-100" (click)="remove(item.product._id)"><i class="bi bi-trash"></i></button>
+          </td>
+        </tr>
+      </ng-container>
+    </tbody>
+    <tfoot>
+      <tr>
+        <td colspan="2" class="fw-bold">Total sin I.G.V</td>
+        <td class="fw-bold">S/ {{ currentTransaction.total }}</td>
+      </tr>
+      <tr class="table-info">
+        <td colspan="2" class="fw-bold">Total con I.G.V</td>
+        <td class="fw-bold">S/ {{ currentTransaction.totalWithTaxes }}</td>
+      </tr>
+    </tfoot>
+  </table>
+</ng-container>
+
 <div class="col-12 mt-3">
-  <button type="button" class="btn btn-lg btn-danger w-100" (click)="cancel()"><i class="bi bi-x-octagon"></i> Cancelar</button>
+  <button type="button" class="btn btn-lg btn-danger w-100" (click)="cancel()"><i class="bi bi-x-octagon"></i> Cancelar venta</button>
 </div>
 

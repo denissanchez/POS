@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from "@angular/core";
-import { Product } from "@app/shared/models";
+import { DraftTransaction, Product } from "@app/shared/models";
 import { BehaviorSubject, Observable } from "rxjs";
 import { Socket, io } from 'socket.io-client';
 
@@ -26,6 +26,8 @@ export class MobileViewerComponent implements OnInit, OnDestroy {
         return this._product.asObservable();
     }
 
+    public currentTransaction: DraftTransaction | undefined = undefined;
+
     constructor() {
     }
 
@@ -44,6 +46,26 @@ export class MobileViewerComponent implements OnInit, OnDestroy {
             this._product.next(undefined);
             this._lastRead = new Date();
         });
+
+        this.socket.on('summary:sync', (data) => {
+            this.currentTransaction = DraftTransaction.fromJson(data);
+        })
+    }
+
+    syncRequest(): void {
+        this.socket.emit('summary:sync_request');
+    }
+
+    plusOne(productId: string): void {
+        this.socket.emit('summary:plus_one', productId);
+    }
+
+    minusOne(productId: string): void {
+        this.socket.emit('summary:minus_one', productId);
+    }
+
+    remove(productId: string): void {
+        this.socket.emit('summary:remove', productId);
     }
 
     enableCapture(): void {
