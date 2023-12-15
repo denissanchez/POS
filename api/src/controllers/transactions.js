@@ -187,14 +187,18 @@ router.get(
 
     const items = {
       starts: [60, 85, 180, 380, 415, 485],
-      rows: transaction.items.map((item, index) => [
-        index + 1,
-        item.product.category,
-        wrapAnsi(item.product.name.replace('(Por mayor)', '').replace('(Con tarjeta)', ''), 30),
-        item.quantity,
-        `S/ ${(item.subtotal / item.quantity).toFixed(2)}`,
-        `S/ ${item.subtotal.toFixed(2)}`
-      ])
+      rows: transaction.items.map((item, index) => {
+        const subtotal = item.subtotal - (item.subtotal * 0.18);
+
+       return [
+          index + 1,
+          item.product.category,
+          wrapAnsi(item.product.name.replace('(Por mayor)', '')),
+          item.quantity,
+          `S/ ${(subtotal / item.quantity).toFixed(2)}`,
+          `S/ ${subtotal.toFixed(2)}`
+        ]
+      })
     }
 
     y = y + 20;
@@ -209,10 +213,10 @@ router.get(
 
       y = y + 5;
     });
-
-    const subtotal = transaction.items.reduce((acc, item) => acc + item.subtotal, 0);
+    
+    const total = transaction.items.reduce((acc, item) => acc + item.subtotal, 0);
     const igv = subtotal * 0.18;
-    const total = subtotal + igv;
+    const subtotal = subtotal - igv;
 
     doc.font('Helvetica-Bold').fontSize(11).text(`SUBTOTAL:`, 415, y + 5);
     doc.font('Helvetica').fontSize(11).text(`S/ ${subtotal.toFixed(2)}`, 485, y + 5);
