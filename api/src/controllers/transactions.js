@@ -47,7 +47,7 @@ router.post(
 
       res.status(201).json(transaction);
     } catch (e) {
-      console.log(e);
+      console.error(e);
       res.status(500).send(e);
     }
   })
@@ -223,7 +223,7 @@ router.get(
     doc.font('Helvetica-Bold').fontSize(11).text(`TOTAL:`, 415, y + 35);
     doc.font('Helvetica').fontSize(11).text(`S/ ${total.toFixed(2)}`, 485, y + 35);
 
-    y = 645;
+    y = 625;
 
     doc.fillColor("red");
     doc.font('Helvetica-Bold').fontSize(11).text('NOTA', 50, y);
@@ -231,13 +231,22 @@ router.get(
     doc.fillColor("black");
     doc.font('Helvetica').fontSize(11).text(transaction.note || '-', 50, y + 15);
 
-    y = 690;
+    y = 670;
 
     doc.font('Helvetica-Bold').fontSize(11).text(`FECHA`, 50, y);
     doc.font('Helvetica').fontSize(11).text(format(new Date(transaction.createdAt), "eeee, dd 'de' MMMM 'del' yyyy", { locale: es }), 110, y);
 
     doc.font('Helvetica-Bold').fontSize(11).text(`VIGENCIA:`, 50, y + 15);
     doc.font('Helvetica').fontSize(11).text(`3 dias hábiles desde su emisión.`, 110, y + 15);
+
+    doc.moveTo(50, y + 28).lineTo(pageWidth - 50, y + 28).stroke();
+
+    doc.font('Helvetica-Bold').fontSize(11).text(`Contacto:`, 50, y + 33);
+    doc.font('Helvetica').fontSize(11).text(`César Wagner Terrones Vera`, 105, y + 33);
+    doc.font('Helvetica-Bold').fontSize(11).text(`- WhatsApp:`, 248, y + 33);
+    doc.font('Helvetica').fontSize(11).text(`935990943`, 315, y + 33);
+    doc.font('Helvetica-Bold').fontSize(11).text(`- Correo:`, 371, y + 33);
+    doc.font('Helvetica').fontSize(11).text(`cesarw.vera@gmail.com`, 420, y + 33);
 
     doc.end();
   })

@@ -17,6 +17,7 @@ export class TransactionsComponent implements OnInit {
     public columnDefs: ColDef[] = [
         { field: 'createdAt', headerName: 'Fecha de registro', valueFormatter: (params) => new Date(params.value).toLocaleDateString()},
         { field: 'client.name', headerName: 'Cliente' },
+        { field: 'seller.name', headerName: 'Vendedor' },
         { field: 'type', headerName: 'Tipo' },
         { field: 'note', headerName: 'Nota' },
         { field: 'total', headerName: 'Total', valueFormatter: (params) => `S/ ${params.value.toFixed(2)}` },

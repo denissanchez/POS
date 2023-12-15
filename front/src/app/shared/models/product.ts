@@ -8,11 +8,6 @@ const POR_MAYOR_CONVERT_OPTION = {
     code: 'M'
 }
 
-const TARJETA_CONVERT_OPTION = {
-    label: 'Con tarjeta',
-    code: 'T'
-}
-
 const PUBLICO_CONVERT_OPTION = {
     label: 'Publico',
     code: ''
@@ -34,12 +29,10 @@ export class Product {
     }
 
     private verifyConvertOptions() {
-        if (this._id.startsWith('T')) {
-            this.convertOptions = [PUBLICO_CONVERT_OPTION, POR_MAYOR_CONVERT_OPTION];
-        } else if (this._id.startsWith('M')) {
-            this.convertOptions = [PUBLICO_CONVERT_OPTION, TARJETA_CONVERT_OPTION];
+        if (this._id.startsWith('M')) {
+            this.convertOptions = [PUBLICO_CONVERT_OPTION];
         } else {
-            this.convertOptions = [TARJETA_CONVERT_OPTION, POR_MAYOR_CONVERT_OPTION];
+            this.convertOptions = [POR_MAYOR_CONVERT_OPTION];
         }
     }
 

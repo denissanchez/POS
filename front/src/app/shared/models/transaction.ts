@@ -158,6 +158,28 @@ export class DraftTransaction {
 }
 
 
+class Seller {
+    constructor(public _id: string = "",
+                public name: string = "Desconocido") {
+    }
+
+    json() {
+        return {
+            _id: this._id,
+            name: this.name,
+        }
+    }
+
+    public static fromJson(p: Record<string, string>) {
+        return new Client(p['_id'], p['name']);
+    }
+
+    public static fromList(list: Array<Record<string, string>>) {
+        return list.map(Client.fromJson);
+    }
+}
+
+
 export class Transaction {
     public get total() {
         return this.items.reduce((acc, curr) => (curr.product.price * curr.quantity) + acc, 0)
@@ -179,12 +201,13 @@ export class Transaction {
         public note: string,
         public type: TransactionType,
         public createdAt: Date,
+        public seller: Seller,
     ) {
     }
     
 
     public static fromJson(data: Record<string, string | number | Record<string, string | number>>) {
-        const { items: _items, client: _client, car: _car } = data;
+        const { items: _items, client: _client, car: _car, seller: _seller } = data;
 
         const items = (<any>_items).map((x: any) => {
             const { product, quantity, discount } = x;
@@ -193,8 +216,9 @@ export class Transaction {
 
         const client = Client.fromJson(<any>_client);
         const car = Car.fromJson(<any>_car);
+        const seller = Seller.fromJson(<any>_seller);
 
-        return new Transaction(<string>data['_id'], items, client, car, <string>data['note'], <TransactionType>data['type'], new Date(<string>data['createdAt']))
+        return new Transaction(<string>data['_id'], items, client, car, <string>data['note'], <TransactionType>data['type'], new Date(<string>data['createdAt']), seller)
     }
 
     static fromList(transactions: Array<any>): Transaction[] {

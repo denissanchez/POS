@@ -48,14 +48,18 @@ export class RegisterComponent implements OnInit, AfterViewInit, OnDestroy {
     }
 
     onChangeClient(event: { label: string } | Client) {
+        if (typeof event === 'string') {
+            this.transaction.client = new Client(event);
+            return;
+        }
+
         if (!event) {
             this.transaction.client = new Client();
             return;
         }
 
-        if ('_id' in event) {
+        if (typeof event === 'object' && '_id' in event) {
             this.transaction.client = event;
-            return;
         } else {
             this.transaction.client = new Client(event.label);
         }

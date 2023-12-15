@@ -23,7 +23,6 @@ const MONTHS = [
 ]
 
 const POR_MAYOR_SUFFIX = '(Por mayor)';
-const CON_TARJETA_SUFFIX = '(Con tarjeta)';
 
 const TIPO_COBRADO = "COBRADO";
 const TIPO_CREDITO = "CREDITO";
@@ -117,12 +116,10 @@ class StockFileAdapter {
 
         const priceBasedFields = {
             'F': 'M', // Lowest price (Large quantities)
-            'G': 'T', // Card price
-            'H': '', // Target price
+            'G': '', // Highest price (Small quantities)
         }
 
         const nameBasedSuffix = {
-            'T': CON_TARJETA_SUFFIX,
             'M': POR_MAYOR_SUFFIX,
             '': '',
         }
@@ -131,8 +128,7 @@ class StockFileAdapter {
     
         stockWorkSheet.eachRow({includeEmpty: true}, (row, rowNumber) => {
             const product = {
-                category: '1698533149',
-                stock: 1,
+                quantity: 0,
             }
     
             if (!row.getCell('B').value) {
@@ -149,7 +145,11 @@ class StockFileAdapter {
                 }
             });
 
-            const code = row.getCell('N').value; // N is column for bar code
+            const code = row.getCell('M').value; // N is column for bar code
+
+            if (code == null || (!String(code).match(/\d/) && !String(code).match(/[a-zA-Z]/))) {
+                return;
+            }
 
             Object.entries(priceBasedFields).forEach(([key, preffix]) => {
 
@@ -174,9 +174,7 @@ class StockFileAdapter {
             });
         });
     
-        const [header, ...products] = rows;
-    
-        return products;
+        return rows;
     }
 
     async syncData() {
@@ -220,7 +218,7 @@ class StockFileAdapter {
     async updateStock(items) {
         const workbook = await XlsxPopulate.fromFileAsync(this._excelPath);
 
-        const worksheet = workbook.sheet(STOCK_SHEET_NAME)
+        const worksheet = workbook.sheet(STOCK_SHEET_NAME);
 
         for (let item of items) {
             const productDB = this.getById(item.product._id);
@@ -271,7 +269,7 @@ class StockFileAdapter {
             const firstChart = item.product._id[0];
 
             worksheet.cell(`${COLUMNS.TIPO_PRODUCTO}${row + 1}`).value(productDB.category);
-            worksheet.cell(`${COLUMNS.DESCRIPCION_PRODUCTO}${row + 1}`).value(productDB.name.replace(POR_MAYOR_SUFFIX, "").replace(CON_TARJETA_SUFFIX, ""));
+            worksheet.cell(`${COLUMNS.DESCRIPCION_PRODUCTO}${row + 1}`).value(productDB.name.replace(POR_MAYOR_SUFFIX, ""));
             worksheet.cell(`${COLUMNS.CANTIDAD}${row + 1}`).value(item.quantity);
             worksheet.cell(`${COLUMNS.COSTO}${row + 1}`).value(productDB.cost);
             worksheet.cell(`${COLUMNS.TIPO_VENTA}${row + 1}`).value(firstChart === 'M' ? 'POR MAYOR': 'AL PUBLICO');
