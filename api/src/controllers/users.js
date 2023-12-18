@@ -17,7 +17,7 @@ router.get('/', isAuthorized(CAN_VIEW_USERS), runAsyncWrapper(async (req, res) =
 router.post('/', isAuthorized(CAN_CREATE_USERS), runAsyncWrapper(async (req, res) => {
   const { name, username, password, permissions } = req.body;
 
-  const [errors, ] = create({ name, username, password, permissions });
+  const [errors, ] = await create({ name, username, password, permissions });
 
   if (errors) {
     res.status(400).json({ errors });
@@ -49,7 +49,7 @@ router.delete('/:id', isAuthorized(CAN_REMOVE_USERS), runAsyncWrapper(async (req
     return;
   }
   
-  remove(id);
+  await remove(id);
   
   res.status(204).end();
 }));
@@ -68,8 +68,9 @@ router.put('/:id', isAuthorized(CAN_CREATE_USERS), runAsyncWrapper(async (req, r
 
   const password = possiblePassword !== "" ? possiblePassword : user.password;
   
-  remove(id);
-  create({ name, username, password, permissions }, id);
+  await remove(id);
+
+  await create({ name, username, password, permissions }, id);
   
   res.status(204).end();
 }));

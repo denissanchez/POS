@@ -44,9 +44,9 @@
                                         <td colspan="3">{{ item.product.name }}</td>
                                     </tr>
                                     <tr>
-                                        <td>{{ item.product.price }}</td>
+                                        <td>{{ (item.subtotal / item.quantity) | number:'0.2-2' }}</td>
                                         <td>{{ item.quantity }}</td>
-                                        <td>{{ item.product.price * item.quantity }}</td>
+                                        <td>{{ item.subtotal | number:'0.2-2' }}</td>
                                     </tr>
                                 </ng-container>
                             </tbody>

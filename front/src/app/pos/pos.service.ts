@@ -57,6 +57,12 @@ export class PosService {
         }
 
         const transaction = DraftTransaction.fromJson(<any>{...this._currentTransaction.value.json(), items: items.map(x => x.json())});
+
+        this._currentTransaction.value.items.forEach((item, index) => {
+            transaction.items[index].discount = item.discount;
+            transaction.items[index].increment = item.increment;
+        })
+
         this._currentTransaction.next(transaction);
     }
 

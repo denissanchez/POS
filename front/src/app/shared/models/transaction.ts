@@ -10,17 +10,17 @@ function round(result: number) {
 
 export class Item {
     public get subtotal() {
-        const base = this.product.price * this.quantity;
+        let base = this.product.price * this.quantity;
 
         if (!isNaN(+this.increment) && this.increment > 0) {
-            return round(base + (base * this.increment / 100))
+            base = base + (base * this.increment / 100)
         }
 
         if (!isNaN(+this.discount) && this.discount > 0) {
-            return round(base - (base * this.discount / 100))
+            base = base - (base * this.discount / 100)
         }
 
-        return round(base)
+        return base;
     }
 
     public get subtotalDiscounted() {
@@ -191,7 +191,7 @@ class Seller {
 
 export class Transaction {
     public get total() {
-        return this.items.reduce((acc, curr) => (curr.product.price * curr.quantity) + acc, 0)
+        return this.items.reduce((acc, curr) => curr.subtotal + acc, 0)
     }
 
     public get isPrintable(): boolean {
@@ -219,8 +219,8 @@ export class Transaction {
         const { items: _items, client: _client, car: _car, seller: _seller } = data;
 
         const items = (<any>_items).map((x: any) => {
-            const { product, quantity, discount } = x;
-            return new Item(Product.fromJson(product), quantity, discount);
+            const { product, quantity, discount, increment } = x;
+            return new Item(Product.fromJson(product), quantity, discount, increment);
         });
 
         const client = Client.fromJson(<any>_client);

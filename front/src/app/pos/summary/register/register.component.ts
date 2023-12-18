@@ -80,7 +80,7 @@ export class RegisterComponent implements OnInit, AfterViewInit, OnDestroy {
     }
 
     closeModal(): void {
-        this._currentModal.hide();
+        this._currentModal?.hide();
     }
 
     register(): void {

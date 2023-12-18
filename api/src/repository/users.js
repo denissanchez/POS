@@ -14,7 +14,7 @@ export function getById(_id) {
 }
 
 
-export function create(user, _id = undefined) {
+export async function create(user, _id = undefined) {
     const db = getConnection();
 
     const exists = db.data.users.find(x => x.username === user.username);
@@ -29,20 +29,20 @@ export function create(user, _id = undefined) {
     user.password = hashedPassword;
 
     db.data.users.push({ _id: _id || v4(), ...user});
-    db.write();
+    await db.write();
 
     return [null, user];
 }
 
 
-export function remove(id) {
+export async function remove(id) {
     const db = getConnection();
 
     const index = db.data.users.findIndex(x => x._id === id);
     if (index === -1) return;
 
     db.data.users.splice(index, 1);
-    db.write();
+    await db.write();
 }
 
 

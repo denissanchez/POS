@@ -27,6 +27,7 @@ import AuthRoutes from "./auth.routes.js";
 import { isAuthenticated } from "./middlewares/secure.js";
 import { createConnection } from "./repository/db.js";
 import { verifyCredentials, create, getById } from "./repository/users.js";
+import { ALL_PERMISSIONS } from "./utils/constants.js";
 
 
 createConnection();
@@ -141,12 +142,14 @@ app.get("/logout", function (req, res, next) {
   });
 });
 
-app.get("/setup", function (req, res) {
-  create({
-    name: "Denis Sanchez",
+app.get("/setup", async function (req, res) {
+  await create({
+    name: "Cesar Wagner",
     username: "admin",
     password: "admin",
+    permissions: [...ALL_PERMISSIONS]
   });
+
   res.end();
 });
 
