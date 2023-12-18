@@ -215,8 +215,8 @@ router.get(
     });
     
     const total = transaction.items.reduce((acc, item) => acc + item.subtotal, 0);
-    const igv = subtotal * 0.18;
-    const subtotal = subtotal - igv;
+    const igv = total * 0.18;
+    const subtotal = total - igv;
 
     doc.font('Helvetica-Bold').fontSize(11).text(`SUBTOTAL:`, 415, y + 5);
     doc.font('Helvetica').fontSize(11).text(`S/ ${subtotal.toFixed(2)}`, 485, y + 5);

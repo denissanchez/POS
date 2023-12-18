@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, EventEmitter, OnDestroy, OnInit, Output, ViewChild } from "@angular/core";
+import { AfterViewInit, ChangeDetectorRef, Component, ElementRef, EventEmitter, OnDestroy, OnInit, Output, ViewChild } from "@angular/core";
 import { PosService } from "../pos.service";
 import { Observable } from "rxjs";
 import { DraftTransaction, Item, TransactionType } from "@app/shared/models/transaction";
@@ -21,7 +21,7 @@ export class SummaryComponent implements OnInit, AfterViewInit, OnDestroy {
 
     currentTransaction$: Observable<DraftTransaction>;
 
-    constructor(private posService: PosService) {
+    constructor(private posService: PosService, private changeDetector: ChangeDetectorRef) {
         this.currentTransaction$ = this.posService.currentTransaction$;
     }
 
@@ -100,7 +100,10 @@ export class SummaryComponent implements OnInit, AfterViewInit, OnDestroy {
     }
 
     changeType(type: TransactionType) {
+        this.changeDetector.detach();
         this.posService.changeType(type);
+        this.changeDetector.detectChanges();
+        this.changeDetector.reattach();
     }
 
     onCancelTransaction() {

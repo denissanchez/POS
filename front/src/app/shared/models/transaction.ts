@@ -57,18 +57,27 @@ export class Item {
         return round(base)
     }
 
+    private _product: Record<string, string | number>;
+
     constructor(
         public product: Product = new Product(),
         public quantity: number = 1,
         public discount: number = 0,
         public increment: number = 0,
-    ) {}
+    ) {
+        this._product = product.json();
+    }
 
     toggleDiscount() {
+        this.product = Product.fromJson(this._product);
+        
+        this.increment = 0;
         this.discount = 0;
     }
 
     toggleIncrement(enabled: boolean) {
+        this.product = Product.fromJson(this._product);
+        
         if (enabled) {
             this.increment = 5;
         } else {
@@ -80,7 +89,7 @@ export class Item {
         return {
             product: {
                 ...this.product.json(),
-                price: this.unitPrice
+                // price: this.unitPrice
             },
             quantity: this.quantity,
             discount: this.discount,

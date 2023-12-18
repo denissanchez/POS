@@ -12,6 +12,15 @@
         "CAN_VIEW_TRANSACTIONS",
         "CAN_VIEW_METRICS"
       ]
+    },
+    {
+      "_id": "51f2204f-1691-4469-afcb-f408d69b74b7",
+      "name": "Cesar Wagner",
+      "username": "wagner",
+      "password": "$2b$10$MaYLqXMtIrdGO4NckX/wzuFClVtzowsF0x5IEw5UE1TJewTXOpM1S",
+      "permissions": [
+        "CAN_VIEW_USERS"
+      ]
     }
   ],
   "transactions": [
@@ -504,6 +513,82 @@
       "note": "SE INCLUIYE INSUMOS E INSTALACIÓN",
       "type": "CREDITO",
       "createdAt": "2023-12-15T21:34:14.767Z",
+      "seller": {
+        "_id": "d309c086-884f-4d02-b7c6-0a531800d23f",
+        "name": "Denis Sanchez"
+      }
+    },
+    {
+      "_id": "3eeeedbb-1efb-4093-8342-c964cc9764fd",
+      "items": [
+        {
+          "product": {
+            "_id": "M2669204767",
+            "category": "ACCESORIOS",
+            "cost": 26,
+            "name": "CROMOS DE MANIJAS TOYOTA (Por mayor)",
+            "price": 40,
+            "quantity": 2
+          },
+          "quantity": 1,
+          "discount": 0,
+          "increment": 0,
+          "subtotal": 40,
+          "subtotalDiscounted": 0
+        }
+      ],
+      "client": {
+        "_id": "73904197",
+        "name": "DERCO S.A.",
+        "phone": ""
+      },
+      "car": {
+        "brand": "-",
+        "model": "-",
+        "plate": "",
+        "year": ""
+      },
+      "note": "SE INCLUIYE INSUMOS E INSTALACIÓN",
+      "type": "COTIZACION",
+      "createdAt": "2023-12-17T18:00:20.331Z",
+      "seller": {
+        "_id": "d309c086-884f-4d02-b7c6-0a531800d23f",
+        "name": "Denis Sanchez"
+      }
+    },
+    {
+      "_id": "2716e087-b491-44a5-ace7-81f41441e98e",
+      "items": [
+        {
+          "product": {
+            "_id": "M3095592496",
+            "category": "ACCESORIOS",
+            "cost": 10,
+            "name": "GUARDAFANGOS UNIVERSALES X PAR (Por mayor)",
+            "price": 26.25,
+            "quantity": 4
+          },
+          "quantity": 1,
+          "discount": 0,
+          "increment": 5,
+          "subtotal": 26.25,
+          "subtotalDiscounted": 0
+        }
+      ],
+      "client": {
+        "_id": "",
+        "name": "DENIS",
+        "phone": ""
+      },
+      "car": {
+        "brand": "-",
+        "model": "-",
+        "plate": "",
+        "year": ""
+      },
+      "note": "SE INCLUIYE INSUMOS E INSTALACIÓN",
+      "type": "CREDITO",
+      "createdAt": "2023-12-17T18:01:58.481Z",
       "seller": {
         "_id": "d309c086-884f-4d02-b7c6-0a531800d23f",
         "name": "Denis Sanchez"

@@ -3,6 +3,7 @@ import { Client } from "@app/shared/models";
 import { DraftTransaction } from "@app/shared/models/transaction";
 import { SwalComponent } from "@sweetalert2/ngx-sweetalert2";
 import { PosService } from "app/pos/pos.service";
+import { NgxSpinnerService } from "ngx-spinner";
 import { Observable, map, of, tap } from "rxjs";
 
 declare const bootstrap: any;
@@ -35,7 +36,7 @@ export class RegisterComponent implements OnInit, AfterViewInit, OnDestroy {
         return 'Continuar'
     }
 
-    constructor(private posService: PosService) {}
+    constructor(private posService: PosService, private ngxSpinner: NgxSpinnerService) {}
 
     ngOnInit(): void {
         this.clients$ = this.posService.getAllClients();
@@ -83,6 +84,8 @@ export class RegisterComponent implements OnInit, AfterViewInit, OnDestroy {
     }
 
     register(): void {
+        this.ngxSpinner.show();
+
         this.posService.register(this.transaction).pipe(tap(() => setTimeout(() => this.onRegisterSuccess.emit(), 1_500))).subscribe({
             next: (response: { _id: string }) => {
                 this.successRegistrationAlert.fire()
@@ -95,7 +98,8 @@ export class RegisterComponent implements OnInit, AfterViewInit, OnDestroy {
             },
             complete: () => {
                 this.closeModal();
-                this.clients$ = this.posService.getAllClients(); 
+                this.clients$ = this.posService.getAllClients();
+                this.ngxSpinner.hide();
             }
         })
     }
