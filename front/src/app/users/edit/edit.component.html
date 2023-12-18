@@ -35,7 +35,7 @@
 
                             <div class="col-12 mb-3">
                                 <label for="name" class="form-label">Nombre y Apellidos</label>
-                                <input type="text" class="form-control" [class.is-valid]="name.valid && name.touched" [class.is-invalid]="name.invalid && name.touched" id="name" formControlName="name">
+                                <input type="text" class="form-control" [class.is-valid]="name.valid && name.touched" [class.is-invalid]="name.invalid && name.touched" id="name" formControlName="name" autocomplete="off">
 
                                 <ng-container *ngIf="name.invalid && name.touched">
                                     <div *ngIf="name.errors?.['required']" class="invalid-feedback">
@@ -56,7 +56,7 @@
                             <ng-container *ngIf="changePassword">
                                 <div class="col-12 mb-3">
                                     <label for="password" class="form-label">Contraseña</label>
-                                    <input type="text" class="form-control" [class.is-valid]="password.valid && password.touched" [class.is-invalid]="password.invalid && password.touched" id="password" formControlName="password">
+                                    <input type="text" class="form-control" [class.is-valid]="password.valid && password.touched" [class.is-invalid]="password.invalid && password.touched" id="password" formControlName="password" autocomplete="off">
 
                                     <ng-container *ngIf="password.invalid && password.touched">
                                         <div *ngIf="password.errors?.['required']" class="invalid-feedback">
@@ -67,7 +67,7 @@
 
                                 <div class="col-12 mb-3">
                                     <label for="confirmPassword" class="form-label">Repetir contraseña</label>
-                                    <input type="text" class="form-control" [class.is-valid]="confirmPassword.valid && confirmPassword.touched" [class.is-invalid]="(confirmPassword.invalid && confirmPassword.touched) || userForm.errors?.['notSame']" id="confirmPassword" formControlName="confirmPassword">
+                                    <input type="text" class="form-control" [class.is-valid]="confirmPassword.valid && confirmPassword.touched" [class.is-invalid]="(confirmPassword.invalid && confirmPassword.touched) || userForm.errors?.['notSame']" id="confirmPassword" formControlName="confirmPassword" autocomplete="off">
 
                                     <ng-container *ngIf="confirmPassword.invalid && confirmPassword.touched">
                                         <div *ngIf="confirmPassword.errors?.['required']" class="invalid-feedback">
