@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from "@angular/core";
+import { ChangeDetectorRef, Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from "@angular/core";
 import { Item } from "@app/shared/models/transaction";
 
 @Component({
@@ -28,5 +28,9 @@ export class ItemComponent implements OnInit, OnChanges {
     }
     
     ngOnInit(): void {
+    }
+
+    onConvertProduct(code: string) {
+        this.item.product.convert(code)
     }
 }

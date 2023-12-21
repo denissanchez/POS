@@ -14,6 +14,10 @@ const PUBLICO_CONVERT_OPTION = {
 }
 
 
+const LABEL_POR_MAYOR = 'Por mayor';
+const LABEL_PUBLICO = 'Publico';
+
+
 export class Product {
     public convertOptions: ConvertOption[] = [];
 
@@ -30,24 +34,21 @@ export class Product {
 
     private verifyConvertOptions() {
         if (this._id.startsWith('M')) {
-            this.convertOptions = [PUBLICO_CONVERT_OPTION];
+            this.convertOptions = [{
+                label: LABEL_PUBLICO,
+                code: this._id.substring(1)
+            }];
         } else {
-            this.convertOptions = [POR_MAYOR_CONVERT_OPTION];
+            this.convertOptions = [{
+                label: LABEL_POR_MAYOR,
+                code: `M${this._id}`
+            }];
         }
     }
 
     async convert(code: string) {
-        let [initial, ...chars] = this._id;
-        let newCode = [code, initial, ...chars].join('');;
-
-        if (this._id.startsWith('T')) {
-            newCode = [code, ...chars].join('');
-        } else if (this._id.startsWith('M'))  {
-            newCode = [code, ...chars].join('');
-        }
-
         try {
-            const req = await fetch(`/api/v1/products/${newCode}`);
+            const req = await fetch(`/api/v1/products/${code}`);
 
             if (!req.ok) {
                 throw new Error();

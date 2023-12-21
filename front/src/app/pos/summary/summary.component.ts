@@ -109,8 +109,4 @@ export class SummaryComponent implements OnInit, AfterViewInit, OnDestroy {
     onCancelTransaction() {
         this.posService.restartCurrentTransaction();
     }
-
-    trackByProductId(index: number, item: Item) {
-        return item.product._id;
-    }
 }

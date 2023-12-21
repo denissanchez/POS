@@ -33,7 +33,7 @@
         </div>
 
         <div style="height: calc(100% - 240px); overflow-x: hidden; overflow-y: scroll;">
-            <div *ngFor="let item of transaction.items; let i = index; trackBy: trackByProductId" class="my-2 mx-2">
+            <div *ngFor="let item of transaction.items; let i = index;" class="my-2 mx-2">
                 <app-item [index]="i" [item]="item" [showDiscount]="transaction.type !== 'CREDITO'" [showIncrement]="transaction.type === 'CREDITO'" (onDelete)="onDelete(item.product._id)"></app-item>
             </div>
         </div>

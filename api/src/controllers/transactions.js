@@ -193,7 +193,7 @@ router.get(
        return [
           index + 1,
           item.product.category,
-          wrapAnsi(item.product.name.replace('(Por mayor)', '')),
+          wrapAnsi(item.product.name.replace('(Por mayor)', ''), 30),
           item.quantity,
           `S/ ${(subtotal / item.quantity).toFixed(2)}`,
           `S/ ${subtotal.toFixed(2)}`

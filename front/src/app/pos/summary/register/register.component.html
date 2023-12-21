@@ -22,7 +22,7 @@
 </swal>
 
 <ng-container [ngSwitch]="transaction.type">
-    <button *ngSwitchCase="'COBRADO'" type="button" class="h-100 w-100 btn btn-success fs-5" (click)="register()" [disabled]="disabled">
+    <button *ngSwitchCase="'COBRADO'" type="button" class="h-100 w-100 btn btn-success fs-5" (click)="launchModal(registerContadoModal)" [disabled]="disabled">
         <i class="bi bi-check"></i> {{ confirmationLabel }}
     </button>
     <button *ngSwitchCase="'CREDITO'" type="button" class="h-100 w-100 btn btn-success fs-5" (click)="launchModal(registerCreditoModal)" [disabled]="disabled">
@@ -32,6 +32,42 @@
         <i class="bi bi-check"></i> {{ confirmationLabel }}
     </button>
 </ng-container>
+
+
+<div class="modal fade" tabindex="-1" aria-hidden="true" #registerContadoModal>
+    <div class="modal-dialog modal-md">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="registerBackdropLabel">Detalles para factura</h5>
+                <button type="button" class="btn-close" aria-label="Close" (click)="closeModal()"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-12 mt-2 mb-3">
+                        <label for="clientName" class="form-label">RUC:</label>
+
+                        <ng-select [items]="clients$ | async" bindValue="_id" [addTag]="true" addTagText="Registrar nuevo cliente" placeholder="Seleccione una opción" (change)="onChangeClient($event)">
+                        </ng-select>
+                    </div>
+    
+                    <div class="col-12 mb-3" [ngClass]="{'d-none': transaction.client._id === ''}">
+                        <label for="clientName" class="form-label">Razón social:</label>
+                        <input type="text" class="form-control disabled" id="clientName" placeholder="" [(ngModel)]="transaction.client.name" autocomplete="off">
+                    </div>
+    
+                    <div class="col-12 mb-3" [ngClass]="{'d-none': transaction.client._id === ''}">
+                        <label for="clientPhone" class="form-label">Telefono:</label>
+                        <input type="text" class="form-control disabled" id="clientPhone" placeholder="" [(ngModel)]="transaction.client.phone" autocomplete="off">
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" (click)="closeModal()">Cancelar</button>
+                <button type="button" class="btn btn-primary" (click)="register()">Registrar</button>
+            </div>
+        </div>
+    </div>
+</div>
 
 
 <div class="modal fade" tabindex="-1" aria-hidden="true" #registerCreditoModal>
