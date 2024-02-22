@@ -79,4 +79,8 @@ export class MobileViewerComponent implements OnInit, OnDestroy {
     ngOnDestroy(): void {
         this.socket.disconnect();
     }
+
+    logout() {
+        window.location.href = '/logout';
+    }
 }

@@ -145,7 +145,7 @@ class StockFileAdapter {
                 }
             });
 
-            const code = row.getCell('M').value; // N is column for bar code
+            const code = row.getCell('N').value;
 
             if (code == null || (!String(code).match(/\d/) && !String(code).match(/[a-zA-Z]/))) {
                 return;
