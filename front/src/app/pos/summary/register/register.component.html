@@ -44,17 +44,15 @@
             <div class="modal-body">
                 <div class="row">
                     <div class="col-12 mt-2 mb-3">
-                        <label for="clientName" class="form-label">RUC:</label>
-
-                        <ng-select [items]="clients$ | async" bindValue="_id" [addTag]="true" addTagText="Registrar nuevo cliente" placeholder="Seleccione una opción" (change)="onChangeClient($event)">
-                        </ng-select>
+                        <label for="clientName" class="form-label">Ingrese RUC o DNI:</label>
+                        <input type="text" class="form-control disabled text-uppercase" id="clientDoc" placeholder="" [(ngModel)]="transaction.client._id" (ngModelChange)="onUpdateClientDoc($event)"/>
                     </div>
-    
+
                     <div class="col-12 mb-3" [ngClass]="{'d-none': transaction.client._id === ''}">
                         <label for="clientName" class="form-label">Razón social:</label>
-                        <input type="text" class="form-control disabled" id="clientName" placeholder="" [(ngModel)]="transaction.client.name" autocomplete="off">
+                        <input type="text" class="form-control disabled text-uppercase" id="clientName" placeholder="" [(ngModel)]="transaction.client.name" autocomplete="off">
                     </div>
-    
+
                     <div class="col-12 mb-3" [ngClass]="{'d-none': transaction.client._id === ''}">
                         <label for="clientPhone" class="form-label">Telefono:</label>
                         <input type="text" class="form-control disabled" id="clientPhone" placeholder="" [(ngModel)]="transaction.client.phone" autocomplete="off">
@@ -81,7 +79,7 @@
                 <div class="row">
                     <div class="col-12 mb-3">
                         <label for="clientName" class="form-label">Cliente:</label>
-                        <input type="text" class="form-control disabled" id="clientName" placeholder="" [(ngModel)]="transaction.client.name" autocomplete="off">
+                        <input type="text" class="form-control disabled text-uppercase" id="clientName" placeholder="" [(ngModel)]="transaction.client.name" autocomplete="off">
                     </div>
                 </div>
             </div>
@@ -115,13 +113,13 @@
                 <h5>Cliente</h5>
 
                 <div class="col-12 mt-2 mb-3">
-                    <ng-select [items]="clients$ | async" bindValue="_id" [addTag]="true" addTagText="Registrar nuevo cliente" placeholder="Seleccione una opción" (change)="onChangeClient($event)">
-                    </ng-select>
+                    <label for="clientName" class="form-label">Ingrese RUC o DNI:</label>
+                    <input type="text" class="form-control disabled text-uppercase" id="clientDoc" placeholder="" [(ngModel)]="transaction.client._id" (ngModelChange)="onUpdateClientDoc($event)"/>
                 </div>
 
                 <div class="col-12 mb-3" [ngClass]="{'d-none': transaction.client._id === ''}">
-                    <label for="clientName" class="form-label">Razón social:</label>
-                    <input type="text" class="form-control disabled" id="clientName" placeholder="" [(ngModel)]="transaction.client.name" autocomplete="off">
+                    <label for="clientName" class="form-label">Razón social o Nombres:</label>
+                    <input type="text" class="form-control disabled text-uppercase" id="clientName" placeholder="" [(ngModel)]="transaction.client.name" autocomplete="off">
                 </div>
 
                 <div class="col-12 mb-3" [ngClass]="{'d-none': transaction.client._id === ''}">
@@ -132,29 +130,29 @@
                 <div class="col-12">
                     <h5>Datos de vehículo</h5>
                 </div>
-                
+
                 <div class="col-8 mb-3">
                     <label for="carBrand" class="form-label">Marca:</label>
-                    <input type="text" class="form-control" id="carBrand" [(ngModel)]="transaction.car.brand" placeholder="" autocomplete="off">
+                    <input type="text" class="form-control text-uppercase" id="carBrand" (click)="transaction.car.onClickBrand()" [(ngModel)]="transaction.car.brand" placeholder="" autocomplete="off">
                 </div>
 
                 <div class="col-4 mb-3">
                     <label for="carPlate" class="form-label">Año:</label>
-                    <input type="text" class="form-control" id="carPlate" [(ngModel)]="transaction.car.year" placeholder="" autocomplete="off">
+                    <input type="text" class="form-control text-uppercase" id="carPlate" (click)="transaction.car.onClickYear()" [(ngModel)]="transaction.car.year" placeholder="" autocomplete="off">
                 </div>
 
                 <div class="col-7 mb-3">
                     <label for="carModel" class="form-label">Modelo:</label>
-                    <input type="text" class="form-control" id="carModel" [(ngModel)]="transaction.car.model" placeholder="" autocomplete="off">
+                    <input type="text" class="form-control text-uppercase" id="carModel" (click)="transaction.car.onClickModel()" [(ngModel)]="transaction.car.model" placeholder="" autocomplete="off">
                 </div>
 
                 <div class="col-5 mb-3">
                     <label for="carPlate" class="form-label">Placa:</label>
-                    <input type="text" class="form-control" id="carPlate" [(ngModel)]="transaction.car.plate" placeholder="" autocomplete="off">
+                    <input type="text" class="form-control text-uppercase" id="carPlate" (click)="transaction.car.onClickPlate()" [(ngModel)]="transaction.car.plate" placeholder="" autocomplete="off">
                 </div>
 
                 <div class="col-12">
-                    <label for="carModel" class="form-label">Nota:</label>
+                    <label for="carModel" class="form-label text-uppercase">Nota:</label>
                     <textarea name="note" id="note" cols="30" rows="3" class="form-control" [(ngModel)]="transaction.note" autocomplete="off"></textarea>
                 </div>
 

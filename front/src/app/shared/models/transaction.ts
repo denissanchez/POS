@@ -70,14 +70,14 @@ export class Item {
 
     toggleDiscount() {
         this.product = Product.fromJson(this._product);
-        
+
         this.increment = 0;
         this.discount = 0;
     }
 
     toggleIncrement(enabled: boolean) {
         this.product = Product.fromJson(this._product);
-        
+
         if (enabled) {
             this.increment = 5;
         } else {
@@ -146,7 +146,7 @@ export class DraftTransaction {
             items: this.items.map(x => x.json()),
             client: this.client.json(),
             car: this.car.json(),
-            note: this.note,
+            note: this.note.toUpperCase(),
             type: this.type
         }
     }
@@ -195,7 +195,7 @@ export class Transaction {
     }
 
     public get isPrintable(): boolean {
-        return this.type === "COTIZACION";
+      return ["COTIZACION", "COBRADO"].includes(this.type);
     }
 
     public get printUrl(): string {
@@ -213,7 +213,7 @@ export class Transaction {
         public seller: Seller,
     ) {
     }
-    
+
 
     public static fromJson(data: Record<string, string | number | Record<string, string | number>>) {
         const { items: _items, client: _client, car: _car, seller: _seller } = data;
@@ -238,4 +238,3 @@ export class Transaction {
         return transactions.map(p => this.fromJson(p))
     }
 }
-

@@ -77,7 +77,7 @@ export class SummaryComponent implements OnInit, AfterViewInit, OnDestroy {
             return;
         }
 
-        const productId = this.searchCode.nativeElement.value.trim();
+        const productId = this.searchCode.nativeElement.value.trim().toUpperCase();
 
         if (productId === "") {
             return

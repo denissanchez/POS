@@ -4,7 +4,7 @@ import { DraftTransaction } from "@app/shared/models/transaction";
 import { SwalComponent } from "@sweetalert2/ngx-sweetalert2";
 import { PosService } from "app/pos/pos.service";
 import { NgxSpinnerService } from "ngx-spinner";
-import { Observable, map, of, tap } from "rxjs";
+import { Observable, map, of, take, tap } from "rxjs";
 
 declare const bootstrap: any;
 
@@ -26,7 +26,7 @@ export class RegisterComponent implements OnInit, AfterViewInit, OnDestroy {
 
     private _currentModal: any | undefined = undefined;
 
-    public clients$: Observable<Client[]> = of([]);
+    private _clients: Client[] = [];
 
     get confirmationLabel(): string {
         if (this.transaction.type === 'COBRADO') {
@@ -39,7 +39,6 @@ export class RegisterComponent implements OnInit, AfterViewInit, OnDestroy {
     constructor(private posService: PosService, private ngxSpinner: NgxSpinnerService) {}
 
     ngOnInit(): void {
-        this.clients$ = this.posService.getAllClients();
     }
 
     ngAfterViewInit(): void {
@@ -66,6 +65,20 @@ export class RegisterComponent implements OnInit, AfterViewInit, OnDestroy {
         }
     }
 
+    onUpdateClientDoc(doc: string) {
+      if (doc.length !== 8 && doc.length !== 11) {
+        return
+      }
+
+      const client = this._clients.find((x) => x._id === doc)
+
+      if (client) {
+        this.transaction.client = Client.fromJson(client.json())
+      } else {
+        this.transaction.client = new Client(doc)
+      }
+    }
+
     launchModal(modal: HTMLDivElement): void {
         const client = new Client();
         client.name = "";
@@ -73,6 +86,12 @@ export class RegisterComponent implements OnInit, AfterViewInit, OnDestroy {
 
         this._currentModal = new bootstrap.Modal(modal, { backdrop: 'static', keyboard: false, focus: true });
         this._currentModal.show();
+
+        this.posService.getAllClients().pipe(take(1)).subscribe({
+          next: (clients) => {
+            this._clients = [...clients]
+          }
+        })
 
         setTimeout(() => {
             modal.querySelector<HTMLInputElement>('#clientName')?.focus();
@@ -98,7 +117,6 @@ export class RegisterComponent implements OnInit, AfterViewInit, OnDestroy {
             },
             complete: () => {
                 this.closeModal();
-                this.clients$ = this.posService.getAllClients();
                 this.ngxSpinner.hide();
             }
         })

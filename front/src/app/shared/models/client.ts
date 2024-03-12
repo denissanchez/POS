@@ -11,7 +11,7 @@ export class Client {
     json() {
         return {
             _id: this._id,
-            name: this.name,
+            name: this.name.toUpperCase(),
             phone: this.phone,
         }
     }

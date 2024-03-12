@@ -47,14 +47,14 @@ class StockFileAdapter {
                 fuzzy: 0.2
             }
         })
-        
+
         this.syncData();
 
         this.observer = fs.watchFile(this._excelPath, { interval: 1000 }, (curr, prev) => {
             if (curr.mtime.getTime() == prev.mtime.getTime()) {
                 return;
             }
-    
+
             this.syncData();
         })
     }
@@ -78,28 +78,28 @@ class StockFileAdapter {
 
     async getStockWorksheet() {
         const workbook = new ExcelJS.Workbook();
-    
+
         await workbook.xlsx.readFile(this._excelPath);
         workbook.calcProperties.fullCalcOnLoad = true;
-    
+
         return [workbook.getWorksheet(STOCK_SHEET_NAME), workbook]
     }
 
     async getCategories(stockWorkSheet) {
         const categoriesCol = stockWorkSheet.getColumn('A');
-    
+
         const categoriesSet = new Set();
-    
+
         categoriesCol.eachCell(function(cell, rowNumber) {
             if (!cell.value) {
                 return;
             }
-    
+
             categoriesSet.add(cell.value);
         })
-    
+
         const [header, ...categories] = Array.from(categoriesSet);
-    
+
         return categories.map((c, index) => ({
             _id: `${c.replace(' ', '')}`,
             name: c
@@ -123,21 +123,21 @@ class StockFileAdapter {
             'M': POR_MAYOR_SUFFIX,
             '': '',
         }
-    
+
         const rows = []
-    
+
         stockWorkSheet.eachRow({includeEmpty: true}, (row, rowNumber) => {
             const product = {
                 quantity: 0,
             }
-    
+
             if (!row.getCell('B').value) {
                 return;
             }
-    
+
             Object.entries(baseFields).forEach(([key, name]) => {
                 const cell = row.getCell(key);
-    
+
                 if (cell.value instanceof Object) {
                     product[name] = cell.value.result;
                 } else {
@@ -155,7 +155,7 @@ class StockFileAdapter {
 
                 const cell = row.getCell(key);
 
-                const _id = `${preffix}${code}`;
+                const _id = `${preffix}${code}`.toUpperCase();
                 const name = `${product.name} ${nameBasedSuffix[preffix]}`.trim()
 
                 let price = 0;
@@ -173,13 +173,13 @@ class StockFileAdapter {
                 rows.push({...product, _id, name, price, row: rowNumber})
             });
         });
-    
+
         return rows;
     }
 
     async syncData() {
         const [worksheet, ] = await this.getStockWorksheet();
-    
+
         this._products = await this.getProducts(worksheet);
         this._categories = await this.getCategories(worksheet);
 
@@ -208,7 +208,7 @@ class StockFileAdapter {
         if (byCode) {
             return {...byCode};
         }
-        
+
         return this._minisearch.search(txt).map(p => {
             const { terms, match, score, ...product } = p;
             return product;
@@ -235,9 +235,9 @@ class StockFileAdapter {
 
         const now = new Date();
         const currentMonth = MONTHS[now.getMonth()];
-        
+
         const worksheetTitle = `VENTAS ${currentMonth} ${now.getFullYear()}`;
-        
+
         const workbook = await XlsxPopulate.fromFileAsync(this._excelPath);
 
         const worksheet = workbook.sheet(worksheetTitle);
@@ -246,7 +246,7 @@ class StockFileAdapter {
             TIPO_PRODUCTO: 'A',
             DESCRIPCION_PRODUCTO: 'B',
             CANTIDAD: 'C',
-            COSTO: 'D', 
+            COSTO: 'D',
             TIPO_VENTA: 'E',
             PRECIO_UNIDAD: 'F',
             FECHA: 'G',
@@ -262,7 +262,7 @@ class StockFileAdapter {
         while(worksheet.cell(`A${row + 1}`).value() != undefined & worksheet.cell(`A${row + 1}`).value() !== "") {
             row++;
         }
-        
+
         for (let item of items) {
             const productDB = this.getById(item.product._id);
 

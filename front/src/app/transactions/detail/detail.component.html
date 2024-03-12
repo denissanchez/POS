@@ -18,12 +18,13 @@
                                 <label for="tipoTransaccion" class="form-label">Tipo</label>
                                 <input type="text" class="form-control" id="tipoTransaccion" [ngModel]="transaction.type" disabled>
                             </div>
-                            <div class="col-12 mb-3">
+
+                            <div class="col-12 mb-3" *ngIf="transaction.client.name != ''">
                                 <label for="clientName" class="form-label">Cliente</label>
                                 <textarea name="clientName" class="form-control" id="clientName" cols="30" rows="3" [ngModel]="transaction.client.name" disabled></textarea>
                             </div>
 
-                            <div class="col-12 mb-3">
+                            <div class="col-12 mb-3" *ngIf="transaction.car.summary != ''">
                                 <label for="carro" class="form-label">Carro (Marca | Modelo | Placa )</label>
                                 <input type="text" class="form-control" id="carro" [ngModel]="transaction.car.summary" disabled>
                             </div>

@@ -13,12 +13,36 @@ export class Car {
                 public year: string = "") {
     }
 
+    onClickBrand() {
+      if (this.brand === '-') {
+        this.brand = '';
+      }
+    }
+
+    onClickModel() {
+      if (this.model === '-') {
+        this.model = '';
+      }
+    }
+
+    onClickPlate() {
+      if (this.plate === '-') {
+        this.plate = '';
+      }
+    }
+
+    onClickYear() {
+      if (this.year === '-') {
+        this.year = '';
+      }
+    }
+
     json() {
         return {
-            brand: this.brand,
-            model: this.model,
-            plate: this.plate,
-            year: this.year
+            brand: this.brand.toUpperCase(),
+            model: this.model.toUpperCase(),
+            plate: this.plate.toUpperCase(),
+            year: this.year.toUpperCase()
         }
     }
 

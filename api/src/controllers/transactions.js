@@ -75,7 +75,9 @@ router.get(
   runAsyncWrapper(async (req, res) => {
     const transaction = await getById(req.params.id);
 
-    const title = ('PROFORMA_' + transaction.client.name.replace(/\s/g, '_')).toUpperCase();
+    const filePrefix = transaction.type == 'COTIZACION' ? 'PROFORMA' : 'COMPROBANTE';
+
+    const title = (filePrefix + '_' + transaction.client.name.replace(/\s/g, '_')).toUpperCase();
 
     if (!transaction) {
       res.status(404).json({
@@ -103,7 +105,10 @@ router.get(
     doc.rect(50, 100, pageWidth - 100, 27).fill("#005b96");
 
     doc.font('Helvetica-Bold')
-    doc.fontSize(23).fill("#f3f6f4").text('PROFORMA', (pageWidth / 2) - 80, 105);
+
+    const docTitle = transaction.type == 'COTIZACION' ? 'PROFORMA' : 'COMPROBANTE';
+
+    doc.fontSize(23).fill("#f3f6f4").text(docTitle, (pageWidth / 2) - 80, 105);
     doc.font('Helvetica')
 
     doc.fillColor("black");
@@ -126,7 +131,7 @@ router.get(
     doc.fillColor("black");
     doc.font('Helvetica-Bold')
     doc.fontSize(11).text(`RAZÓN SOCIAL:`, 50, 200);
-    
+
     doc.font('Helvetica')
     doc.fontSize(11).text(`${transaction.client.name}`, 150, 200);
 
@@ -138,7 +143,7 @@ router.get(
 
     doc.font('Helvetica-Bold')
     doc.fontSize(11).text(`TELEFONO:`, 50, 230);
-    
+
     doc.font('Helvetica')
     doc.fontSize(11).text(`${transaction.client.phone}`, 150, 230);
 
@@ -152,10 +157,10 @@ router.get(
 
     doc.font('Helvetica-Bold')
     doc.fontSize(11).text(`MARCA/MODELO:`, 50, 285);
-    
+
     doc.font('Helvetica')
     doc.fontSize(11).text(`${transaction.car.brand} ${transaction.car.model}`, 150, 285);
-    
+
     doc.font('Helvetica-Bold')
     doc.fontSize(11).text(`AÑO:`, 50, 300);
 
@@ -213,44 +218,52 @@ router.get(
 
       y = y + 5;
     });
-    
+
     const total = transaction.items.reduce((acc, item) => acc + item.subtotal, 0);
     const igv = total * 0.18;
     const subtotal = total - igv;
 
     doc.font('Helvetica-Bold').fontSize(11).text(`SUBTOTAL:`, 415, y + 5);
     doc.font('Helvetica').fontSize(11).text(`S/ ${subtotal.toFixed(2)}`, 485, y + 5);
-    
+
     doc.font('Helvetica-Bold').fontSize(11).text(`IGV:`, 415, y + 20);
     doc.font('Helvetica').fontSize(11).text(`S/ ${igv.toFixed(2)}`, 485, y + 20);
 
     doc.font('Helvetica-Bold').fontSize(11).text(`TOTAL:`, 415, y + 35);
     doc.font('Helvetica').fontSize(11).text(`S/ ${total.toFixed(2)}`, 485, y + 35);
 
-    y = 625;
+    if (transaction.type === 'COTIZACION') {
+      y = 625;
 
-    doc.fillColor("red");
-    doc.font('Helvetica-Bold').fontSize(11).text('NOTA', 50, y);
+      doc.fillColor("red");
+      doc.font('Helvetica-Bold').fontSize(11).text('NOTA', 50, y);
 
-    doc.fillColor("black");
-    doc.font('Helvetica').fontSize(11).text(transaction.note || '-', 50, y + 15);
+      doc.fillColor("black");
+      doc.font('Helvetica').fontSize(11).text(transaction.note || '-', 50, y + 15);
+    }
 
     y = 670;
 
-    doc.font('Helvetica-Bold').fontSize(11).text(`FECHA`, 50, y);
-    doc.font('Helvetica').fontSize(11).text(format(new Date(transaction.createdAt), "eeee, dd 'de' MMMM 'del' yyyy", { locale: es }), 110, y);
+    if (transaction.type === 'COTIZACION') {
+      doc.font('Helvetica-Bold').fontSize(11).text(`FECHA`, 50, y);
+      doc.font('Helvetica').fontSize(11).text(format(new Date(transaction.createdAt), "eeee, dd 'de' MMMM 'del' yyyy", { locale: es }), 110, y);
 
-    doc.font('Helvetica-Bold').fontSize(11).text(`VIGENCIA:`, 50, y + 15);
-    doc.font('Helvetica').fontSize(11).text(`3 dias hábiles desde su emisión.`, 110, y + 15);
+      doc.font('Helvetica-Bold').fontSize(11).text(`VIGENCIA:`, 50, y + 15);
+      doc.font('Helvetica').fontSize(11).text(`3 dias hábiles desde su emisión.`, 110, y + 15);
+    }
 
-    doc.moveTo(50, y + 28).lineTo(pageWidth - 50, y + 28).stroke();
+    doc.moveTo(50, y + 27).lineTo(pageWidth - 50, y + 27).stroke();
 
-    doc.font('Helvetica-Bold').fontSize(11).text(`Contacto:`, 50, y + 33);
-    doc.font('Helvetica').fontSize(11).text(`César Wagner Terrones Vera`, 105, y + 33);
-    doc.font('Helvetica-Bold').fontSize(11).text(`- WhatsApp:`, 248, y + 33);
-    doc.font('Helvetica').fontSize(11).text(`935990943`, 315, y + 33);
-    doc.font('Helvetica-Bold').fontSize(11).text(`- Correo:`, 371, y + 33);
-    doc.font('Helvetica').fontSize(11).text(`cesarw.vera@gmail.com`, 420, y + 33);
+    doc.font('Helvetica-Bold').fontSize(11).text(`Contacto:`, 50, y + 30);
+    doc.font('Helvetica').fontSize(11).text(`César Wagner Terrones Vera`, 105, y + 30);
+    doc.font('Helvetica-Bold').fontSize(11).text(`- WhatsApp:`, 248, y + 30);
+    doc.font('Helvetica').fontSize(11).text(`935990943`, 315, y + 30);
+    doc.font('Helvetica-Bold').fontSize(11).text(`- Correo:`, 371, y + 30);
+    doc.font('Helvetica').fontSize(11).text(`cesarw.vera@gmail.com`, 420, y + 30);
+
+    if (transaction.type !== 'COTIZACION') {
+      doc.font('Helvetica-Bold').fontSize(7).text(`ESTO NO ES UN COMPROBANTE EMITIDO POR SUNAT`, 190, y + 41);
+    }
 
     doc.end();
   })
