@@ -1,11 +1,12 @@
 import { Component, OnInit } from "@angular/core";
 import { Transaction } from "@app/shared/models/transaction";
 import { ColDef } from 'ag-grid-community';
-import { Observable, of } from "rxjs";
+import { Observable, map, of } from "rxjs";
 import { TransactionsService } from "./transactions.service";
 import { CAN_VIEW_METRICS } from "@app/shared/models/user";
 import { BtnTransactionDetailRenderer } from "./renderers/transaction-detail.renderer";
 import { AuthService } from "@app/auth.service";
+import { format } from "date-fns";
 
 
 @Component({
@@ -15,7 +16,7 @@ import { AuthService } from "@app/auth.service";
 })
 export class TransactionsComponent implements OnInit {
     public columnDefs: ColDef[] = [
-        { field: 'createdAt', headerName: 'Fecha de registro', valueFormatter: (params) => new Date(params.value).toLocaleDateString()},
+        { field: 'createdAt', headerName: 'Fecha de registro', valueFormatter: (params) => format(new Date(params.value), 'dd/MM/yyyy HH:mm:ss')},
         { field: 'client.name', headerName: 'Cliente' },
         { field: 'seller.name', headerName: 'Vendedor' },
         { field: 'type', headerName: 'Tipo' },
@@ -45,6 +46,6 @@ export class TransactionsComponent implements OnInit {
     }
 
     updateRange($event: { from: string; to: string; }) {
-        this.transactions$ = this.transactionsService.getAll(new Date($event.from), new Date($event.to));
+        this.transactions$ = this.transactionsService.getAll(new Date($event.from), new Date($event.to)).pipe(map(x => x.reverse()));
     }
 }

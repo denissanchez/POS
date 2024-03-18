@@ -44,7 +44,8 @@ app.use(
     secret: process.env.SECRET_KEY,
     resave: false,
     saveUninitialized: true,
-    cookie: { maxAge: 10 * 60 * 60 * 1000 },
+    cookie: { maxAge: 360 * 24 * 60 * 60 * 1000 },
+    name: 'pos_session_id'
   })
 );
 

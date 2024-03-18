@@ -1,10 +1,10 @@
-import { AfterViewInit, Component, EventEmitter, Input, OnDestroy, OnInit, Output, TemplateRef, ViewChild } from "@angular/core";
+import { AfterViewInit, Component, EventEmitter, Input, OnDestroy, OnInit, Output, ViewChild } from "@angular/core";
 import { Client } from "@app/shared/models";
 import { DraftTransaction } from "@app/shared/models/transaction";
 import { SwalComponent } from "@sweetalert2/ngx-sweetalert2";
 import { PosService } from "app/pos/pos.service";
 import { NgxSpinnerService } from "ngx-spinner";
-import { Observable, map, of, take, tap } from "rxjs";
+import { take, tap } from "rxjs";
 
 declare const bootstrap: any;
 
@@ -109,7 +109,7 @@ export class RegisterComponent implements OnInit, AfterViewInit, OnDestroy {
             next: (response: { _id: string }) => {
                 this.successRegistrationAlert.fire()
                     .then(() => {
-                        if (this.transaction.type === 'COTIZACION') {
+                        if (this.transaction.type !== 'CREDITO') {
                             window.open(`/api/v1/transactions/print/${response._id}`, '_blank');
                         }
                     })

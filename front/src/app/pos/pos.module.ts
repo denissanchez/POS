@@ -11,6 +11,7 @@ import { SharedModule } from "@app/shared/shared.module";
 import { CategoryBtnComponent } from "./products/category-btn/category-btn.component";
 import { RegisterComponent } from "./summary/register/register.component";
 import { MobileViewerComponent } from "./mobile-viewer/mobile-viewer.component";
+import { StockAlertComponent } from "./summary/register/stock-alert/stock-alert.component";
 
 @NgModule({
     declarations: [
@@ -21,7 +22,8 @@ import { MobileViewerComponent } from "./mobile-viewer/mobile-viewer.component";
         ProductComponent,
         CategoryBtnComponent,
         RegisterComponent,
-        MobileViewerComponent
+        MobileViewerComponent,
+        StockAlertComponent,
     ],
     providers: [
         PosService

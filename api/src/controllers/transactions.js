@@ -208,13 +208,56 @@ router.get(
 
     y = y + 20;
 
-    items.rows.forEach((row, i) => {
-      row.forEach((column, j) => {
-        doc.fontSize(10).text(column, items.starts[j], y);
-      });
+    const printFooter = () => {
+      const y = 670;
 
+      if (transaction.type === 'COTIZACION') {
+        doc.font('Helvetica-Bold').fontSize(11).text(`FECHA`, 50, y);
+        doc.font('Helvetica').fontSize(11).text(format(new Date(transaction.createdAt), "eeee, dd 'de' MMMM 'del' yyyy", { locale: es }), 110, y);
+  
+        doc.font('Helvetica-Bold').fontSize(11).text(`VIGENCIA:`, 50, y + 15);
+        doc.font('Helvetica').fontSize(11).text(`3 dias hábiles desde su emisión.`, 110, y + 15);
+      }
+  
+      doc.moveTo(50, y + 27).lineTo(pageWidth - 50, y + 27).stroke();
+  
+      doc.font('Helvetica-Bold').fontSize(11).text(`Contacto:`, 50, y + 30);
+      doc.font('Helvetica').fontSize(11).text(`César Wagner Terrones Vera`, 105, y + 30);
+      doc.font('Helvetica-Bold').fontSize(11).text(`- WhatsApp:`, 248, y + 30);
+      doc.font('Helvetica').fontSize(11).text(`935990943`, 315, y + 30);
+      doc.font('Helvetica-Bold').fontSize(11).text(`- Correo:`, 371, y + 30);
+      doc.font('Helvetica').fontSize(11).text(`cesarw.vera@gmail.com`, 420, y + 30);
+  
+      if (transaction.type !== 'COTIZACION') {
+        doc.font('Helvetica-Bold').fontSize(7).text(`ESTO NO ES UN COMPROBANTE EMITIDO POR SUNAT`, 190, y + 41);
+      }
+    }
+
+    let page = 0;
+    printFooter();
+
+    items.rows.forEach((row, i) => {
+      if ((page == 0 && i > 10) || (page > 0 && (i - 11) % 20 == 0)) {
+        doc.addPage();
+        printFooter();
+        page++;
+
+        y = 60
+      }
+
+      row.forEach((column, j) => {
+        if (column.length > 50) {
+          doc.fontSize(7).text(column, items.starts[j], y);
+        } else {
+          doc.fontSize(10).text(column, items.starts[j], y);
+        }
+      });
+      
       y = y + 25;
-      doc.moveTo(50, y).lineTo(pageWidth - 50, y).stroke();
+      
+      if (i != 10) {
+        doc.moveTo(50, y).lineTo(pageWidth - 50, y).stroke();
+      }
 
       y = y + 5;
     });
@@ -240,29 +283,6 @@ router.get(
 
       doc.fillColor("black");
       doc.font('Helvetica').fontSize(11).text(transaction.note || '-', 50, y + 15);
-    }
-
-    y = 670;
-
-    if (transaction.type === 'COTIZACION') {
-      doc.font('Helvetica-Bold').fontSize(11).text(`FECHA`, 50, y);
-      doc.font('Helvetica').fontSize(11).text(format(new Date(transaction.createdAt), "eeee, dd 'de' MMMM 'del' yyyy", { locale: es }), 110, y);
-
-      doc.font('Helvetica-Bold').fontSize(11).text(`VIGENCIA:`, 50, y + 15);
-      doc.font('Helvetica').fontSize(11).text(`3 dias hábiles desde su emisión.`, 110, y + 15);
-    }
-
-    doc.moveTo(50, y + 27).lineTo(pageWidth - 50, y + 27).stroke();
-
-    doc.font('Helvetica-Bold').fontSize(11).text(`Contacto:`, 50, y + 30);
-    doc.font('Helvetica').fontSize(11).text(`César Wagner Terrones Vera`, 105, y + 30);
-    doc.font('Helvetica-Bold').fontSize(11).text(`- WhatsApp:`, 248, y + 30);
-    doc.font('Helvetica').fontSize(11).text(`935990943`, 315, y + 30);
-    doc.font('Helvetica-Bold').fontSize(11).text(`- Correo:`, 371, y + 30);
-    doc.font('Helvetica').fontSize(11).text(`cesarw.vera@gmail.com`, 420, y + 30);
-
-    if (transaction.type !== 'COTIZACION') {
-      doc.font('Helvetica-Bold').fontSize(7).text(`ESTO NO ES UN COMPROBANTE EMITIDO POR SUNAT`, 190, y + 41);
     }
 
     doc.end();

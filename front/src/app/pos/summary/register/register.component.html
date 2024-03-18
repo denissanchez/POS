@@ -38,10 +38,13 @@
     <div class="modal-dialog modal-md">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="registerBackdropLabel">Detalles para factura</h5>
+                <h5 class="modal-title" id="registerBackdropLabel">Detalles para la venta</h5>
                 <button type="button" class="btn-close" aria-label="Close" (click)="closeModal()"></button>
             </div>
             <div class="modal-body">
+                <div class="row">
+                    <app-stock-alert [transaction]="transaction"></app-stock-alert>
+                </div>
                 <div class="row">
                     <div class="col-12 mt-2 mb-3">
                         <label for="clientName" class="form-label">Ingrese RUC o DNI:</label>
@@ -77,6 +80,9 @@
             </div>
             <div class="modal-body">
                 <div class="row">
+                    <app-stock-alert [transaction]="transaction"></app-stock-alert>
+                </div>
+                <div class="row">
                     <div class="col-12 mb-3">
                         <label for="clientName" class="form-label">Cliente:</label>
                         <input type="text" class="form-control disabled text-uppercase" id="clientName" placeholder="" [(ngModel)]="transaction.client.name" autocomplete="off">
@@ -101,15 +107,9 @@
         </div>
         <div class="modal-body">
             <div class="row">
-                <div *ngIf="warnings.length > 0" class="col-12">
-                    <div class="alert alert-warning" role="alert">
-                        <strong>Advertencia:</strong> Los siguientes productos no cuentan con el stock necesario:
-                        <ul>
-                            <li *ngFor="let warn of warnings">{{ warn }}</li>
-                        </ul>
-                    </div>
-                </div>
-
+                <app-stock-alert [transaction]="transaction"></app-stock-alert>
+            </div>
+            <div class="row">
                 <h5>Cliente</h5>
 
                 <div class="col-12 mt-2 mb-3">

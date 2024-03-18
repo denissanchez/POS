@@ -1,0 +1,6 @@
+<ng-container *ngFor="let item of transaction.items">
+    <div *ngIf="item.quantity > item.product.quantity" class="alert alert-danger mb-2" role="alert">
+        <h5>Producto sin stock</h5>
+        <span class="fw-bold">Importante:</span> No hay suficiente stock para "{{ item.product.name }}". Unidades actual en stock {{ item.product.quantity }}.
+    </div>
+</ng-container>
