@@ -1,10 +1,11 @@
 import { AfterViewInit, ChangeDetectorRef, Component, ElementRef, EventEmitter, OnDestroy, OnInit, Output, ViewChild } from "@angular/core";
 import { PosService } from "../pos.service";
-import { Observable } from "rxjs";
-import { DraftTransaction, Item, TransactionType } from "@app/shared/models/transaction";
+import { Observable, take } from "rxjs";
+import { DraftTransaction, Item, Transaction, TransactionType } from "@app/shared/models/transaction";
 import { Product } from "@app/shared/models";
 import { Socket, io } from 'socket.io-client';
 import NoSleep from 'nosleep.js';
+import { ActivatedRoute } from "@angular/router";
 
 @Component({
     selector: 'app-summary',
@@ -21,11 +22,22 @@ export class SummaryComponent implements OnInit, AfterViewInit, OnDestroy {
 
     currentTransaction$: Observable<DraftTransaction>;
 
-    constructor(private posService: PosService, private changeDetector: ChangeDetectorRef) {
+    constructor(private posService: PosService, private route: ActivatedRoute, private changeDetector: ChangeDetectorRef) {
         this.currentTransaction$ = this.posService.currentTransaction$;
     }
 
     ngOnInit(): void {
+        const quotation = this.route.snapshot.queryParams['quotation'];
+
+        console.log(quotation)
+
+        if (quotation) {
+            this.posService.getTransactionById(quotation).pipe(take(1)).subscribe({
+                next: (transaction: Transaction) => {
+                    this.posService.loadTransaction(transaction);
+                }
+            })
+        }
     }
 
     ngAfterViewInit(): void {
@@ -70,6 +82,7 @@ export class SummaryComponent implements OnInit, AfterViewInit, OnDestroy {
         this.socket.disconnect();
         this._noSleep.disable();
         this.searchCode.nativeElement.removeEventListener('keydown', this.onCodeSubmitted.bind(this));
+        this.posService.restartCurrentTransaction();
     }
 
     onCodeSubmitted(e?: KeyboardEvent) {

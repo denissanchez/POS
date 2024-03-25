@@ -57,9 +57,14 @@
             </div>
             <div class="modal-footer d-flex justify-content-between">
                 <a routerLink="/transacciones" class="btn btn-secondary px-3" (click)="onClose()">Cerrar</a>
-                <ng-container *ngIf="transaction.isPrintable">
-                    <a target="_blank" [href]="transaction.printUrl" class="btn btn-success px-3">Imprimir</a>
-                </ng-container>
+                <div class="d-inline-block">
+                    <ng-container *ngIf="transaction.type == 'COTIZACION'">
+                        <a [routerLink]="['/pos']" [queryParams]="{ quotation: transaction._id }" class="btn btn-info px-3 me-2">Cargar venta</a>
+                    </ng-container>
+                    <ng-container *ngIf="transaction.isPrintable">
+                        <a target="_blank" [href]="transaction.printUrl" class="btn btn-success px-3">Imprimir</a>
+                    </ng-container>
+                </div>
             </div>
         </div>
     </div>

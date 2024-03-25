@@ -1,7 +1,7 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Category, Client, Product } from "@app/shared/models";
-import { DraftTransaction, Item, TransactionType } from "@app/shared/models/transaction";
+import { DraftTransaction, Item, Transaction, TransactionType } from "@app/shared/models/transaction";
 import { BehaviorSubject, Observable, map, tap } from "rxjs";
 
 @Injectable({
@@ -19,6 +19,12 @@ export class PosService {
     }
 
     constructor(private http: HttpClient) {
+    }
+
+    getTransactionById(_id: string) {
+        return this.http.get<Transaction>(`/api/v1/transactions/${_id}`).pipe(
+            map((x: any) => Transaction.fromJson(x))
+        )
     }
 
     searchClient(document: string): Observable<Client> {
@@ -108,6 +114,10 @@ export class PosService {
 
     restartCurrentTransaction() {
         this._currentTransaction.next(new DraftTransaction());
+    }
+
+    loadTransaction(transaction: Transaction) {
+        this._currentTransaction.next(DraftTransaction.fromJson(transaction.json()))
     }
 
     register(transaction: DraftTransaction): Observable<{ _id: string }> {

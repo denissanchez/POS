@@ -70,7 +70,7 @@ export class RegisterComponent implements OnInit, AfterViewInit, OnDestroy {
         return
       }
 
-      const client = this._clients.find((x) => x._id === doc)
+      const client = this._clients.find((x) => x._id === doc);
 
       if (client) {
         this.transaction.client = Client.fromJson(client.json())

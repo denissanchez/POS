@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, ElementRef, ViewChild } from "@angular/core";
+import { ChangeDetectionStrategy, Component, ElementRef, OnDestroy, ViewChild } from "@angular/core";
 import { TransactionsService } from "../transactions.service";
 import { Observable, tap, timeout } from "rxjs";
 import { Transaction } from "@app/shared/models/transaction";
@@ -13,7 +13,7 @@ declare const bootstrap: any;
     styleUrls: ['./detail.component.scss'],
     changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TransactionDetailComponent {
+export class TransactionDetailComponent implements OnDestroy {
     private modal: any;
 
     @ViewChild('transactionDetail', { static: false }) transactionDetailRef!: ElementRef<HTMLDivElement>;
@@ -37,5 +37,9 @@ export class TransactionDetailComponent {
 
     onClose() {
         this.modal.hide();
+    }
+
+    ngOnDestroy(): void {
+        this.onClose();
     }
 }

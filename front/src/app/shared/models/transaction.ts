@@ -214,6 +214,15 @@ export class Transaction {
     ) {
     }
 
+    public json(): any {
+        return {
+            _id: this._id,
+            client: this.client.json(),
+            items: this.items.map(x => x.json()),
+            car: this.car.json(),
+            note: this.note.toUpperCase(),
+        }
+    }
 
     public static fromJson(data: Record<string, string | number | Record<string, string | number>>) {
         const { items: _items, client: _client, car: _car, seller: _seller } = data;
