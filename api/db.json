@@ -1,6 +1,2372 @@
 {
-  "users": [],
-  "transactions": [],
+  "users": [
+    {
+      "_id": "6e6ed436-8997-481a-89ed-978d45bc2a21",
+      "name": "Cesar Wagner",
+      "username": "admin",
+      "password": "$2b$10$zlmAfEj8rLJdRJR2SmupUuD425AlzIZWWXhDRW0IHPu8J8f/PNZnG",
+      "permissions": [
+        "CAN_VIEW_USERS",
+        "CAN_CREATE_USERS",
+        "CAN_REMOVE_USERS",
+        "CAN_VIEW_TRANSACTIONS",
+        "CAN_VIEW_METRICS"
+      ]
+    }
+  ],
+  "transactions": [
+    {
+      "_id": "2e197e99-fac5-48ca-b8fa-a0ffaa2403cc",
+      "items": [
+        {
+          "product": {
+            "_id": "8440761099",
+            "category": "ACCESORIOS",
+            "cost": 4,
+            "name": "AMBIENTADOR JUST EN SPRAY",
+            "price": 10,
+            "quantity": 2
+          },
+          "quantity": 1,
+          "discount": 5,
+          "increment": 0,
+          "subtotal": 9.5,
+          "subtotalDiscounted": 0.5
+        }
+      ],
+      "client": {
+        "_id": "",
+        "name": "Desconocido",
+        "phone": ""
+      },
+      "car": {
+        "brand": "-",
+        "model": "-",
+        "plate": "",
+        "year": ""
+      },
+      "note": "SE INCLUIYE INSUMOS E INSTALACIÓN",
+      "type": "COBRADO",
+      "createdAt": "2023-12-21T17:16:53.210Z",
+      "seller": {
+        "_id": "6e6ed436-8997-481a-89ed-978d45bc2a21",
+        "name": "Cesar Wagner"
+      }
+    },
+    {
+      "_id": "da545ce2-e8f5-4165-997a-bd97233e99b6",
+      "items": [
+        {
+          "product": {
+            "_id": "2259908159",
+            "category": "ACCESORIOS",
+            "cost": 45,
+            "name": "CORRELLUVIAS",
+            "price": 120,
+            "quantity": 5
+          },
+          "quantity": 1,
+          "discount": 0,
+          "increment": 0,
+          "subtotal": 120,
+          "subtotalDiscounted": 0
+        }
+      ],
+      "client": {
+        "_id": "20344877158",
+        "name": "DERCO PERU S.A.",
+        "phone": ""
+      },
+      "car": {
+        "brand": "-",
+        "model": "-",
+        "plate": "",
+        "year": ""
+      },
+      "note": "SE INCLUIYE INSUMOS E INSTALACIÓN",
+      "type": "COBRADO",
+      "createdAt": "2023-12-21T17:22:09.210Z",
+      "seller": {
+        "_id": "6e6ed436-8997-481a-89ed-978d45bc2a21",
+        "name": "Cesar Wagner"
+      }
+    },
+    {
+      "_id": "e0b948f9-0491-405d-b610-11a3bbeeb8ce",
+      "items": [
+        {
+          "product": {
+            "_id": "M5720091821",
+            "category": "ACCESORIOS",
+            "cost": 40,
+            "name": "BASES PORTABARRAS DE PLACA LARGO (Por mayor)",
+            "price": 65,
+            "quantity": 2
+          },
+          "quantity": 1,
+          "discount": 0,
+          "increment": 0,
+          "subtotal": 65,
+          "subtotalDiscounted": 0
+        }
+      ],
+      "client": {
+        "_id": "20344877158",
+        "name": "DERCO PERU S.A.",
+        "phone": ""
+      },
+      "car": {
+        "brand": "-",
+        "model": "-",
+        "plate": "",
+        "year": ""
+      },
+      "note": "SE INCLUIYE INSUMOS E INSTALACIÓN",
+      "type": "COBRADO",
+      "createdAt": "2023-12-21T17:22:31.953Z",
+      "seller": {
+        "_id": "6e6ed436-8997-481a-89ed-978d45bc2a21",
+        "name": "Cesar Wagner"
+      }
+    },
+    {
+      "_id": "0147cb5c-f6f8-46b8-ba1b-a103177392e3",
+      "items": [
+        {
+          "product": {
+            "_id": "8440761097",
+            "category": "ACCESORIOS",
+            "cost": 25,
+            "name": "ANTENAS ALETA DE TIBURON",
+            "price": 48,
+            "quantity": 0
+          },
+          "quantity": 2,
+          "discount": 0,
+          "increment": 0,
+          "subtotal": 96,
+          "subtotalDiscounted": 0
+        },
+        {
+          "product": {
+            "_id": "8440761098",
+            "category": "ACCESORIOS",
+            "cost": 4,
+            "name": "AMBIENTADOR JUST EN SPRAY",
+            "price": 10,
+            "quantity": 1
+          },
+          "quantity": 1,
+          "discount": 0,
+          "increment": 0,
+          "subtotal": 10,
+          "subtotalDiscounted": 0
+        },
+        {
+          "product": {
+            "_id": "8440761099",
+            "category": "ACCESORIOS",
+            "cost": 13,
+            "name": "ANTENA DE RADIO AM FM DE PARABRISA",
+            "price": 45,
+            "quantity": 2
+          },
+          "quantity": 2,
+          "discount": 0,
+          "increment": 0,
+          "subtotal": 90,
+          "subtotalDiscounted": 0
+        }
+      ],
+      "client": {
+        "_id": "20344877158",
+        "name": "DERCO PERU S.A.",
+        "phone": ""
+      },
+      "car": {
+        "brand": "KIA SPORTAGE",
+        "model": "-",
+        "plate": "",
+        "year": "2020"
+      },
+      "note": "SE INCLUIYE INSUMOS E INSTALACIÓN",
+      "type": "COTIZACION",
+      "createdAt": "2024-02-08T23:27:21.490Z",
+      "seller": {
+        "_id": "6e6ed436-8997-481a-89ed-978d45bc2a21",
+        "name": "Cesar Wagner"
+      }
+    },
+    {
+      "_id": "6d7a33f4-d5df-492f-9bf2-6f1faf49df5e",
+      "items": [
+        {
+          "product": {
+            "_id": "8440761097",
+            "category": "ACCESORIOS",
+            "cost": 25,
+            "name": "ANTENAS ALETA DE TIBURON",
+            "price": 48,
+            "quantity": 0
+          },
+          "quantity": 3,
+          "discount": 0,
+          "increment": 0,
+          "subtotal": 144,
+          "subtotalDiscounted": 0
+        },
+        {
+          "product": {
+            "_id": "8440761098",
+            "category": "ACCESORIOS",
+            "cost": 4,
+            "name": "AMBIENTADOR JUST EN SPRAY",
+            "price": 10,
+            "quantity": 1
+          },
+          "quantity": 1,
+          "discount": 0,
+          "increment": 0,
+          "subtotal": 10,
+          "subtotalDiscounted": 0
+        },
+        {
+          "product": {
+            "_id": "8440761099",
+            "category": "ACCESORIOS",
+            "cost": 13,
+            "name": "ANTENA DE RADIO AM FM DE PARABRISA",
+            "price": 45,
+            "quantity": 2
+          },
+          "quantity": 1,
+          "discount": 0,
+          "increment": 0,
+          "subtotal": 45,
+          "subtotalDiscounted": 0
+        }
+      ],
+      "client": {
+        "_id": "",
+        "name": "",
+        "phone": ""
+      },
+      "car": {
+        "brand": "-",
+        "model": "-",
+        "plate": "",
+        "year": ""
+      },
+      "note": "SE INCLUIYE INSUMOS E INSTALACIÓN",
+      "type": "COTIZACION",
+      "createdAt": "2024-02-08T23:29:23.781Z",
+      "seller": {
+        "_id": "6e6ed436-8997-481a-89ed-978d45bc2a21",
+        "name": "Cesar Wagner"
+      }
+    },
+    {
+      "_id": "3a4b8a37-54b9-43c6-b60a-8436aaf00ff9",
+      "items": [
+        {
+          "product": {
+            "_id": "M8440761098",
+            "category": "ACCESORIOS",
+            "cost": 4,
+            "name": "AMBIENTADOR JUST EN SPRAY (Por mayor)",
+            "price": 7,
+            "quantity": 1
+          },
+          "quantity": 1,
+          "discount": 0,
+          "increment": 0,
+          "subtotal": 7,
+          "subtotalDiscounted": 0
+        }
+      ],
+      "client": {
+        "_id": "20344877158",
+        "name": "DERCO PERU S.A.",
+        "phone": ""
+      },
+      "car": {
+        "brand": "-",
+        "model": "-",
+        "plate": "",
+        "year": ""
+      },
+      "note": "SE INCLUIYE INSUMOS E INSTALACIÓN",
+      "type": "COTIZACION",
+      "createdAt": "2024-03-12T03:27:44.495Z",
+      "seller": {
+        "_id": "6e6ed436-8997-481a-89ed-978d45bc2a21",
+        "name": "Cesar Wagner"
+      }
+    },
+    {
+      "_id": "57635fe8-7d41-4ea1-8a79-81d7c88877b4",
+      "items": [
+        {
+          "product": {
+            "_id": "M8440761098",
+            "category": "ACCESORIOS",
+            "cost": 4,
+            "name": "LONA MARITIMA HILUX REVO",
+            "price": 7,
+            "quantity": 1
+          },
+          "quantity": 1,
+          "discount": 0,
+          "increment": 0,
+          "subtotal": 7,
+          "subtotalDiscounted": 0
+        },
+        {
+          "product": {
+            "_id": "M8440761098",
+            "category": "ACCESORIOS",
+            "cost": 4,
+            "name": "LIP DE GOMA DECORATIVO",
+            "price": 7,
+            "quantity": 1
+          },
+          "quantity": 1,
+          "discount": 0,
+          "increment": 0,
+          "subtotal": 7,
+          "subtotalDiscounted": 0
+        },
+        {
+          "product": {
+            "_id": "M8440761098",
+            "category": "ACCESORIOS",
+            "cost": 4,
+            "name": "LOREM IPSUM IS SIMPLY DUMMY TEXT OF THE PRINTING AND TYPESETTING INDUSTRY",
+            "price": 7,
+            "quantity": 1
+          },
+          "quantity": 1,
+          "discount": 0,
+          "increment": 0,
+          "subtotal": 7,
+          "subtotalDiscounted": 0
+        },
+        {
+          "product": {
+            "_id": "M8440761098",
+            "category": "ACCESORIOS",
+            "cost": 4,
+            "name": "LOREM IPSUM IS SIMPLY DUMMY TEXT OF THE PRINTING AND TYPESETTING INDUSTRY",
+            "price": 7,
+            "quantity": 1
+          },
+          "quantity": 1,
+          "discount": 0,
+          "increment": 0,
+          "subtotal": 7,
+          "subtotalDiscounted": 0
+        },
+        {
+          "product": {
+            "_id": "M8440761098",
+            "category": "ACCESORIOS",
+            "cost": 4,
+            "name": "LOREM IPSUM IS SIMPLY DUMMY TEXT OF THE PRINTING AND TYPESETTING INDUSTRY",
+            "price": 7,
+            "quantity": 1
+          },
+          "quantity": 1,
+          "discount": 0,
+          "increment": 0,
+          "subtotal": 7,
+          "subtotalDiscounted": 0
+        },
+        {
+          "product": {
+            "_id": "M8440761098",
+            "category": "ACCESORIOS",
+            "cost": 4,
+            "name": "LOREM IPSUM IS SIMPLY DUMMY TEXT OF THE PRINTING AND TYPESETTING INDUSTRY",
+            "price": 7,
+            "quantity": 1
+          },
+          "quantity": 1,
+          "discount": 0,
+          "increment": 0,
+          "subtotal": 7,
+          "subtotalDiscounted": 0
+        },
+        {
+          "product": {
+            "_id": "M8440761098",
+            "category": "ACCESORIOS",
+            "cost": 4,
+            "name": "LOREM IPSUM IS SIMPLY DUMMY TEXT OF THE PRINTING AND TYPESETTING INDUSTRY",
+            "price": 7,
+            "quantity": 1
+          },
+          "quantity": 1,
+          "discount": 0,
+          "increment": 0,
+          "subtotal": 7,
+          "subtotalDiscounted": 0
+        },
+        {
+          "product": {
+            "_id": "M8440761098",
+            "category": "ACCESORIOS",
+            "cost": 4,
+            "name": "LOREM IPSUM IS SIMPLY DUMMY TEXT OF THE PRINTING AND TYPESETTING INDUSTRY",
+            "price": 7,
+            "quantity": 1
+          },
+          "quantity": 1,
+          "discount": 0,
+          "increment": 0,
+          "subtotal": 7,
+          "subtotalDiscounted": 0
+        },
+        {
+          "product": {
+            "_id": "M8440761098",
+            "category": "ACCESORIOS",
+            "cost": 4,
+            "name": "LOREM IPSUM IS SIMPLY DUMMY TEXT OF THE PRINTING AND TYPESETTING INDUSTRY",
+            "price": 7,
+            "quantity": 1
+          },
+          "quantity": 1,
+          "discount": 0,
+          "increment": 0,
+          "subtotal": 7,
+          "subtotalDiscounted": 0
+        },
+        {
+          "product": {
+            "_id": "M8440761098",
+            "category": "ACCESORIOS",
+            "cost": 4,
+            "name": "LOREM IPSUM IS SIMPLY DUMMY TEXT OF THE PRINTING AND TYPESETTING INDUSTRY",
+            "price": 7,
+            "quantity": 1
+          },
+          "quantity": 1,
+          "discount": 0,
+          "increment": 0,
+          "subtotal": 7,
+          "subtotalDiscounted": 0
+        },
+        {
+          "product": {
+            "_id": "M8440761098",
+            "category": "ACCESORIOS",
+            "cost": 4,
+            "name": "LOREM IPSUM IS SIMPLY DUMMY TEXT OF THE PRINTING AND TYPESETTING INDUSTRY",
+            "price": 7,
+            "quantity": 1
+          },
+          "quantity": 1,
+          "discount": 0,
+          "increment": 0,
+          "subtotal": 7,
+          "subtotalDiscounted": 0
+        },
+        {
+          "product": {
+            "_id": "M8440761098",
+            "category": "ACCESORIOS",
+            "cost": 4,
+            "name": "LOREM IPSUM IS SIMPLY DUMMY TEXT OF THE PRINTING AND TYPESETTING INDUSTRY",
+            "price": 7,
+            "quantity": 1
+          },
+          "quantity": 1,
+          "discount": 0,
+          "increment": 0,
+          "subtotal": 7,
+          "subtotalDiscounted": 0
+        },
+        {
+          "product": {
+            "_id": "M8440761098",
+            "category": "ACCESORIOS",
+            "cost": 4,
+            "name": "LOREM IPSUM IS SIMPLY DUMMY TEXT OF THE PRINTING AND TYPESETTING INDUSTRY",
+            "price": 7,
+            "quantity": 1
+          },
+          "quantity": 1,
+          "discount": 0,
+          "increment": 0,
+          "subtotal": 7,
+          "subtotalDiscounted": 0
+        },
+        {
+          "product": {
+            "_id": "M8440761098",
+            "category": "ACCESORIOS",
+            "cost": 4,
+            "name": "LOREM IPSUM IS SIMPLY DUMMY TEXT OF THE PRINTING AND TYPESETTING INDUSTRY",
+            "price": 7,
+            "quantity": 1
+          },
+          "quantity": 1,
+          "discount": 0,
+          "increment": 0,
+          "subtotal": 7,
+          "subtotalDiscounted": 0
+        },
+        {
+          "product": {
+            "_id": "M8440761098",
+            "category": "ACCESORIOS",
+            "cost": 4,
+            "name": "LOREM IPSUM IS SIMPLY DUMMY TEXT OF THE PRINTING AND TYPESETTING INDUSTRY",
+            "price": 7,
+            "quantity": 1
+          },
+          "quantity": 1,
+          "discount": 0,
+          "increment": 0,
+          "subtotal": 7,
+          "subtotalDiscounted": 0
+        },
+        {
+          "product": {
+            "_id": "M8440761098",
+            "category": "ACCESORIOS",
+            "cost": 4,
+            "name": "LOREM IPSUM IS SIMPLY DUMMY TEXT OF THE PRINTING AND TYPESETTING INDUSTRY",
+            "price": 7,
+            "quantity": 1
+          },
+          "quantity": 1,
+          "discount": 0,
+          "increment": 0,
+          "subtotal": 7,
+          "subtotalDiscounted": 0
+        },
+        {
+          "product": {
+            "_id": "M8440761098",
+            "category": "ACCESORIOS",
+            "cost": 4,
+            "name": "LOREM IPSUM IS SIMPLY DUMMY TEXT OF THE PRINTING AND TYPESETTING INDUSTRY",
+            "price": 7,
+            "quantity": 1
+          },
+          "quantity": 1,
+          "discount": 0,
+          "increment": 0,
+          "subtotal": 7,
+          "subtotalDiscounted": 0
+        },
+        {
+          "product": {
+            "_id": "M8440761098",
+            "category": "ACCESORIOS",
+            "cost": 4,
+            "name": "LOREM IPSUM IS SIMPLY DUMMY TEXT OF THE PRINTING AND TYPESETTING INDUSTRY",
+            "price": 7,
+            "quantity": 1
+          },
+          "quantity": 1,
+          "discount": 0,
+          "increment": 0,
+          "subtotal": 7,
+          "subtotalDiscounted": 0
+        },
+        {
+          "product": {
+            "_id": "M8440761098",
+            "category": "ACCESORIOS",
+            "cost": 4,
+            "name": "LOREM IPSUM IS SIMPLY DUMMY TEXT OF THE PRINTING AND TYPESETTING INDUSTRY",
+            "price": 7,
+            "quantity": 1
+          },
+          "quantity": 1,
+          "discount": 0,
+          "increment": 0,
+          "subtotal": 7,
+          "subtotalDiscounted": 0
+        },
+        {
+          "product": {
+            "_id": "M8440761098",
+            "category": "ACCESORIOS",
+            "cost": 4,
+            "name": "LOREM IPSUM IS SIMPLY DUMMY TEXT OF THE PRINTING AND TYPESETTING INDUSTRY",
+            "price": 7,
+            "quantity": 1
+          },
+          "quantity": 1,
+          "discount": 0,
+          "increment": 0,
+          "subtotal": 7,
+          "subtotalDiscounted": 0
+        },
+        {
+          "product": {
+            "_id": "M8440761098",
+            "category": "ACCESORIOS",
+            "cost": 4,
+            "name": "LOREM IPSUM IS SIMPLY DUMMY TEXT OF THE PRINTING AND TYPESETTING INDUSTRY",
+            "price": 7,
+            "quantity": 1
+          },
+          "quantity": 1,
+          "discount": 0,
+          "increment": 0,
+          "subtotal": 7,
+          "subtotalDiscounted": 0
+        },
+        {
+          "product": {
+            "_id": "M8440761098",
+            "category": "ACCESORIOS",
+            "cost": 4,
+            "name": "LOREM IPSUM IS SIMPLY DUMMY TEXT OF THE PRINTING AND TYPESETTING INDUSTRY",
+            "price": 7,
+            "quantity": 1
+          },
+          "quantity": 1,
+          "discount": 0,
+          "increment": 0,
+          "subtotal": 7,
+          "subtotalDiscounted": 0
+        },
+        {
+          "product": {
+            "_id": "M8440761098",
+            "category": "ACCESORIOS",
+            "cost": 4,
+            "name": "LOREM IPSUM IS SIMPLY DUMMY TEXT OF THE PRINTING AND TYPESETTING INDUSTRY",
+            "price": 7,
+            "quantity": 1
+          },
+          "quantity": 1,
+          "discount": 0,
+          "increment": 0,
+          "subtotal": 7,
+          "subtotalDiscounted": 0
+        },
+        {
+          "product": {
+            "_id": "M8440761098",
+            "category": "ACCESORIOS",
+            "cost": 4,
+            "name": "LOREM IPSUM IS SIMPLY DUMMY TEXT OF THE PRINTING AND TYPESETTING INDUSTRY",
+            "price": 7,
+            "quantity": 1
+          },
+          "quantity": 1,
+          "discount": 0,
+          "increment": 0,
+          "subtotal": 7,
+          "subtotalDiscounted": 0
+        },
+        {
+          "product": {
+            "_id": "M8440761098",
+            "category": "ACCESORIOS",
+            "cost": 4,
+            "name": "LOREM IPSUM IS SIMPLY DUMMY TEXT OF THE PRINTING AND TYPESETTING INDUSTRY",
+            "price": 7,
+            "quantity": 1
+          },
+          "quantity": 1,
+          "discount": 0,
+          "increment": 0,
+          "subtotal": 7,
+          "subtotalDiscounted": 0
+        },
+        {
+          "product": {
+            "_id": "M8440761098",
+            "category": "ACCESORIOS",
+            "cost": 4,
+            "name": "LOREM IPSUM IS SIMPLY DUMMY TEXT OF THE PRINTING AND TYPESETTING INDUSTRY",
+            "price": 7,
+            "quantity": 1
+          },
+          "quantity": 1,
+          "discount": 0,
+          "increment": 0,
+          "subtotal": 7,
+          "subtotalDiscounted": 0
+        },
+        {
+          "product": {
+            "_id": "M8440761098",
+            "category": "ACCESORIOS",
+            "cost": 4,
+            "name": "LOREM IPSUM IS SIMPLY DUMMY TEXT OF THE PRINTING AND TYPESETTING INDUSTRY",
+            "price": 7,
+            "quantity": 1
+          },
+          "quantity": 1,
+          "discount": 0,
+          "increment": 0,
+          "subtotal": 7,
+          "subtotalDiscounted": 0
+        },
+        {
+          "product": {
+            "_id": "M8440761098",
+            "category": "ACCESORIOS",
+            "cost": 4,
+            "name": "LOREM IPSUM IS SIMPLY DUMMY TEXT OF THE PRINTING AND TYPESETTING INDUSTRY",
+            "price": 7,
+            "quantity": 1
+          },
+          "quantity": 1,
+          "discount": 0,
+          "increment": 0,
+          "subtotal": 7,
+          "subtotalDiscounted": 0
+        },
+        {
+          "product": {
+            "_id": "M8440761098",
+            "category": "ACCESORIOS",
+            "cost": 4,
+            "name": "LOREM IPSUM IS SIMPLY DUMMY TEXT OF THE PRINTING AND TYPESETTING INDUSTRY",
+            "price": 7,
+            "quantity": 1
+          },
+          "quantity": 1,
+          "discount": 0,
+          "increment": 0,
+          "subtotal": 7,
+          "subtotalDiscounted": 0
+        },
+        {
+          "product": {
+            "_id": "M8440761098",
+            "category": "ACCESORIOS",
+            "cost": 4,
+            "name": "LOREM IPSUM IS SIMPLY DUMMY TEXT OF THE PRINTING AND TYPESETTING INDUSTRY",
+            "price": 7,
+            "quantity": 1
+          },
+          "quantity": 1,
+          "discount": 0,
+          "increment": 0,
+          "subtotal": 7,
+          "subtotalDiscounted": 0
+        },
+        {
+          "product": {
+            "_id": "M8440761098",
+            "category": "ACCESORIOS",
+            "cost": 4,
+            "name": "LOREM IPSUM IS SIMPLY DUMMY TEXT OF THE PRINTING AND TYPESETTING INDUSTRY",
+            "price": 7,
+            "quantity": 1
+          },
+          "quantity": 1,
+          "discount": 0,
+          "increment": 0,
+          "subtotal": 7,
+          "subtotalDiscounted": 0
+        },
+        {
+          "product": {
+            "_id": "M8440761098",
+            "category": "ACCESORIOS",
+            "cost": 4,
+            "name": "LOREM IPSUM IS SIMPLY DUMMY TEXT OF THE PRINTING AND TYPESETTING INDUSTRY",
+            "price": 7,
+            "quantity": 1
+          },
+          "quantity": 1,
+          "discount": 0,
+          "increment": 0,
+          "subtotal": 7,
+          "subtotalDiscounted": 0
+        },
+        {
+          "product": {
+            "_id": "M8440761098",
+            "category": "ACCESORIOS",
+            "cost": 4,
+            "name": "LOREM IPSUM IS SIMPLY DUMMY TEXT OF THE PRINTING AND TYPESETTING INDUSTRY",
+            "price": 7,
+            "quantity": 1
+          },
+          "quantity": 1,
+          "discount": 0,
+          "increment": 0,
+          "subtotal": 7,
+          "subtotalDiscounted": 0
+        },
+        {
+          "product": {
+            "_id": "M8440761098",
+            "category": "ACCESORIOS",
+            "cost": 4,
+            "name": "LOREM IPSUM IS SIMPLY DUMMY TEXT OF THE PRINTING AND TYPESETTING INDUSTRY",
+            "price": 7,
+            "quantity": 1
+          },
+          "quantity": 1,
+          "discount": 0,
+          "increment": 0,
+          "subtotal": 7,
+          "subtotalDiscounted": 0
+        },
+        {
+          "product": {
+            "_id": "M8440761098",
+            "category": "ACCESORIOS",
+            "cost": 4,
+            "name": "LOREM IPSUM IS SIMPLY DUMMY TEXT OF THE PRINTING AND TYPESETTING INDUSTRY",
+            "price": 7,
+            "quantity": 1
+          },
+          "quantity": 1,
+          "discount": 0,
+          "increment": 0,
+          "subtotal": 7,
+          "subtotalDiscounted": 0
+        },
+        {
+          "product": {
+            "_id": "M8440761098",
+            "category": "ACCESORIOS",
+            "cost": 4,
+            "name": "LOREM IPSUM IS SIMPLY DUMMY TEXT OF THE PRINTING AND TYPESETTING INDUSTRY",
+            "price": 7,
+            "quantity": 1
+          },
+          "quantity": 1,
+          "discount": 0,
+          "increment": 0,
+          "subtotal": 7,
+          "subtotalDiscounted": 0
+        },
+        {
+          "product": {
+            "_id": "M8440761098",
+            "category": "ACCESORIOS",
+            "cost": 4,
+            "name": "LOREM IPSUM IS SIMPLY DUMMY TEXT OF THE PRINTING AND TYPESETTING INDUSTRY",
+            "price": 7,
+            "quantity": 1
+          },
+          "quantity": 1,
+          "discount": 0,
+          "increment": 0,
+          "subtotal": 7,
+          "subtotalDiscounted": 0
+        },
+        {
+          "product": {
+            "_id": "M8440761098",
+            "category": "ACCESORIOS",
+            "cost": 4,
+            "name": "LOREM IPSUM IS SIMPLY DUMMY TEXT OF THE PRINTING AND TYPESETTING INDUSTRY",
+            "price": 7,
+            "quantity": 1
+          },
+          "quantity": 1,
+          "discount": 0,
+          "increment": 0,
+          "subtotal": 7,
+          "subtotalDiscounted": 0
+        },
+        {
+          "product": {
+            "_id": "M8440761098",
+            "category": "ACCESORIOS",
+            "cost": 4,
+            "name": "LOREM IPSUM IS SIMPLY DUMMY TEXT OF THE PRINTING AND TYPESETTING INDUSTRY",
+            "price": 7,
+            "quantity": 1
+          },
+          "quantity": 1,
+          "discount": 0,
+          "increment": 0,
+          "subtotal": 7,
+          "subtotalDiscounted": 0
+        }
+      ],
+      "client": {
+        "_id": "",
+        "name": "",
+        "phone": ""
+      },
+      "car": {
+        "brand": "-",
+        "model": "-",
+        "plate": "",
+        "year": ""
+      },
+      "note": "SE INCLUIYE INSUMOS E INSTALACIÓN",
+      "type": "COBRADO",
+      "createdAt": "2024-03-12T03:31:51.558Z",
+      "seller": {
+        "_id": "6e6ed436-8997-481a-89ed-978d45bc2a21",
+        "name": "Cesar Wagner"
+      }
+    },
+    {
+      "_id": "de63965d-b341-4804-92fa-b578a3ee2768",
+      "items": [
+        {
+          "product": {
+            "_id": "8440761099",
+            "category": "ACCESORIOS",
+            "cost": 13,
+            "name": "ANTENA DE RADIO AM FM DE PARABRISA",
+            "price": 45,
+            "quantity": 2
+          },
+          "quantity": 1,
+          "discount": 0,
+          "increment": 0,
+          "subtotal": 45,
+          "subtotalDiscounted": 0
+        }
+      ],
+      "client": {
+        "_id": "",
+        "name": "",
+        "phone": ""
+      },
+      "car": {
+        "brand": "-",
+        "model": "-",
+        "plate": "",
+        "year": ""
+      },
+      "note": "SE INCLUIYE INSUMOS E INSTALACIÓN",
+      "type": "COBRADO",
+      "createdAt": "2024-03-17T15:33:43.451Z",
+      "seller": {
+        "_id": "6e6ed436-8997-481a-89ed-978d45bc2a21",
+        "name": "Cesar Wagner"
+      }
+    },
+    {
+      "_id": "651c8769-7952-4d6b-a4ba-021d5555e202",
+      "items": [
+        {
+          "product": {
+            "_id": "8440761099",
+            "category": "ACCESORIOS",
+            "cost": 13,
+            "name": "ANTENA DE RADIO AM FM DE PARABRISA",
+            "price": 45,
+            "quantity": 1
+          },
+          "quantity": 1,
+          "discount": 0,
+          "increment": 0,
+          "subtotal": 45,
+          "subtotalDiscounted": 0
+        }
+      ],
+      "client": {
+        "_id": "",
+        "name": "",
+        "phone": ""
+      },
+      "car": {
+        "brand": "-",
+        "model": "-",
+        "plate": "",
+        "year": ""
+      },
+      "note": "SE INCLUIYE INSUMOS E INSTALACIÓN",
+      "type": "COBRADO",
+      "createdAt": "2024-03-17T15:34:07.277Z",
+      "seller": {
+        "_id": "6e6ed436-8997-481a-89ed-978d45bc2a21",
+        "name": "Cesar Wagner"
+      }
+    },
+    {
+      "_id": "1322d5a4-410c-41b2-8d2f-e17dbc264283",
+      "items": [
+        {
+          "product": {
+            "_id": "M7550555698",
+            "category": "ACCESORIOS",
+            "cost": 660,
+            "name": "ANTIVUELCO CON DISEÑO OFF ROAD CROMADO (Por mayor)",
+            "price": 720,
+            "quantity": 1
+          },
+          "quantity": 1,
+          "discount": 0,
+          "increment": 0,
+          "subtotal": 720,
+          "subtotalDiscounted": 0
+        }
+      ],
+      "client": {
+        "_id": "",
+        "name": "",
+        "phone": ""
+      },
+      "car": {
+        "brand": "-",
+        "model": "-",
+        "plate": "",
+        "year": ""
+      },
+      "note": "SE INCLUIYE INSUMOS E INSTALACIÓN",
+      "type": "COBRADO",
+      "createdAt": "2024-03-17T15:40:33.048Z",
+      "seller": {
+        "_id": "6e6ed436-8997-481a-89ed-978d45bc2a21",
+        "name": "Cesar Wagner"
+      }
+    },
+    {
+      "_id": "3744aeb7-bbdd-42ae-a9b6-dde4c4e3c52b",
+      "items": [
+        {
+          "product": {
+            "_id": "M8440761098",
+            "category": "ACCESORIOS",
+            "cost": 4,
+            "name": "AMBIENTADOR JUST EN SPRAY (Por mayor)",
+            "price": 7,
+            "quantity": 0
+          },
+          "quantity": 1,
+          "discount": 0,
+          "increment": 0,
+          "subtotal": 7,
+          "subtotalDiscounted": 0
+        },
+        {
+          "product": {
+            "_id": "8440761099",
+            "category": "ACCESORIOS",
+            "cost": 13,
+            "name": "ANTENA DE RADIO AM FM DE PARABRISA",
+            "price": 45,
+            "quantity": 0
+          },
+          "quantity": 1,
+          "discount": 0,
+          "increment": 0,
+          "subtotal": 45,
+          "subtotalDiscounted": 0
+        },
+        {
+          "product": {
+            "_id": "M6692448273",
+            "category": "ACCESORIOS",
+            "cost": 680,
+            "name": "ANTIVUELCO CON LUCES DE RETROCESO Y DISEÑO (Por mayor)",
+            "price": 780,
+            "quantity": 0
+          },
+          "quantity": 1,
+          "discount": 0,
+          "increment": 0,
+          "subtotal": 780,
+          "subtotalDiscounted": 0
+        },
+        {
+          "product": {
+            "_id": "7614351932",
+            "category": "ACCESORIOS",
+            "cost": 560,
+            "name": "ANTIVUELCO HILUX CROMADO",
+            "price": 730,
+            "quantity": 0
+          },
+          "quantity": 1,
+          "discount": 0,
+          "increment": 0,
+          "subtotal": 730,
+          "subtotalDiscounted": 0
+        },
+        {
+          "product": {
+            "_id": "7707869009",
+            "category": "ACCESORIOS",
+            "cost": 13,
+            "name": "ASPIRADORA PORTATIL",
+            "price": 25,
+            "quantity": 3
+          },
+          "quantity": 1,
+          "discount": 0,
+          "increment": 0,
+          "subtotal": 25,
+          "subtotalDiscounted": 0
+        },
+        {
+          "product": {
+            "_id": "386856825",
+            "category": "ACCESORIOS",
+            "cost": 69,
+            "name": "BARRAS TRANSVERSALES CON ANCLAJE",
+            "price": 150,
+            "quantity": 1
+          },
+          "quantity": 1,
+          "discount": 0,
+          "increment": 0,
+          "subtotal": 150,
+          "subtotalDiscounted": 0
+        },
+        {
+          "product": {
+            "_id": "M9096401078",
+            "category": "ACCESORIOS",
+            "cost": 70,
+            "name": "BARRAS TRANSVERSALES DE TECHO 127CM NEGRO (Por mayor)",
+            "price": 90,
+            "quantity": 3
+          },
+          "quantity": 1,
+          "discount": 0,
+          "increment": 0,
+          "subtotal": 90,
+          "subtotalDiscounted": 0
+        },
+        {
+          "product": {
+            "_id": "M1172676090",
+            "category": "ACCESORIOS",
+            "cost": 60,
+            "name": "BASES PORTALED PARA ESQUINAS DE CAPOT (Por mayor)",
+            "price": 80,
+            "quantity": 3
+          },
+          "quantity": 1,
+          "discount": 0,
+          "increment": 0,
+          "subtotal": 80,
+          "subtotalDiscounted": 0
+        },
+        {
+          "product": {
+            "_id": "M4330427279",
+            "category": "ACCESORIOS",
+            "cost": 16,
+            "name": "CARGADOR DE 3.1 AMPS MULTIVOLTAJE (Por mayor)",
+            "price": 25,
+            "quantity": 8
+          },
+          "quantity": 1,
+          "discount": 0,
+          "increment": 0,
+          "subtotal": 25,
+          "subtotalDiscounted": 0
+        },
+        {
+          "product": {
+            "_id": "2259908159",
+            "category": "ACCESORIOS",
+            "cost": 45,
+            "name": "CORRELLUVIAS",
+            "price": 120,
+            "quantity": 4
+          },
+          "quantity": 1,
+          "discount": 0,
+          "increment": 0,
+          "subtotal": 120,
+          "subtotalDiscounted": 0
+        },
+        {
+          "product": {
+            "_id": "M2669204767",
+            "category": "ACCESORIOS",
+            "cost": 26,
+            "name": "CROMOS DE MANIJAS TOYOTA (Por mayor)",
+            "price": 40,
+            "quantity": 2
+          },
+          "quantity": 1,
+          "discount": 0,
+          "increment": 0,
+          "subtotal": 40,
+          "subtotalDiscounted": 0
+        },
+        {
+          "product": {
+            "_id": "M7905243178",
+            "category": "ACCESORIOS",
+            "cost": 890,
+            "name": "DURALINER JAC T6 2019-2021 (Por mayor)",
+            "price": 990,
+            "quantity": 0
+          },
+          "quantity": 1,
+          "discount": 0,
+          "increment": 0,
+          "subtotal": 990,
+          "subtotalDiscounted": 0
+        },
+        {
+          "product": {
+            "_id": "5700796190",
+            "category": "ACCESORIOS",
+            "cost": 10,
+            "name": "EMBLEMA METALICO TRD PARRILLA",
+            "price": 25,
+            "quantity": 1
+          },
+          "quantity": 1,
+          "discount": 0,
+          "increment": 0,
+          "subtotal": 25,
+          "subtotalDiscounted": 0
+        },
+        {
+          "product": {
+            "_id": "8781076653",
+            "category": "ACCESORIOS",
+            "cost": 2,
+            "name": "ENCENDEDOR DE CIGARRERA 12V",
+            "price": 10,
+            "quantity": 4
+          },
+          "quantity": 1,
+          "discount": 0,
+          "increment": 0,
+          "subtotal": 10,
+          "subtotalDiscounted": 0
+        }
+      ],
+      "client": {
+        "_id": "10739041975",
+        "name": "DENIS SANCHEZ",
+        "phone": ""
+      },
+      "car": {
+        "brand": "-",
+        "model": "-",
+        "plate": "",
+        "year": ""
+      },
+      "note": "SE INCLUIYE INSUMOS E INSTALACIÓN",
+      "type": "COBRADO",
+      "createdAt": "2024-03-18T19:41:21.468Z",
+      "seller": {
+        "_id": "6e6ed436-8997-481a-89ed-978d45bc2a21",
+        "name": "Cesar Wagner"
+      }
+    },
+    {
+      "_id": "4d398c3e-daa4-471e-83e6-762e6e53e349",
+      "items": [
+        {
+          "product": {
+            "_id": "M8440761098",
+            "category": "ACCESORIOS",
+            "cost": 4,
+            "name": "AMBIENTADOR JUST EN SPRAY (Por mayor)",
+            "price": 7,
+            "quantity": -1
+          },
+          "quantity": 1,
+          "discount": 0,
+          "increment": 0,
+          "subtotal": 7,
+          "subtotalDiscounted": 0
+        },
+        {
+          "product": {
+            "_id": "M8440761099",
+            "category": "ACCESORIOS",
+            "cost": 13,
+            "name": "ANTENA DE RADIO AM FM DE PARABRISA (Por mayor)",
+            "price": 20,
+            "quantity": -1
+          },
+          "quantity": 1,
+          "discount": 0,
+          "increment": 0,
+          "subtotal": 20,
+          "subtotalDiscounted": 0
+        },
+        {
+          "product": {
+            "_id": "8440761097",
+            "category": "ACCESORIOS",
+            "cost": 25,
+            "name": "ANTENAS ALETA DE TIBURON",
+            "price": 48,
+            "quantity": 0
+          },
+          "quantity": 1,
+          "discount": 0,
+          "increment": 0,
+          "subtotal": 48,
+          "subtotalDiscounted": 0
+        },
+        {
+          "product": {
+            "_id": "M6692448273",
+            "category": "ACCESORIOS",
+            "cost": 680,
+            "name": "ANTIVUELCO CON LUCES DE RETROCESO Y DISEÑO (Por mayor)",
+            "price": 780,
+            "quantity": -1
+          },
+          "quantity": 1,
+          "discount": 0,
+          "increment": 0,
+          "subtotal": 780,
+          "subtotalDiscounted": 0
+        },
+        {
+          "product": {
+            "_id": "8339100609",
+            "category": "ACCESORIOS",
+            "cost": 650,
+            "name": "ANTIVUELCO DE TOLVA TRD NEGRO MATE LONG",
+            "price": 780,
+            "quantity": 1
+          },
+          "quantity": 1,
+          "discount": 0,
+          "increment": 0,
+          "subtotal": 780,
+          "subtotalDiscounted": 0
+        },
+        {
+          "product": {
+            "_id": "7614351932",
+            "category": "ACCESORIOS",
+            "cost": 560,
+            "name": "ANTIVUELCO HILUX CROMADO",
+            "price": 730,
+            "quantity": -1
+          },
+          "quantity": 1,
+          "discount": 0,
+          "increment": 0,
+          "subtotal": 730,
+          "subtotalDiscounted": 0
+        },
+        {
+          "product": {
+            "_id": "386856825",
+            "category": "ACCESORIOS",
+            "cost": 69,
+            "name": "BARRAS TRANSVERSALES CON ANCLAJE",
+            "price": 150,
+            "quantity": 0
+          },
+          "quantity": 1,
+          "discount": 0,
+          "increment": 0,
+          "subtotal": 150,
+          "subtotalDiscounted": 0
+        },
+        {
+          "product": {
+            "_id": "M9096401078",
+            "category": "ACCESORIOS",
+            "cost": 70,
+            "name": "BARRAS TRANSVERSALES DE TECHO 127CM NEGRO (Por mayor)",
+            "price": 90,
+            "quantity": 2
+          },
+          "quantity": 2,
+          "discount": 0,
+          "increment": 0,
+          "subtotal": 180,
+          "subtotalDiscounted": 0
+        },
+        {
+          "product": {
+            "_id": "5720091821",
+            "category": "ACCESORIOS",
+            "cost": 40,
+            "name": "BASES PORTABARRAS DE PLACA LARGO",
+            "price": 80,
+            "quantity": 1
+          },
+          "quantity": 1,
+          "discount": 0,
+          "increment": 0,
+          "subtotal": 80,
+          "subtotalDiscounted": 0
+        },
+        {
+          "product": {
+            "_id": "4330427279",
+            "category": "ACCESORIOS",
+            "cost": 16,
+            "name": "CARGADOR DE 3.1 AMPS MULTIVOLTAJE",
+            "price": 40,
+            "quantity": 7
+          },
+          "quantity": 1,
+          "discount": 0,
+          "increment": 0,
+          "subtotal": 40,
+          "subtotalDiscounted": 0
+        },
+        {
+          "product": {
+            "_id": "2259908159",
+            "category": "ACCESORIOS",
+            "cost": 45,
+            "name": "CORRELLUVIAS",
+            "price": 120,
+            "quantity": 3
+          },
+          "quantity": 1,
+          "discount": 0,
+          "increment": 0,
+          "subtotal": 120,
+          "subtotalDiscounted": 0
+        },
+        {
+          "product": {
+            "_id": "M2165875274",
+            "category": "ACCESORIOS",
+            "cost": 39,
+            "name": "CORTAVIENTO LATERAL TRD (Por mayor)",
+            "price": 60,
+            "quantity": 1
+          },
+          "quantity": 1,
+          "discount": 0,
+          "increment": 0,
+          "subtotal": 60,
+          "subtotalDiscounted": 0
+        },
+        {
+          "product": {
+            "_id": "6501056103",
+            "category": "ACCESORIOS",
+            "cost": 890,
+            "name": "DURALINER GRATWALL POER",
+            "price": 1200,
+            "quantity": 0
+          },
+          "quantity": 1,
+          "discount": 0,
+          "increment": 0,
+          "subtotal": 1200,
+          "subtotalDiscounted": 0
+        },
+        {
+          "product": {
+            "_id": "M8440761098",
+            "category": "ACCESORIOS",
+            "cost": 4,
+            "name": "AMBIENTADOR JUST EN SPRAY (Por mayor)",
+            "price": 7,
+            "quantity": -1
+          },
+          "quantity": 1,
+          "discount": 0,
+          "increment": 0,
+          "subtotal": 7,
+          "subtotalDiscounted": 0
+        },
+        {
+          "product": {
+            "_id": "M8440761099",
+            "category": "ACCESORIOS",
+            "cost": 13,
+            "name": "ANTENA DE RADIO AM FM DE PARABRISA (Por mayor)",
+            "price": 20,
+            "quantity": -1
+          },
+          "quantity": 1,
+          "discount": 0,
+          "increment": 0,
+          "subtotal": 20,
+          "subtotalDiscounted": 0
+        },
+        {
+          "product": {
+            "_id": "8440761097",
+            "category": "ACCESORIOS",
+            "cost": 25,
+            "name": "ANTENAS ALETA DE TIBURON",
+            "price": 48,
+            "quantity": 0
+          },
+          "quantity": 1,
+          "discount": 0,
+          "increment": 0,
+          "subtotal": 48,
+          "subtotalDiscounted": 0
+        },
+        {
+          "product": {
+            "_id": "M6692448273",
+            "category": "ACCESORIOS",
+            "cost": 680,
+            "name": "ANTIVUELCO CON LUCES DE RETROCESO Y DISEÑO (Por mayor)",
+            "price": 780,
+            "quantity": -1
+          },
+          "quantity": 1,
+          "discount": 0,
+          "increment": 0,
+          "subtotal": 780,
+          "subtotalDiscounted": 0
+        },
+        {
+          "product": {
+            "_id": "8339100609",
+            "category": "ACCESORIOS",
+            "cost": 650,
+            "name": "ANTIVUELCO DE TOLVA TRD NEGRO MATE LONG",
+            "price": 780,
+            "quantity": 1
+          },
+          "quantity": 1,
+          "discount": 0,
+          "increment": 0,
+          "subtotal": 780,
+          "subtotalDiscounted": 0
+        },
+        {
+          "product": {
+            "_id": "7614351932",
+            "category": "ACCESORIOS",
+            "cost": 560,
+            "name": "ANTIVUELCO HILUX CROMADO",
+            "price": 730,
+            "quantity": -1
+          },
+          "quantity": 1,
+          "discount": 0,
+          "increment": 0,
+          "subtotal": 730,
+          "subtotalDiscounted": 0
+        },
+        {
+          "product": {
+            "_id": "386856825",
+            "category": "ACCESORIOS",
+            "cost": 69,
+            "name": "BARRAS TRANSVERSALES CON ANCLAJE",
+            "price": 150,
+            "quantity": 0
+          },
+          "quantity": 1,
+          "discount": 0,
+          "increment": 0,
+          "subtotal": 150,
+          "subtotalDiscounted": 0
+        },
+        {
+          "product": {
+            "_id": "M9096401078",
+            "category": "ACCESORIOS",
+            "cost": 70,
+            "name": "BARRAS TRANSVERSALES DE TECHO 127CM NEGRO (Por mayor)",
+            "price": 90,
+            "quantity": 2
+          },
+          "quantity": 2,
+          "discount": 0,
+          "increment": 0,
+          "subtotal": 180,
+          "subtotalDiscounted": 0
+        },
+        {
+          "product": {
+            "_id": "5720091821",
+            "category": "ACCESORIOS",
+            "cost": 40,
+            "name": "BASES PORTABARRAS DE PLACA LARGO",
+            "price": 80,
+            "quantity": 1
+          },
+          "quantity": 1,
+          "discount": 0,
+          "increment": 0,
+          "subtotal": 80,
+          "subtotalDiscounted": 0
+        },
+        {
+          "product": {
+            "_id": "4330427279",
+            "category": "ACCESORIOS",
+            "cost": 16,
+            "name": "CARGADOR DE 3.1 AMPS MULTIVOLTAJE",
+            "price": 40,
+            "quantity": 7
+          },
+          "quantity": 1,
+          "discount": 0,
+          "increment": 0,
+          "subtotal": 40,
+          "subtotalDiscounted": 0
+        },
+        {
+          "product": {
+            "_id": "2259908159",
+            "category": "ACCESORIOS",
+            "cost": 45,
+            "name": "CORRELLUVIAS",
+            "price": 120,
+            "quantity": 3
+          },
+          "quantity": 1,
+          "discount": 0,
+          "increment": 0,
+          "subtotal": 120,
+          "subtotalDiscounted": 0
+        },
+        {
+          "product": {
+            "_id": "M2165875274",
+            "category": "ACCESORIOS",
+            "cost": 39,
+            "name": "CORTAVIENTO LATERAL TRD (Por mayor)",
+            "price": 60,
+            "quantity": 1
+          },
+          "quantity": 1,
+          "discount": 0,
+          "increment": 0,
+          "subtotal": 60,
+          "subtotalDiscounted": 0
+        },
+        {
+          "product": {
+            "_id": "6501056103",
+            "category": "ACCESORIOS",
+            "cost": 890,
+            "name": "DURALINER GRATWALL POER",
+            "price": 1200,
+            "quantity": 0
+          },
+          "quantity": 1,
+          "discount": 0,
+          "increment": 0,
+          "subtotal": 1200,
+          "subtotalDiscounted": 0
+        }
+      ],
+      "client": {
+        "_id": "",
+        "name": "",
+        "phone": ""
+      },
+      "car": {
+        "brand": "-",
+        "model": "-",
+        "plate": "",
+        "year": ""
+      },
+      "note": "SE INCLUIYE INSUMOS E INSTALACIÓN",
+      "type": "COTIZACION",
+      "createdAt": "2024-03-18T19:41:51.460Z",
+      "seller": {
+        "_id": "6e6ed436-8997-481a-89ed-978d45bc2a21",
+        "name": "Cesar Wagner"
+      }
+    },
+    {
+      "_id": "c21c3c80-a1a5-480e-be61-eed21ddd8d5c",
+      "items": [
+        {
+          "product": {
+            "_id": "M8440761098",
+            "category": "ACCESORIOS",
+            "cost": 4,
+            "name": "AMBIENTADOR JUST EN SPRAY (Por mayor)",
+            "price": 7,
+            "quantity": 1
+          },
+          "quantity": 1,
+          "discount": 0,
+          "increment": 0,
+          "subtotal": 7,
+          "subtotalDiscounted": 0
+        }
+      ],
+      "client": {
+        "_id": "73904197",
+        "name": "DESCONOCIDO",
+        "phone": ""
+      },
+      "car": {
+        "brand": "-",
+        "model": "-",
+        "plate": "",
+        "year": ""
+      },
+      "note": "SE INCLUIYE INSUMOS E INSTALACIÓN",
+      "type": "COBRADO",
+      "createdAt": "2024-03-25T20:13:49.445Z",
+      "seller": {
+        "_id": "6e6ed436-8997-481a-89ed-978d45bc2a21",
+        "name": "Cesar Wagner"
+      }
+    },
+    {
+      "_id": "8b457319-2e39-4ef2-b7c5-b9f1d5e67dad",
+      "items": [
+        {
+          "product": {
+            "_id": "7707869009",
+            "category": "ACCESORIOS",
+            "cost": 13,
+            "name": "ASPIRADORA PORTATIL",
+            "price": 25,
+            "quantity": 2
+          },
+          "quantity": 1,
+          "discount": 0,
+          "increment": 0,
+          "subtotal": 25,
+          "subtotalDiscounted": 0
+        }
+      ],
+      "client": {
+        "_id": "73904197",
+        "name": "DENIS SANCHEZ",
+        "phone": ""
+      },
+      "car": {
+        "brand": "-",
+        "model": "-",
+        "plate": "",
+        "year": ""
+      },
+      "note": "SE INCLUIYE INSUMOS E INSTALACIÓN",
+      "type": "COBRADO",
+      "createdAt": "2024-03-25T20:18:30.313Z",
+      "seller": {
+        "_id": "6e6ed436-8997-481a-89ed-978d45bc2a21",
+        "name": "Cesar Wagner"
+      }
+    },
+    {
+      "_id": "9950846b-1396-474e-94da-816b89898f58",
+      "items": [
+        {
+          "product": {
+            "_id": "M5720091821",
+            "category": "ACCESORIOS",
+            "cost": 40,
+            "name": "BASES PORTABARRAS DE PLACA LARGO (Por mayor)",
+            "price": 65,
+            "quantity": 1
+          },
+          "quantity": 1,
+          "discount": 0,
+          "increment": 0,
+          "subtotal": 65,
+          "subtotalDiscounted": 0
+        }
+      ],
+      "client": {
+        "_id": "73904197",
+        "name": "DENIS SANCHEZ",
+        "phone": ""
+      },
+      "car": {
+        "brand": "-",
+        "model": "-",
+        "plate": "",
+        "year": ""
+      },
+      "note": "SE INCLUIYE INSUMOS E INSTALACIÓN",
+      "type": "COBRADO",
+      "createdAt": "2024-03-25T20:21:23.483Z",
+      "seller": {
+        "_id": "6e6ed436-8997-481a-89ed-978d45bc2a21",
+        "name": "Cesar Wagner"
+      }
+    },
+    {
+      "_id": "dc7ef7ab-177f-4856-9a2d-c2a48fa70c67",
+      "items": [
+        {
+          "product": {
+            "_id": "M8440761098",
+            "category": "ACCESORIOS",
+            "cost": 4,
+            "name": "AMBIENTADOR JUST EN SPRAY (Por mayor)",
+            "price": 7,
+            "quantity": -1
+          },
+          "quantity": 1,
+          "discount": 0,
+          "increment": 0,
+          "subtotal": 7,
+          "subtotalDiscounted": 0
+        },
+        {
+          "product": {
+            "_id": "M8440761099",
+            "category": "ACCESORIOS",
+            "cost": 13,
+            "name": "ANTENA DE RADIO AM FM DE PARABRISA (Por mayor)",
+            "price": 20,
+            "quantity": -1
+          },
+          "quantity": 1,
+          "discount": 0,
+          "increment": 0,
+          "subtotal": 20,
+          "subtotalDiscounted": 0
+        },
+        {
+          "product": {
+            "_id": "8440761097",
+            "category": "ACCESORIOS",
+            "cost": 25,
+            "name": "ANTENAS ALETA DE TIBURON",
+            "price": 48,
+            "quantity": 0
+          },
+          "quantity": 1,
+          "discount": 0,
+          "increment": 0,
+          "subtotal": 48,
+          "subtotalDiscounted": 0
+        },
+        {
+          "product": {
+            "_id": "M6692448273",
+            "category": "ACCESORIOS",
+            "cost": 680,
+            "name": "ANTIVUELCO CON LUCES DE RETROCESO Y DISEÑO (Por mayor)",
+            "price": 780,
+            "quantity": -1
+          },
+          "quantity": 1,
+          "discount": 0,
+          "increment": 0,
+          "subtotal": 780,
+          "subtotalDiscounted": 0
+        },
+        {
+          "product": {
+            "_id": "8339100609",
+            "category": "ACCESORIOS",
+            "cost": 650,
+            "name": "ANTIVUELCO DE TOLVA TRD NEGRO MATE LONG",
+            "price": 780,
+            "quantity": 1
+          },
+          "quantity": 1,
+          "discount": 0,
+          "increment": 0,
+          "subtotal": 780,
+          "subtotalDiscounted": 0
+        },
+        {
+          "product": {
+            "_id": "7614351932",
+            "category": "ACCESORIOS",
+            "cost": 560,
+            "name": "ANTIVUELCO HILUX CROMADO",
+            "price": 730,
+            "quantity": -1
+          },
+          "quantity": 1,
+          "discount": 0,
+          "increment": 0,
+          "subtotal": 730,
+          "subtotalDiscounted": 0
+        },
+        {
+          "product": {
+            "_id": "386856825",
+            "category": "ACCESORIOS",
+            "cost": 69,
+            "name": "BARRAS TRANSVERSALES CON ANCLAJE",
+            "price": 150,
+            "quantity": 0
+          },
+          "quantity": 1,
+          "discount": 0,
+          "increment": 0,
+          "subtotal": 150,
+          "subtotalDiscounted": 0
+        },
+        {
+          "product": {
+            "_id": "M9096401078",
+            "category": "ACCESORIOS",
+            "cost": 70,
+            "name": "BARRAS TRANSVERSALES DE TECHO 127CM NEGRO (Por mayor)",
+            "price": 90,
+            "quantity": 2
+          },
+          "quantity": 2,
+          "discount": 0,
+          "increment": 0,
+          "subtotal": 180,
+          "subtotalDiscounted": 0
+        },
+        {
+          "product": {
+            "_id": "5720091821",
+            "category": "ACCESORIOS",
+            "cost": 40,
+            "name": "BASES PORTABARRAS DE PLACA LARGO",
+            "price": 80,
+            "quantity": 1
+          },
+          "quantity": 1,
+          "discount": 0,
+          "increment": 0,
+          "subtotal": 80,
+          "subtotalDiscounted": 0
+        },
+        {
+          "product": {
+            "_id": "4330427279",
+            "category": "ACCESORIOS",
+            "cost": 16,
+            "name": "CARGADOR DE 3.1 AMPS MULTIVOLTAJE",
+            "price": 40,
+            "quantity": 7
+          },
+          "quantity": 1,
+          "discount": 0,
+          "increment": 0,
+          "subtotal": 40,
+          "subtotalDiscounted": 0
+        },
+        {
+          "product": {
+            "_id": "2259908159",
+            "category": "ACCESORIOS",
+            "cost": 45,
+            "name": "CORRELLUVIAS",
+            "price": 120,
+            "quantity": 3
+          },
+          "quantity": 1,
+          "discount": 0,
+          "increment": 0,
+          "subtotal": 120,
+          "subtotalDiscounted": 0
+        },
+        {
+          "product": {
+            "_id": "M2165875274",
+            "category": "ACCESORIOS",
+            "cost": 39,
+            "name": "CORTAVIENTO LATERAL TRD (Por mayor)",
+            "price": 60,
+            "quantity": 1
+          },
+          "quantity": 1,
+          "discount": 0,
+          "increment": 0,
+          "subtotal": 60,
+          "subtotalDiscounted": 0
+        },
+        {
+          "product": {
+            "_id": "6501056103",
+            "category": "ACCESORIOS",
+            "cost": 890,
+            "name": "DURALINER GRATWALL POER",
+            "price": 1200,
+            "quantity": 0
+          },
+          "quantity": 1,
+          "discount": 0,
+          "increment": 0,
+          "subtotal": 1200,
+          "subtotalDiscounted": 0
+        },
+        {
+          "product": {
+            "_id": "M8440761098",
+            "category": "ACCESORIOS",
+            "cost": 4,
+            "name": "AMBIENTADOR JUST EN SPRAY (Por mayor)",
+            "price": 7,
+            "quantity": -1
+          },
+          "quantity": 1,
+          "discount": 0,
+          "increment": 0,
+          "subtotal": 7,
+          "subtotalDiscounted": 0
+        },
+        {
+          "product": {
+            "_id": "M8440761099",
+            "category": "ACCESORIOS",
+            "cost": 13,
+            "name": "ANTENA DE RADIO AM FM DE PARABRISA (Por mayor)",
+            "price": 20,
+            "quantity": -1
+          },
+          "quantity": 1,
+          "discount": 0,
+          "increment": 0,
+          "subtotal": 20,
+          "subtotalDiscounted": 0
+        },
+        {
+          "product": {
+            "_id": "8440761097",
+            "category": "ACCESORIOS",
+            "cost": 25,
+            "name": "ANTENAS ALETA DE TIBURON",
+            "price": 48,
+            "quantity": 0
+          },
+          "quantity": 1,
+          "discount": 0,
+          "increment": 0,
+          "subtotal": 48,
+          "subtotalDiscounted": 0
+        },
+        {
+          "product": {
+            "_id": "M6692448273",
+            "category": "ACCESORIOS",
+            "cost": 680,
+            "name": "ANTIVUELCO CON LUCES DE RETROCESO Y DISEÑO (Por mayor)",
+            "price": 780,
+            "quantity": -1
+          },
+          "quantity": 1,
+          "discount": 0,
+          "increment": 0,
+          "subtotal": 780,
+          "subtotalDiscounted": 0
+        },
+        {
+          "product": {
+            "_id": "8339100609",
+            "category": "ACCESORIOS",
+            "cost": 650,
+            "name": "ANTIVUELCO DE TOLVA TRD NEGRO MATE LONG",
+            "price": 780,
+            "quantity": 1
+          },
+          "quantity": 1,
+          "discount": 0,
+          "increment": 0,
+          "subtotal": 780,
+          "subtotalDiscounted": 0
+        },
+        {
+          "product": {
+            "_id": "7614351932",
+            "category": "ACCESORIOS",
+            "cost": 560,
+            "name": "ANTIVUELCO HILUX CROMADO",
+            "price": 730,
+            "quantity": -1
+          },
+          "quantity": 1,
+          "discount": 0,
+          "increment": 0,
+          "subtotal": 730,
+          "subtotalDiscounted": 0
+        },
+        {
+          "product": {
+            "_id": "386856825",
+            "category": "ACCESORIOS",
+            "cost": 69,
+            "name": "BARRAS TRANSVERSALES CON ANCLAJE",
+            "price": 150,
+            "quantity": 0
+          },
+          "quantity": 1,
+          "discount": 0,
+          "increment": 0,
+          "subtotal": 150,
+          "subtotalDiscounted": 0
+        },
+        {
+          "product": {
+            "_id": "M9096401078",
+            "category": "ACCESORIOS",
+            "cost": 70,
+            "name": "BARRAS TRANSVERSALES DE TECHO 127CM NEGRO (Por mayor)",
+            "price": 90,
+            "quantity": 2
+          },
+          "quantity": 2,
+          "discount": 0,
+          "increment": 0,
+          "subtotal": 180,
+          "subtotalDiscounted": 0
+        },
+        {
+          "product": {
+            "_id": "5720091821",
+            "category": "ACCESORIOS",
+            "cost": 40,
+            "name": "BASES PORTABARRAS DE PLACA LARGO",
+            "price": 80,
+            "quantity": 1
+          },
+          "quantity": 1,
+          "discount": 0,
+          "increment": 0,
+          "subtotal": 80,
+          "subtotalDiscounted": 0
+        },
+        {
+          "product": {
+            "_id": "4330427279",
+            "category": "ACCESORIOS",
+            "cost": 16,
+            "name": "CARGADOR DE 3.1 AMPS MULTIVOLTAJE",
+            "price": 40,
+            "quantity": 7
+          },
+          "quantity": 1,
+          "discount": 0,
+          "increment": 0,
+          "subtotal": 40,
+          "subtotalDiscounted": 0
+        },
+        {
+          "product": {
+            "_id": "2259908159",
+            "category": "ACCESORIOS",
+            "cost": 45,
+            "name": "CORRELLUVIAS",
+            "price": 120,
+            "quantity": 3
+          },
+          "quantity": 1,
+          "discount": 0,
+          "increment": 0,
+          "subtotal": 120,
+          "subtotalDiscounted": 0
+        },
+        {
+          "product": {
+            "_id": "M2165875274",
+            "category": "ACCESORIOS",
+            "cost": 39,
+            "name": "CORTAVIENTO LATERAL TRD (Por mayor)",
+            "price": 60,
+            "quantity": 1
+          },
+          "quantity": 1,
+          "discount": 0,
+          "increment": 0,
+          "subtotal": 60,
+          "subtotalDiscounted": 0
+        },
+        {
+          "product": {
+            "_id": "6501056103",
+            "category": "ACCESORIOS",
+            "cost": 890,
+            "name": "DURALINER GRATWALL POER",
+            "price": 1200,
+            "quantity": 0
+          },
+          "quantity": 1,
+          "discount": 0,
+          "increment": 0,
+          "subtotal": 1200,
+          "subtotalDiscounted": 0
+        }
+      ],
+      "client": {
+        "_id": "73904197",
+        "name": "DESCONOCIDO",
+        "phone": ""
+      },
+      "car": {
+        "brand": "-",
+        "model": "-",
+        "plate": "",
+        "year": ""
+      },
+      "note": "SE INCLUIYE INSUMOS E INSTALACIÓN",
+      "type": "COBRADO",
+      "createdAt": "2024-03-25T20:23:40.721Z",
+      "seller": {
+        "_id": "6e6ed436-8997-481a-89ed-978d45bc2a21",
+        "name": "Cesar Wagner"
+      }
+    },
+    {
+      "_id": "b853e8ef-0f83-4721-b3e1-a6cf7c811840",
+      "items": [
+        {
+          "product": {
+            "_id": "2110030556",
+            "category": "ACCESORIOS",
+            "cost": 15,
+            "name": "CABLE TIPO C",
+            "price": 25,
+            "quantity": 13
+          },
+          "quantity": 1,
+          "discount": 0,
+          "increment": 0,
+          "subtotal": 25,
+          "subtotalDiscounted": 0
+        }
+      ],
+      "client": {
+        "_id": "73904197",
+        "name": "DENIS SANCHEZ",
+        "phone": ""
+      },
+      "car": {
+        "brand": "-",
+        "model": "-",
+        "plate": "",
+        "year": ""
+      },
+      "note": "SE INCLUIYE INSUMOS E INSTALACIÓN",
+      "type": "COBRADO",
+      "createdAt": "2024-03-25T20:27:45.100Z",
+      "seller": {
+        "_id": "6e6ed436-8997-481a-89ed-978d45bc2a21",
+        "name": "Cesar Wagner"
+      }
+    },
+    {
+      "_id": "042deb5d-7974-4123-97d9-2f16970b0a68",
+      "items": [
+        {
+          "product": {
+            "_id": "8339100609",
+            "category": "ACCESORIOS",
+            "cost": 650,
+            "name": "ANTIVUELCO DE TOLVA TRD NEGRO MATE LONG",
+            "price": 780,
+            "quantity": -1
+          },
+          "quantity": 1,
+          "discount": 0,
+          "increment": 0,
+          "subtotal": 780,
+          "subtotalDiscounted": 0
+        }
+      ],
+      "client": {
+        "_id": "73904197",
+        "name": "DESCONOCIDO",
+        "phone": ""
+      },
+      "car": {
+        "brand": "-",
+        "model": "-",
+        "plate": "",
+        "year": ""
+      },
+      "note": "SE INCLUIYE INSUMOS E INSTALACIÓN",
+      "type": "COBRADO",
+      "createdAt": "2024-03-25T20:29:29.570Z",
+      "seller": {
+        "_id": "6e6ed436-8997-481a-89ed-978d45bc2a21",
+        "name": "Cesar Wagner"
+      }
+    },
+    {
+      "_id": "7c5d29f9-d700-424f-83fc-8be66f84b831",
+      "items": [
+        {
+          "product": {
+            "_id": "7707869009",
+            "category": "ACCESORIOS",
+            "cost": 13,
+            "name": "ASPIRADORA PORTATIL",
+            "price": 25,
+            "quantity": 1
+          },
+          "quantity": 1,
+          "discount": 0,
+          "increment": 0,
+          "subtotal": 25,
+          "subtotalDiscounted": 0
+        }
+      ],
+      "client": {
+        "_id": "73904197",
+        "name": "DENIS SANCHEZ",
+        "phone": ""
+      },
+      "car": {
+        "brand": "-",
+        "model": "-",
+        "plate": "",
+        "year": ""
+      },
+      "note": "SE INCLUIYE INSUMOS E INSTALACIÓN",
+      "type": "COBRADO",
+      "createdAt": "2024-03-25T20:30:01.315Z",
+      "seller": {
+        "_id": "6e6ed436-8997-481a-89ed-978d45bc2a21",
+        "name": "Cesar Wagner"
+      }
+    },
+    {
+      "_id": "d44b70d8-7a1f-4eb0-bd2c-cd98ed88fec1",
+      "items": [
+        {
+          "product": {
+            "_id": "M5720091821",
+            "category": "ACCESORIOS",
+            "cost": 40,
+            "name": "BASES PORTABARRAS DE PLACA LARGO (Por mayor)",
+            "price": 65,
+            "quantity": -2
+          },
+          "quantity": 1,
+          "discount": 0,
+          "increment": 0,
+          "subtotal": 65,
+          "subtotalDiscounted": 0
+        }
+      ],
+      "client": {
+        "_id": "73904197",
+        "name": "DENIS SANCHEZ",
+        "phone": ""
+      },
+      "car": {
+        "brand": "-",
+        "model": "-",
+        "plate": "",
+        "year": ""
+      },
+      "note": "SE INCLUIYE INSUMOS E INSTALACIÓN",
+      "type": "COBRADO",
+      "createdAt": "2024-03-25T20:31:16.625Z",
+      "seller": {
+        "_id": "6e6ed436-8997-481a-89ed-978d45bc2a21",
+        "name": "Cesar Wagner"
+      }
+    }
+  ],
   "products": [],
-  "clients": []
+  "clients": [
+    {
+      "_id": "20344877158",
+      "name": "DERCO PERU S.A.",
+      "phone": ""
+    },
+    {
+      "_id": "10739041975",
+      "name": "DENIS SANCHEZ",
+      "phone": ""
+    },
+    {
+      "_id": "73904197",
+      "name": "DENIS SANCHEZ",
+      "phone": ""
+    }
+  ]
 }

@@ -270,13 +270,13 @@ class StockFileAdapter {
 
             worksheet.cell(`${COLUMNS.TIPO_PRODUCTO}${row + 1}`).value(productDB.category);
             worksheet.cell(`${COLUMNS.DESCRIPCION_PRODUCTO}${row + 1}`).value(productDB.name.replace(POR_MAYOR_SUFFIX, ""));
-            worksheet.cell(`${COLUMNS.CANTIDAD}${row + 1}`).value(item.quantity);
+            worksheet.cell(`${COLUMNS.CANTIDAD}${row + 1}`).style("numberFormat", "0.00").value(item.quantity);
             worksheet.cell(`${COLUMNS.COSTO}${row + 1}`).value(productDB.cost);
             worksheet.cell(`${COLUMNS.TIPO_VENTA}${row + 1}`).value(firstChart === 'M' ? 'POR MAYOR': 'AL PUBLICO');
-            worksheet.cell(`${COLUMNS.PRECIO_UNIDAD}${row + 1}`).value((item.subtotal / item.quantity).toFixed(2));
+            worksheet.cell(`${COLUMNS.PRECIO_UNIDAD}${row + 1}`).style("numberFormat", "[$S/]#,##0.00").value(+((item.subtotal / item.quantity).toFixed(2)));
             worksheet.cell(`${COLUMNS.FECHA}${row + 1}`).value(now).style("numberFormat", "dddd, dd mmmm yyyy");
-            worksheet.cell(`${COLUMNS.TOTAL}${row + 1}`).value(item.subtotal);
-            worksheet.cell(`${COLUMNS.UTILIDAD}${row + 1}`).value((item.quantity * (item.subtotal / item.quantity - productDB.cost)).toFixed(2));
+            worksheet.cell(`${COLUMNS.TOTAL}${row + 1}`).style("numberFormat", "[$S/]#,##0.00").value(item.subtotal);
+            worksheet.cell(`${COLUMNS.UTILIDAD}${row + 1}`).style("numberFormat", "[$S/]#,##0.00").value(+((item.quantity * (item.subtotal / item.quantity - productDB.cost)).toFixed(2)));
             worksheet.cell(`${COLUMNS.ESTADO_PAGO}${row + 1}`).value(type);
 
             if (customer && customer !== "Desconocido") {

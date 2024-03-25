@@ -193,25 +193,23 @@ router.get(
     const items = {
       starts: [60, 85, 180, 380, 415, 485],
       rows: transaction.items.map((item, index) => {
-        const subtotal = item.subtotal - (item.subtotal * 0.18);
-
        return [
           index + 1,
           item.product.category,
-          wrapAnsi(item.product.name.replace('(Por mayor)', ''), 30),
+          (wrapAnsi(item.product.name.replace('(Por mayor)', ''), 30)).toUpperCase(),
           item.quantity,
-          `S/ ${(subtotal / item.quantity).toFixed(2)}`,
-          `S/ ${subtotal.toFixed(2)}`
+          `S/ ${(item.subtotal / item.quantity).toFixed(2)}`,
+          `S/ ${item.subtotal.toFixed(2)}`
         ]
       })
     }
 
     y = y + 20;
 
-    const printFooter = () => {
+    const printFooter = (printNota = false) => {
       const y = 670;
 
-      if (transaction.type === 'COTIZACION') {
+      if (printNota && transaction.type === 'COTIZACION') {
         doc.font('Helvetica-Bold').fontSize(11).text(`FECHA`, 50, y);
         doc.font('Helvetica').fontSize(11).text(format(new Date(transaction.createdAt), "eeee, dd 'de' MMMM 'del' yyyy", { locale: es }), 110, y);
   
@@ -234,12 +232,13 @@ router.get(
     }
 
     let page = 0;
-    printFooter();
+
+    printFooter(items.rows.length < 11);
 
     items.rows.forEach((row, i) => {
       if ((page == 0 && i > 10) || (page > 0 && (i - 11) % 20 == 0)) {
         doc.addPage();
-        printFooter();
+        printFooter(i + 20 > items.rows.length);
         page++;
 
         y = 60
@@ -266,10 +265,10 @@ router.get(
     const igv = total * 0.18;
     const subtotal = total - igv;
 
-    doc.font('Helvetica-Bold').fontSize(11).text(`SUBTOTAL:`, 415, y + 5);
+    doc.font('Helvetica-Bold').fontSize(11).text(`SUBTOTAL SIN IGV:`, 348, y + 5);
     doc.font('Helvetica').fontSize(11).text(`S/ ${subtotal.toFixed(2)}`, 485, y + 5);
 
-    doc.font('Helvetica-Bold').fontSize(11).text(`IGV:`, 415, y + 20);
+    doc.font('Helvetica-Bold').fontSize(11).text(`IGV     :`, 415, y + 20);
     doc.font('Helvetica').fontSize(11).text(`S/ ${igv.toFixed(2)}`, 485, y + 20);
 
     doc.font('Helvetica-Bold').fontSize(11).text(`TOTAL:`, 415, y + 35);

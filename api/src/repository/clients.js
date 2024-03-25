@@ -21,10 +21,20 @@ export async function create(payload) {
     }
 
     if (client) {
+        await update(payload._id, payload)
         return;
     }
 
     const db = getConnection();
     db.data.clients.push(payload);
+    await db.write();
+}
+
+export async function update(_id, payload) {
+    const db = getConnection();
+    const index = db.data.clients.findIndex(x => x._id === _id);
+
+    console.log(index)
+    db.data.clients[index] = payload;
     await db.write();
 }
